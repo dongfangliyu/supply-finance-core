@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditSurveyinfoDao">
+
+	<resultMap id="RM_AuditSurveyInfo" type="cn.fintecher.supply.finance.loan.manager.common.model.AuditSurveyInfoEntity">
+        <result property="pid" column="pid"/>
+        <result property="surveyTime" column="survey_time"/>
+        <result property="quota" column="quota"/>
+        <result property="mainBusiness" column="main_business"/>
+        <result property="historicalEvolution" column="historical_evolution"/>
+        <result property="modelStrategy" column="model_strategy"/>
+        <result property="industrySituation" column="industry_situation"/>
+        <result property="affiliatedCompany" column="affiliated_company"/>
+        <result property="authenticityStatement" column="authenticity_statement"/>
+        <result property="creditRating" column="credit_rating"/>
+        <result property="equitySituation" column="equity_situation"/>
+        <result property="warrantyInformation" column="warranty_information"/>
+        <result property="financePrediction" column="finance_prediction"/>
+        <result property="financialAnalysis" column="financial_analysis"/>
+        <result property="accountsReceivable" column="accounts_receivable"/>
+        <result property="keyAbnormal" column="key_abnormal"/>
+        <result property="auditId" column="audit_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		pid,survey_time,quota,main_business,historical_evolution,model_strategy,industry_situation,affiliated_company,authenticity_statement,credit_rating,equity_situation,warranty_information,finance_prediction,financial_analysis,accounts_receivable,key_abnormal,audit_id,create_by,create_at,update_by,update_at,status,remark
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="submitSurveyInfo" useGeneratedKeys="true" keyProperty="pid">
+    <![CDATA[
+        INSERT INTO audit_survey_info (
+        	survey_time ,
+        	quota ,
+        	main_business ,
+        	historical_evolution ,
+        	model_strategy ,
+        	industry_situation ,
+        	affiliated_company ,
+        	authenticity_statement ,
+        	credit_rating ,
+        	equity_situation ,
+        	warranty_information ,
+        	finance_prediction ,
+        	financial_analysis ,
+        	accounts_receivable ,
+        	key_abnormal ,
+        	audit_id ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark 
+        ) VALUES (
+        	#{surveyTime} ,
+        	#{quota} ,
+        	#{mainBusiness} ,
+        	#{historicalEvolution} ,
+        	#{modelStrategy} ,
+        	#{industrySituation} ,
+        	#{affiliatedCompany} ,
+        	#{authenticityStatement} ,
+        	#{creditRating} ,
+        	#{equitySituation} ,
+        	#{warrantyInformation} ,
+        	#{financePrediction} ,
+        	#{financialAnalysis} ,
+        	#{accountsReceivable} ,
+        	#{keyAbnormal} ,
+        	#{auditId} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark} 
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="update" >
+   
+	UPDATE audit_survey_info 
+		<set>
+				<if test="surveyTime != null and surveyTime != ''">survey_time = #{surveyTime} ,</if>
+				<if test="quota != null and quota != ''">quota = #{quota} ,</if>
+				<if test="mainBusiness != null and mainBusiness != ''">main_business = #{mainBusiness} ,</if>
+				<if test="historicalEvolution != null and historicalEvolution != ''">historical_evolution = #{historicalEvolution} ,</if>
+				<if test="modelStrategy != null and modelStrategy != ''">model_strategy = #{modelStrategy} ,</if>
+				<if test="industrySituation != null and industrySituation != ''">industry_situation = #{industrySituation} ,</if>
+				<if test="affiliatedCompany != null and affiliatedCompany != ''">affiliated_company = #{affiliatedCompany} ,</if>
+				<if test="authenticityStatement != null and authenticityStatement != ''">authenticity_statement = #{authenticityStatement} ,</if>
+				<if test="creditRating != null and creditRating != ''">credit_rating = #{creditRating} ,</if>
+				<if test="equitySituation != null and equitySituation != ''">equity_situation = #{equitySituation} ,</if>
+				<if test="warrantyInformation != null and warrantyInformation != ''">warranty_information = #{warrantyInformation} ,</if>
+				<if test="financePrediction != null and financePrediction != ''">finance_prediction = #{financePrediction} ,</if>
+				<if test="financialAnalysis != null and financialAnalysis != ''">financial_analysis = #{financialAnalysis} ,</if>
+				<if test="accountsReceivable != null and accountsReceivable != ''">accounts_receivable = #{accountsReceivable} ,</if>
+				<if test="keyAbnormal != null and keyAbnormal != ''">key_abnormal = #{keyAbnormal} ,</if>
+				<if test="auditId != null and auditId != ''">audit_id = #{auditId} ,</if>
+				<if test="createBy != null and createBy != ''">create_by = #{createBy} ,</if>
+				<if test="createAt != null and createAt != ''">create_at = #{createAt} ,</if>
+				<if test="updateBy != null and updateBy != ''">update_by = #{updateBy} ,</if>
+				<if test="updateAt != null and updateAt != ''">update_at = #{updateAt} ,</if>
+				<if test="status != null and status != ''">status = #{status} ,</if>
+				<if test="remark != null and remark != ''">remark = #{remark} </if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+	<select id="searchSurveyInfo"  resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditSurveyInfoEntity">
+		SELECT *
+		FROM audit_survey_info
+		WHERE
+			audit_id = #{id} and status = 'NOL'
+	</select>
+
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="pid != null and pid != ''">
+				AND pid = #{pid}
+			</if>
+	       <if test="surveyTime != null and surveyTime != ''">
+				AND survey_time = #{surveyTime}
+			</if>
+	       <if test="quota != null and quota != ''">
+				AND quota = #{quota}
+			</if>
+	       <if test="mainBusiness != null and mainBusiness != ''">
+				AND main_business = #{mainBusiness}
+			</if>
+	       <if test="historicalEvolution != null and historicalEvolution != ''">
+				AND historical_evolution = #{historicalEvolution}
+			</if>
+	       <if test="modelStrategy != null and modelStrategy != ''">
+				AND model_strategy = #{modelStrategy}
+			</if>
+	       <if test="industrySituation != null and industrySituation != ''">
+				AND industry_situation = #{industrySituation}
+			</if>
+	       <if test="affiliatedCompany != null and affiliatedCompany != ''">
+				AND affiliated_company = #{affiliatedCompany}
+			</if>
+	       <if test="authenticityStatement != null and authenticityStatement != ''">
+				AND authenticity_statement = #{authenticityStatement}
+			</if>
+	       <if test="creditRating != null and creditRating != ''">
+				AND credit_rating = #{creditRating}
+			</if>
+	       <if test="equitySituation != null and equitySituation != ''">
+				AND equity_situation = #{equitySituation}
+			</if>
+	       <if test="warrantyInformation != null and warrantyInformation != ''">
+				AND warranty_information = #{warrantyInformation}
+			</if>
+	       <if test="financePrediction != null and financePrediction != ''">
+				AND finance_prediction = #{financePrediction}
+			</if>
+	       <if test="financialAnalysis != null and financialAnalysis != ''">
+				AND financial_analysis = #{financialAnalysis}
+			</if>
+	       <if test="accountsReceivable != null and accountsReceivable != ''">
+				AND accounts_receivable = #{accountsReceivable}
+			</if>
+	       <if test="keyAbnormal != null and keyAbnormal != ''">
+				AND key_abnormal = #{keyAbnormal}
+			</if>
+	       <if test="auditId != null and auditId != ''">
+				AND audit_id = #{auditId}
+			</if>
+	       <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
+			</if>
+	       <if test="createAtBegin != null  and createAtBegin != ''">
+				AND create_at &gt;= #{createAtBegin}
+		   </if>
+		   <if test="createAtEnd  != null and createAtEnd != ''">
+				AND create_at &lt;= #{createAtEnd}
+		   </if>
+	       <if test="updateBy != null and updateBy != ''">
+				AND update_by = #{updateBy}
+			</if>
+	       <if test="updateAtBegin != null  and updateAtBegin != ''">
+				AND update_at &gt;= #{updateAtBegin}
+		   </if>
+		   <if test="updateAtEnd  != null and updateAtEnd != ''">
+				AND update_at &lt;= #{updateAtEnd}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+		
+</mapper>
+

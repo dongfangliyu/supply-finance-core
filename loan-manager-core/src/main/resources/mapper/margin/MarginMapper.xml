@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.margin.dao.MarginDao">
+
+	<resultMap id="RM_Margin" type="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity">
+        <result property="pid" column="pid"/>
+        <result property="bussineNo" column="bussine_no"/>
+        <result property="proProductId" column="pro_product_id"/>
+        <result property="companyId" column="company_id"/>
+        <result property="companyDealerId" column="company_dealer_id"/>
+        <result property="confirmDealerState" column="confirm_dealer_state"/>
+        <result property="confirmtDealerTime" column="confirmt_dealer_time"/>
+        <result property="confirmCorecompanyState" column="confirm_corecompany_state"/>
+        <result property="confirmCorecompanyTime" column="confirm_corecompany_time"/>
+        <result property="confirmApplyState" column="confirm_apply_state"/>
+        <result property="confirmApplyAmount" column="confirm_apply_amount"/>
+        <result property="contractApplyTerm" column="contract_apply_term"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="contractType" column="contract_type"/>
+        <result property="contractState" column="contract_state"/>
+        <result property="contractDealerTime" column="contract_dealer_time"/>
+        <result property="contractCorecompanyTime" column="contract_corecompany_time"/>
+        <result property="contractPlatformTime" column="contract_platform_time"/>
+        <result property="confirmNotAmount" column="confirm_not_amount"/>
+	</resultMap>
+	
+	<select id="searchMarginListCount" resultType="Integer" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.MarginForm">
+		SELECT
+		count(csi.pid)
+		FROM confirming_stock_info csi WHERE csi.contract_state = '3'
+		<include refid="search_Margin" />
+	</select>
+
+	<select id="searchMarginList" resultType="cn.fintecher.supply.finance.loan.manager.common.confirming.response.ConfirmingStockInfoResponse" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.MarginForm">
+		SELECT csi.pid as pid,csi.company_dealer_id as companyDealerId,csi.bussine_no as bussineNo,psi.name as name,psi.product_no as productNo,
+		bbi.bank_card as bankCard,sum(ate.repayment_price) as repayment_price,csi.confirm_not_amount as confirmNotAmount
+		FROM confirming_stock_info csi 
+		LEFT JOIN pro_product psi ON csi.pro_product_id = psi.pid
+		LEFT JOIN base_bank_info bbi ON csi.pid = bbi.object_id
+		LEFT JOIN audit_task_entry ate ON csi.pid = ate.resource_id
+		WHERE bbi.object_type = '3' AND bbi.account_use = '3' AND csi.contract_state = '3'
+		<include refid="search_Margin" />
+		group by csi.pid,bussineNo,name,productNo,bankCard,confirmNotAmount
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<sql id="search_Margin">	
+		<if test="bussineNo != null and bussineNo !=''">
+			AND csi.bussine_no LIKE concat('%',#{bussineNo},'%')
+		</if>
+		<if test="productNo != null and productNo !=''">
+			AND psi.product_no LIKE concat('%',#{productNo},'%')
+		</if>
+	</sql>
+
+</mapper>
+

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.business.dao.BusinessFileDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity" id="fileMap">
+        <result property="pid" column="pid"/>
+        <result property="fileName" column="file_name"/>
+        <result property="category" column="category"/>
+        <result property="fullPath" column="full_path"/>
+        <result property="path" column="path"/>
+        <result property="group" column="group"/>
+        <result property="ownerId" column="owner_id"/>
+        <result property="commodityId" column="commodity_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="file_find_List">
+		pid as pid,		file_name as fileName,		category as category,		full_path as fullPath,		path as path,		`group` as `group`,		owner_id as ownerId, commodity_id as commodityId,	create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="file_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="fileName != null" >
+		      	AND file_name = #{fileName}
+		    </if>
+			<if test="category != null" >
+		      	AND category = #{category}
+		    </if>
+			<if test="fullPath != null" >
+		      	AND full_path = #{fullPath}
+		    </if>
+			<if test="path != null" >
+		      	AND path = #{path}
+		    </if>
+			<if test="group != null" >
+		      	AND `group` = #{group}
+		    </if>
+			<if test="ownerId != null" >
+		      	AND owner_id = #{ownerId}
+		    </if>
+			<if test="commodityId != null" >
+		      	AND commodity_id = #{commodityId}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertFile" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into business_file (pid,file_name,category,full_path,path,`group`,owner_id,commodity_id,create_by,create_at,update_at,update_by,status,remark)
+	    values (#{pid},#{fileName},#{category},#{fullPath},#{path},#{group},#{ownerId},#{commodityId},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByFile" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity">
+	  	select
+	    	<include refid="file_find_List" />
+	    from business_file
+	    	<include refid="file_find_where" />
+	 </select>
+	 
+	 <select id="queryFileByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity">
+	  	select
+	    	<include refid="file_find_List" />
+	    from business_file where pid = #{pid} and `status` = 'NOL'
+	 </select>
+	 
+	<update id="updateFile" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity" >
+    	update business_file
+	    	<set >
+				<if test="fileName != null" >
+			      	 file_name = #{fileName},
+			    </if>
+				<if test="category != null" >
+			      	 category = #{category},
+			    </if>
+				<if test="fullPath != null" >
+			      	 full_path = #{fullPath},
+			    </if>
+				<if test="path != null" >
+			      	 path = #{path},
+			    </if>
+				<if test="group != null" >
+			      	 `group` = #{group},
+			    </if>
+				<if test="ownerId != null" >
+			      	 owner_id = #{ownerId},
+			    </if>
+				<if test="commodityId != null" >
+			      	 commodity_id = #{commodityId},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+
+	<select id="queryEnterFileList" resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity">
+		select
+		<include refid="file_find_List" />
+		from business_file where owner_id = #{orderCode} and `status` = 'NOL'
+	</select>
+
+	<select id="querySuppFileList" resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity">
+		select
+		<include refid="file_find_List" />
+		from business_file where owner_id = #{suppCode} and `status` = 'NOL'
+	</select>
+
+	<select id="countByCodeAndType" resultType="int">
+		select count(*)from business_file where category =#{category} and owner_id = #{ownerId} and `status` = 'NOL'
+	</select>
+
+	<select id="searchFileByCommodityId" resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity">
+		select
+		<include refid="file_find_List" />
+		from business_file where commodity_id = #{pid} and `status` = 'NOL'
+	</select>
+	
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditRegisterDao">
+
+	<resultMap id="RM_AuditRegister" type="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="successTime" column="success_time"/>
+        <result property="state" column="state"/>
+        <result property="registerId" column="register_id"/>
+        <result property="enterpriseType" column="enterprise_type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="updateAt" column="update_at"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		pid as pid,
+		name as name,
+		submit_time as submitTime,
+		success_time as successTime,
+		state as state,
+		register_id as registerId,
+		enterprise_type as enterpriseType,
+		create_by as createBy,
+		create_at as createAt,
+		update_by as updateBy,
+		status as status,
+		remark as remark,
+		update_at as updateAt
+</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="saveAuditRegisterEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity" useGeneratedKeys="true" keyProperty="pid">
+        INSERT INTO audit_register (
+        	pid ,
+        	name ,
+        	submit_time ,
+        	success_time ,
+        	state ,
+        	register_id ,
+        	enterprise_type ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	status ,
+        	remark ,
+        	update_at 
+        ) VALUES (
+        	#{pid} ,
+        	#{name} ,
+        	#{submitTime} ,
+        	#{successTime} ,
+        	#{state} ,
+        	#{registerId} ,
+        	#{enterpriseType} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{status} ,
+        	#{remark} ,
+        	#{updateAt} 
+        )
+	</insert>
+    
+	<update id="updateAuditRegister" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity">
+   
+	UPDATE audit_register 
+		<set>
+				<if test="name != null and name != ''">name = #{name} ,</if>
+				<if test="submitTime != null">submit_time = #{submitTime} ,</if>
+				<if test="successTime != null">success_time = #{successTime} ,</if>
+				<if test="state != null and state != ''">state = #{state} ,</if>
+				<if test="registerId != null and registerId != ''">register_id = #{registerId} ,</if>
+				<if test="enterpriseType != null and enterpriseType != ''">enterprise_type = #{enterpriseType} ,</if>
+				<if test="createBy != null and createBy != ''">create_by = #{createBy} ,</if>
+				<if test="createAt != null">create_at = #{createAt} ,</if>
+				<if test="updateBy != null and updateBy != ''">update_by = #{updateBy} ,</if>
+				<if test="status != null and status != ''">status = #{status} ,</if>
+				<if test="remark != null and remark != ''">remark = #{remark} ,</if>
+				<if test="updateAt != null">update_at = #{updateAt} </if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+    <delete id="delete">
+        DELETE FROM audit_register WHERE
+        pid = #{id} 
+    </delete>
+    
+    <select id="searchListAuditRegister" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditRegisterForm">
+		SELECT <include refid="columns" />
+		    FROM audit_register
+		<include refid="search_AuditRegister" /> order by state = '0' DESC,state = '10' DESC,create_at ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+    <select id="searchAuditRegisterListCount" resultType="Integer" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditRegisterForm">
+		SELECT
+			count(pid)
+		    FROM audit_register
+		<include refid="search_AuditRegister" />
+	</select>
+
+    <select id="searchAuditRegisterByPid" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity">
+		SELECT <include refid="columns" />
+		    FROM audit_register
+		WHERE
+			pid = #{pid} and status = 'NOL'
+	</select>
+
+    <select id="searchAuditRegisterByRegisterId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity">
+		SELECT <include refid="columns" />
+		    FROM audit_register
+		WHERE
+			register_id = #{registerId} and status = 'NOL'
+	</select>
+
+	<select id="searchListAuditRegisterCount" resultType="long">
+		SELECT
+		count(*)
+		from audit_register
+		WHERE
+			state = #{state} and status = 'NOL'
+	</select>
+
+
+	<select id="searchAuditRegisterByName" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditRegisterEntity">
+		SELECT <include refid="columns" />
+		FROM audit_register
+		WHERE
+		name = #{name} and status = 'NOL'
+	</select>
+
+
+	<sql id="search_AuditRegister">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test=" 1 != 0">
+				and status = 'NOL'
+			</if>
+			<if test="name != null and name !=''">
+				AND name LIKE concat('%',#{name},'%')
+			</if>
+			<if test="submitStartTime != null and submitStartTime !=''">
+				AND create_at >= #{submitStartTime}
+			</if>
+			<if test="submitEndTime != null and submitEndTime !=''">
+				AND create_at &lt;= #{submitEndTime}
+			</if>
+			<if test="successStartTime != null and successStartTime !=''">
+				AND success_time >= #{successStartTime}
+			</if>
+			<if test="successEndTime != null and successEndTime !=''">
+				AND success_time &lt;= #{successEndTime}
+			</if>
+			<if test="state != null and state !=''">
+				AND state = #{state}
+			</if>
+			<if test="enterpriseType != null and enterpriseType !=''">
+				AND enterprise_type = #{enterpriseType}
+			</if>
+		</trim>
+	</sql>
+
+
+
+
+
+
+</mapper>
+

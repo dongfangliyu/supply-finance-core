@@ -1,0 +1,38 @@
+server:
+  contextPath: /
+  port: 8080
+
+spring:
+  output:
+    ansi:
+      enabled: never
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            ##设置连接超时时间 10秒
+            timeoutInMilliseconds: 180000
+cn:
+  fintecher:
+    organize:
+      core:
+        url: http://localhost:8087
+
+loan:
+  manager:
+    service:
+      url: http://localhost:8082
+
+remoteTokenServices:
+  clientId: my-trusted-client-with-secret
+  clientSecret: somesecret
+  checkTokenEndpointUrl: http://172.16.10.114:8090/authorization-service/oauth/check_token
+
+#注册中心配置
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://localhost:8090/eureka

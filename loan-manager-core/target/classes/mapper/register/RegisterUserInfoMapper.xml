@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.register.dao.RegisterUserInfoDao">
+
+    <resultMap id="RegisterUserInfo"
+               type="cn.fintecher.supply.finance.loan.manager.common.model.RegisterUserInfoEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="enpsLicense" column="enps_license"/>
+        <result property="enpsCredit" column="enps_credit"/>
+        <result property="controller" column="controller"/>
+        <result property="fillPersion" column="fill_persion"/>
+        <result property="establishTime" column="establish_time"/>
+        <result property="registeredPrincipal" column="registered_principal"/>
+        <result property="realRegisteredPrincipal" column="real_registered_principal"/>
+        <result property="registeredAddressDetail" column="registered_address_detail"/>
+        <result property="operatingAddressDetail" column="operating_address_detail"/>
+        <result property="scopeOperation" column="scope_operation"/>
+        <result property="loanNum" column="loan_num"/>
+        <result property="state" column="state"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="creditNumber" column="credit_number"/>
+        <result property="registeredAddressProvince" column="registered_address_province"/>
+        <result property="registeredAddressProvinceName" column="registered_address_province_name"/>
+        <result property="registeredAddressCity" column="registered_address_city"/>
+        <result property="registeredAddressCityName" column="registered_address_city_name"/>
+        <result property="registeredAddressCounty" column="registered_address_county"/>
+        <result property="registeredAddressCountyName" column="registered_address_county_name"/>
+        <result property="operatingAddressProvince" column="operating_address_province"/>
+        <result property="operatingAddressProvinceName" column="operating_address_province_name"/>
+        <result property="operatingAddressCity" column="operating_address_city"/>
+        <result property="operatingAddressCityName" column="operating_address_city_name"/>
+        <result property="operatingAddressCounty" column="operating_address_county"/>
+        <result property="operatingAddressCountyName" column="operating_address_county_name"/>
+        <result property="accountAmount" column="account_amount"/>
+        <result property="attemptsNum" column="attempts_num"/>
+        <result property="upstreamSize" column="upstream_size"/>
+        <result property="downstreamSize" column="downstream_size"/>
+        <result property="legalName" column="legal_name"/>
+        <result property="legalPhone" column="legal_phone"/>
+        <result property="legalCardType" column="legal_card_type"/>
+        <result property="legalCardNum" column="legal_card_num"/>
+        <result property="legalEmail" column="legal_email"/>
+        <result property="legalSex" column="legal_sex"/>
+        <result property="legalAddress" column="legal_address"/>
+        <result property="legalAddressProvince" column="legal_address_province"/>
+        <result property="legalAddressProvinceName" column="legal_address_province_name"/>
+        <result property="legalAddressCity" column="legal_address_city"/>
+        <result property="legalAddressCityName" column="legal_address_city_name"/>
+        <result property="agentName" column="agent_name"/>
+        <result property="agentPhone" column="agent_phone"/>
+        <result property="agentCardType" column="agent_card_type"/>
+        <result property="agentCardNum" column="agent_card_num"/>
+        <result property="agentSex" column="agent_sex"/>
+        <result property="agentEmail" column="agent_email"/>
+        <result property="bankOpen" column="bank_open"/>
+        <result property="bankBranch" column="bank_branch"/>
+        <result property="bankCard" column="bank_card"/>
+        <result property="registerCode" column="register_code"/>
+        <result property="paymentTime" column="payment_time"/>
+        <result property="urlTime" column="url_time"/>
+        <result property="successTime" column="success_time"/>
+        <result property="moneyTime" column="money_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="accountType" column="account_type"/>
+        <result property="enterpriseType" column="enterprise_type"/>
+    </resultMap>
+
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		pid as pid,
+		name as name,
+		type as type,
+		enps_license as enpsLicense,
+		enps_credit as enpsCredit,
+		controller as controller,
+		fill_persion as fillPersion,
+		establish_time as establishTime,
+		registered_principal as registeredPrincipal,
+		real_registered_principal as realRegisteredPrincipal,
+		registered_address_detail as registeredAddressDetail,
+		operating_address_detail as operatingAddressDetail,
+		scope_operation as scopeOperation,
+		loan_num as loanNum,
+		state as state,
+		submit_time as submitTime,
+		credit_number as creditNumber,
+		registered_address_province as registeredAddressProvince,
+		registered_address_province_name as registeredAddressProvinceName,
+		registered_address_city as registeredAddressCity,
+		registered_address_city_name as registeredAddressCityName,
+		registered_address_county as registeredAddressCounty,
+		registered_address_county_name as registeredAddressCountyName,
+		operating_address_province as operatingAddressProvince,
+		operating_address_province_name as operatingAddressProvinceName,
+		operating_address_city as operatingAddressCity,
+		operating_address_city_name as operatingAddressCityName,
+		operating_address_county as operatingAddressCounty,
+		operating_address_county_name as operatingAddressCountyName,
+		account_amount as accountAmount,
+		attempts_num as attemptsNum,
+		upstream_size as upstreamSize,
+		downstream_size as downstreamSize,
+		legal_name as legalName,
+		legal_phone as legalPhone,
+		legal_card_type as legalCardType,
+		legal_card_num as legalCardNum,
+		legal_email as legalEmail,
+		legal_sex as legalSex,
+		legal_address as legalAddress,
+		legal_address_province as legalAddressProvince,
+		legal_address_province_name as legalAddressProvinceName,
+		legal_address_city as legalAddressCity,
+		legal_address_city_name as legalAddressCityName,
+		agent_name as agentName,
+		agent_phone as agentPhone,
+		agent_card_type as agentCardType,
+		agent_card_num as agentCardNum,
+		agent_sex as agentSex,
+		agent_email as agentEmail,
+		bank_open as bankOpen,
+		bank_branch as bankBranch,
+		bank_card as bankCard,
+		register_code as registerCode,
+		payment_time as paymentTime,
+		url_time as urlTime,
+		success_time as successTime,
+		money_time as moneyTime,
+		create_by as createBy,
+		create_at as createAt,
+		update_by as updateBy,
+		update_at as updateAt,
+		status as status,
+		remark as remark,
+		account_type as accountType,
+		enterprise_type as enterpriseType
+	</sql>
+
+
+    <!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+    <insert id="createRegisteCompanyUserInfo" useGeneratedKeys="true"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterUserInfoEntity">
+        INSERT INTO register_user_info (
+        	name ,
+        	type ,
+        	enps_license ,
+        	enps_credit ,
+        	controller ,
+        	fill_persion ,
+        	establish_time ,
+        	registered_principal ,
+        	real_registered_principal ,
+        	registered_address_detail ,
+        	operating_address_detail ,
+        	scope_operation ,
+        	loan_num ,
+        	state ,
+        	submit_time ,
+        	credit_number ,
+        	registered_address_province ,
+        	registered_address_province_name ,
+        	registered_address_city ,
+        	registered_address_city_name ,
+        	registered_address_county ,
+        	registered_address_county_name ,
+        	operating_address_province ,
+        	operating_address_province_name ,
+        	operating_address_city ,
+        	operating_address_city_name ,
+        	operating_address_county ,
+        	operating_address_county_name ,
+        	account_amount ,
+        	attempts_num ,
+        	upstream_size ,
+        	downstream_size ,
+        	legal_name ,
+        	legal_phone ,
+        	legal_card_type ,
+        	legal_card_num ,
+        	legal_email ,
+        	legal_sex ,
+        	legal_address ,
+        	legal_address_province,
+		    legal_address_province_name,
+		    legal_address_city,
+		    legal_address_city_name,
+        	agent_name ,
+        	agent_phone ,
+        	agent_card_type ,
+        	agent_card_num ,
+        	agent_sex ,
+        	agent_email ,
+        	bank_open ,
+        	bank_branch ,
+        	bank_card ,
+        	register_code ,
+        	payment_time ,
+        	url_time ,
+        	success_time ,
+        	money_time ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark,
+        	account_type,
+        	enterprise_type
+        ) VALUES (
+        	#{name} ,
+        	#{type} ,
+        	#{enpsLicense} ,
+        	#{enpsCredit} ,
+        	#{controller} ,
+        	#{fillPersion} ,
+        	#{establishTime} ,
+        	#{registeredPrincipal} ,
+        	#{realRegisteredPrincipal} ,
+        	#{registeredAddressDetail} ,
+        	#{operatingAddressDetail} ,
+        	#{scopeOperation} ,
+        	#{loanNum} ,
+        	#{state} ,
+        	#{submitTime} ,
+        	#{creditNumber} ,
+        	#{registeredAddressProvince} ,
+        	#{registeredAddressProvinceName} ,
+        	#{registeredAddressCity} ,
+        	#{registeredAddressCityName} ,
+        	#{registeredAddressCounty} ,
+        	#{registeredAddressCountyName} ,
+        	#{operatingAddressProvince} ,
+        	#{operatingAddressProvinceName} ,
+        	#{operatingAddressCity} ,
+        	#{operatingAddressCityName} ,
+        	#{operatingAddressCounty} ,
+        	#{operatingAddressCountyName} ,
+        	#{accountAmount} ,
+        	#{attemptsNum} ,
+        	#{upstreamSize} ,
+        	#{downstreamSize} ,
+        	#{legalName} ,
+        	#{legalPhone} ,
+        	#{legalCardType} ,
+        	#{legalCardNum} ,
+        	#{legalEmail} ,
+        	#{legalSex} ,
+        	#{legalAddress} ,
+        	#{legalAddressProvince} ,
+        	#{legalAddressProvinceName} ,
+        	#{legalAddressCity} ,
+        	#{legalAddressCityName} ,
+        	#{agentName} ,
+        	#{agentPhone} ,
+        	#{agentCardType} ,
+        	#{agentCardNum} ,
+        	#{agentSex} ,
+        	#{agentEmail} ,
+        	#{bankOpen} ,
+        	#{bankBranch} ,
+        	#{bankCard} ,
+        	#{registerCode} ,
+        	#{paymentTime} ,
+        	#{urlTime} ,
+        	#{successTime} ,
+        	#{moneyTime} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark},
+        	#{accountType},
+        	#{enterpriseType}
+        )
+
+	</insert>
+
+    <update id="updateRegisteCompanyUserInfo"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterUserInfoEntity">
+
+        UPDATE register_user_info
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name} ,
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type} ,
+            </if>
+            <if test="enpsLicense != null and enpsLicense != ''">
+                enps_license = #{enpsLicense} ,
+            </if>
+            <if test="enpsCredit != null and enpsCredit != ''">
+                enps_credit = #{enpsCredit} ,
+            </if>
+            <if test="controller != null and controller != ''">
+                controller = #{controller} ,
+            </if>
+            <if test="fillPersion != null and fillPersion != ''">
+                fill_persion = #{fillPersion} ,
+            </if>
+            <if test="establishTime != null">
+                establish_time = #{establishTime} ,
+            </if>
+            <if test="registeredPrincipal != null and registeredPrincipal != ''">
+                registered_principal = #{registeredPrincipal} ,
+            </if>
+            <if test="realRegisteredPrincipal != null and realRegisteredPrincipal != ''">
+                real_registered_principal = #{realRegisteredPrincipal} ,
+            </if>
+            <if test="registeredAddressDetail != null and registeredAddressDetail != ''">
+                registered_address_detail = #{registeredAddressDetail} ,
+            </if>
+            <if test="operatingAddressDetail != null and operatingAddressDetail != ''">
+                operating_address_detail = #{operatingAddressDetail} ,
+            </if>
+            <if test="scopeOperation != null and scopeOperation != ''">
+                scope_operation = #{scopeOperation} ,
+            </if>
+            <if test="loanNum != null and loanNum != ''">
+                loan_num = #{loanNum} ,
+            </if>
+            <if test="state != null and state != ''">
+                state = #{state} ,
+            </if>
+            <if test="submitTime != null">
+                submit_time = #{submitTime} ,
+            </if>
+            <if test="creditNumber != null and creditNumber != ''">
+                credit_number = #{creditNumber} ,
+            </if>
+            <if test="registeredAddressProvince != null and registeredAddressProvince != ''">
+                registered_address_province = #{registeredAddressProvince} ,
+            </if>
+            <if test="registeredAddressProvinceName != null and registeredAddressProvinceName != ''">
+                registered_address_province_name = #{registeredAddressProvinceName} ,
+            </if>
+            <if test="registeredAddressCity != null and registeredAddressCity != ''">
+                registered_address_city = #{registeredAddressCity} ,
+            </if>
+            <if test="registeredAddressCityName != null and registeredAddressCityName != ''">
+                registered_address_city_name = #{registeredAddressCityName} ,
+            </if>
+            <if test="registeredAddressCounty != null and registeredAddressCounty != ''">
+                registered_address_county = #{registeredAddressCounty} ,
+            </if>
+            <if test="registeredAddressCountyName != null and registeredAddressCountyName != ''">
+                registered_address_county_name = #{registeredAddressCountyName} ,
+            </if>
+            <if test="operatingAddressProvince != null and operatingAddressProvince != ''">
+                operating_address_province = #{operatingAddressProvince} ,
+            </if>
+            <if test="operatingAddressProvinceName != null and operatingAddressProvinceName != ''">
+                operating_address_province_name = #{operatingAddressProvinceName} ,
+            </if>
+            <if test="operatingAddressCity != null and operatingAddressCity != ''">
+                operating_address_city = #{operatingAddressCity} ,
+            </if>
+            <if test="operatingAddressCityName != null and operatingAddressCityName != ''">
+                operating_address_city_name = #{operatingAddressCityName} ,
+            </if>
+            <if test="operatingAddressCounty != null and operatingAddressCounty != ''">
+                operating_address_county = #{operatingAddressCounty} ,
+            </if>
+            <if test="operatingAddressCountyName != null and operatingAddressCountyName != ''">
+                operating_address_county_name = #{operatingAddressCountyName} ,
+            </if>
+            <if test="accountAmount != null and accountAmount != ''">
+                account_amount = #{accountAmount} ,
+            </if>
+            <if test="attemptsNum >= 0">
+                attempts_num = #{attemptsNum} ,
+            </if>
+            <if test="upstreamSize != null and upstreamSize != ''">
+                upstream_size = #{upstreamSize} ,
+            </if>
+            <if test="downstreamSize != null and downstreamSize != ''">
+                downstream_size = #{downstreamSize} ,
+            </if>
+            <if test="legalName != null and legalName != ''">
+                legal_name = #{legalName} ,
+            </if>
+            <if test="legalPhone != null and legalPhone != ''">
+                legal_phone = #{legalPhone} ,
+            </if>
+            <if test="legalCardType != null and legalCardType != ''">
+                legal_card_type = #{legalCardType} ,
+            </if>
+            <if test="legalCardNum != null and legalCardNum != ''">
+                legal_card_num = #{legalCardNum} ,
+            </if>
+            <if test="legalEmail != null and legalEmail != ''">
+                legal_email = #{legalEmail} ,
+            </if>
+            <if test="legalSex != null and legalSex != ''">
+                legal_sex = #{legalSex} ,
+            </if>
+            <if test="legalAddress != null and legalAddress != ''">
+                legal_address = #{legalAddress} ,
+            </if>
+            <if test="legalAddressProvince != null and legalAddressProvince != ''">
+                legal_address_province = #{legalAddressProvince} ,
+            </if>
+            <if test="legalAddressProvinceName != null and legalAddressProvinceName != ''">
+                legal_address_province_name = #{legalAddressProvinceName} ,
+            </if>
+            <if test="legalAddressCity != null and legalAddressCity != ''">
+                legal_address_city = #{legalAddressCity} ,
+            </if>
+            <if test="legalAddressCityName != null and legalAddressCityName != ''">
+                legal_address_city_name = #{legalAddressCityName} ,
+            </if>
+            <if test="agentName != null and agentName != ''">
+                agent_name = #{agentName} ,
+            </if>
+            <if test="agentPhone != null and agentPhone != ''">
+                agent_phone = #{agentPhone} ,
+            </if>
+            <if test="agentCardType != null and agentCardType != ''">
+                agent_card_type = #{agentCardType} ,
+            </if>
+            <if test="agentCardNum != null and agentCardNum != ''">
+                agent_card_num = #{agentCardNum} ,
+            </if>
+            <if test="agentSex != null and agentSex != ''">
+                agent_sex = #{agentSex} ,
+            </if>
+            <if test="agentEmail != null and agentEmail != ''">
+                agent_email = #{agentEmail} ,
+            </if>
+            <if test="bankOpen != null and bankOpen != ''">
+                bank_open = #{bankOpen} ,
+            </if>
+            <if test="bankBranch != null and bankBranch != ''">
+                bank_branch = #{bankBranch} ,
+            </if>
+            <if test="bankCard != null and bankCard != ''">
+                bank_card = #{bankCard} ,
+            </if>
+            <if test="registerCode != null and registerCode != ''">
+                register_code = #{registerCode} ,
+            </if>
+            <if test="paymentTime != null">
+                payment_time = #{paymentTime} ,
+            </if>
+            <if test="urlTime != null">
+                url_time = #{urlTime} ,
+            </if>
+            <if test="successTime != null">
+                success_time = #{successTime} ,
+            </if>
+            <if test="moneyTime != null">
+                money_time = #{moneyTime} ,
+            </if>
+            <if test="createBy != null and createBy != ''">
+                create_by = #{createBy} ,
+            </if>
+            <if test="createAt != null">
+                create_at = #{createAt} ,
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                update_by = #{updateBy} ,
+            </if>
+            <if test="updateAt != null">
+                update_at = #{updateAt} ,
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status} ,
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="accountType != null and accountType != ''">
+                account_type = #{accountType} ,
+            </if>
+            <if test="enterpriseType != null and enterpriseType != ''">
+                enterprise_type = #{enterpriseType}
+            </if>
+        </set>
+        WHERE
+        pid = #{pid}
+
+    </update>
+
+    <select id="searchRegisteCompanyPrimaryInfo"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.response.CompanyPrimaryInfoResponse">
+		SELECT
+			rui.name name,
+			rui.enps_license enpsLicense,
+			rui.bank_open bankOpen,
+			rui.bank_branch bankBranch,
+			rui.legal_address legalAddress,
+			rui.bank_card bankCard,
+			rui.fill_persion fillPersion,
+			rui.money_time moneyTime,
+			rui.payment_time paymentTime,
+			rui.attempts_num attemptsNum,
+			rui.account_amount accountAmount
+		    FROM register_user_info rui
+	        WHERE
+		rui.register_code = #{registerCode} and status = 'NOL'
+	</select>
+
+    <select id="searchRegisteCompanyUserInfoByCode"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterUserInfoEntity">
+        SELECT
+        <include refid="columns"/>
+        FROM register_user_info
+        WHERE
+        register_code = #{registerCode} and status = 'NOL'
+    </select>
+
+    <select id="searchRegisterUserInfoByPid"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterUserInfoEntity">
+        SELECT
+        <include refid="columns"/>
+        FROM register_user_info
+        WHERE
+        pid = #{pid} and status = 'NOL'
+    </select>
+
+    <select id="searchRegisteCompanyByName" resultMap="RegisterUserInfo">
+        SELECT
+        <include refid="columns"/>
+        <![CDATA[
+		    FROM register_user_info
+	        WHERE
+			name = #{name} and status = 'NOL'
+		 ]]>
+    </select>
+
+
+</mapper>
+

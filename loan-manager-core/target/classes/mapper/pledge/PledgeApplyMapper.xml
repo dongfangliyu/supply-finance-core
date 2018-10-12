@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="cn.fintecher.supply.finance.loan.manager.core.pledge.dao.PledgeApplyDao">
+
+	<sql id="stockInfo_find_List">
+		pid as pid,		pledge_id as pledgeId,		apply_first_state as applyFirstState,		apply_rehear_state as applyRehearState,		apply_final_state as applyFinalState,		apply_first_time as applyFirstTime,		apply_rehear_time as applyRehearTime,		apply_final_time as applyFinalTime,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="apply_find_List">
+		c.pid as pid,
+		c.apply_number as applyNumber,
+		c.supplier_name as supplierName,
+		c.product_brand as productBrand,
+		c.product_type as productType,
+		c.product_number as productNumber,
+		c.unit_price as unitPrice,
+		c.total_price as totalPrice,
+		c.product_model as productModel,
+		p.pledge_no_pass_time as pledgeNoPassTime,
+		p.pledge_apply_time as pledgeApplyTime,
+		b.`value` as productUnit,
+		CONCAT("元/",b.`value`) as unitPriceUnit,
+		c.state as state
+	</sql>
+	<sql id="apply_find_where">
+		<if test="supplierName != null and supplierName != ''">
+			AND c.supplier_name like CONCAT("%",#{supplierName},"%")
+		</if>
+		<if test="applyNumber != null and applyNumber != ''">
+			AND c.apply_number like CONCAT("%",#{applyNumber},"%")
+		</if>
+		<if test="productBrand != null and productBrand != ''">
+			AND c.product_brand like CONCAT("%",#{productBrand},"%")
+		</if>
+		<if test="productType != null and productType != ''">
+			AND c.product_type like CONCAT("%",#{productType},"%")
+		</if>
+		<if test="state != null and state != ''">
+			AND c.state = #{state}
+		</if>
+		<if test="pledgeApplyStratTime != null ">
+			AND p.pledge_apply_time >= #{pledgeApplyStratTime}
+		</if>
+		<if test="pledgeApplyEndTime != null ">
+			AND p.pledge_apply_time &lt;= #{pledgeApplyEndTime}
+		</if>
+		<if test="pledgeNoPassStartTime != null ">
+			AND p.pledge_no_pass_time >= #{pledgeNoPassStartTime}
+		</if>
+		<if test="pledgeNoPassEndTime != null ">
+			AND p.pledge_no_pass_time &lt;= #{pledgeNoPassEndTime}
+		</if>
+		<if test="pledgePassStartTime != null ">
+			AND p.pledge_no_pass_time >= #{pledgePassStartTime}
+		</if>
+		<if test="pledgePassEndTime != null ">
+			AND p.pledge_no_pass_time &lt;= #{pledgePassEndTime}
+		</if>
+	</sql>
+
+	<select id="queryPageListByPledgeApply"
+		parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeApplyForm"
+		resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeApplyListResponse">
+		select
+			<include refid="apply_find_List" />
+		FROM commodity_stock_info c
+		LEFT JOIN pledge_stock_info p ON c.pid = p.commodity_id
+		LEFT JOIN
+		base_dictionary b ON b.pid = c.product_unit
+		WHERE c.company_id = #{companyId} AND c.state >= 1
+			<include refid="apply_find_where" />
+		ORDER BY c.state = '1' DESC,c.update_at DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="queryPageCountByPledgeApply"
+		parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeApplyForm"
+		resultType="int">
+		select count(*)
+		FROM commodity_stock_info c
+		LEFT JOIN pledge_stock_info p ON c.pid = p.commodity_id
+		LEFT JOIN
+		base_dictionary b ON b.pid = c.product_unit
+		WHERE c.company_id = #{companyId} AND c.state >= 1
+			<include refid="apply_find_where" />
+	</select>
+	
+	<sql id="shenhe_task_find_where">
+		<where>
+			<if test="1 == 1 ">
+				AND status = 'NOL'
+				AND apply_type = '2'
+			</if>
+			<if test="task == 1 ">
+				AND apply_first_state = 0
+			</if>
+			<if test="task == 2 ">
+				AND apply_rehear_state = 0
+			</if>
+			<if test="task == 3 ">
+				AND apply_final_state = 0
+			</if>
+		</where>
+	</sql>
+	
+	<select id="sureReceiveTask" parameterType="java.lang.String" resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity">
+		select <include refid="stockInfo_find_List" />
+		FROM  apply_stock_info 
+			<include refid="shenhe_task_find_where" />
+	</select>
+
+
+	<sql id="shenhe_find_where">	
+            <if test="taskStatus != null and taskStatus !=''">
+                AND t.status != #{taskStatus}
+            </if>
+            <if test="status != null and status !=''">
+                AND p.status = #{status}
+            </if>
+            <if test="userId != null and userId !=''">
+                AND t.ower_id = #{userId}
+            </if>
+            <if test="node != null and node !=''">
+                AND t.node = #{node}
+            </if>
+             <if test="applyNumber != null and applyNumber !=''">
+                AND c.apply_number like CONCAT("%",#{applyNumber},"%")
+            </if>
+            <if test="customerName != null and customerName !=''">
+                AND e.`name` like CONCAT("%",#{customerName},"%")
+            </if>
+            <if test="supplierName != null and supplierName !=''">
+                AND c.supplier_name like CONCAT("%",#{supplierName},"%")
+            </if>
+            <if test="node == 1">
+	            <if test="endTime != null and endTime !=''">
+	                AND a.apply_first_time &lt;= #{endTime}
+	            </if>
+	            <if test="startTime != null and startTime !=''">
+	                AND a.apply_first_time >= #{startTime}
+	            </if>
+	            <if test="state != null and state !=''">
+	            	AND a.apply_first_state = #{state}
+	            </if>
+	            <if test="1 == 1">
+	            	ORDER BY a.apply_first_state = '1' DESC,c.apply_stock_time ASC,a.apply_first_time DESC
+	            </if>
+            </if>
+            <if test="node == 2 ">
+	            <if test="endTime != null and endTime !=''">
+	                AND a.apply_rehear_time &lt;= #{endTime}
+	            </if>
+	            <if test="startTime != null and startTime !=''">
+	                AND a.apply_rehear_time >= #{startTime}
+	            </if>
+	            <if test="state != null and state !=''">
+	            	AND a.apply_rehear_state = #{state}
+	            </if>
+	            <if test="1 == 1">
+	            	ORDER BY a.apply_rehear_state = '1' DESC,c.apply_stock_time ASC,a.apply_rehear_time DESC
+	            </if>
+            </if>
+            <if test="node == 3 ">
+	            <if test="endTime != null and endTime !=''">
+	                AND a.apply_final_time &lt;= #{endTime}
+	            </if>
+	            <if test="startTime != null and startTime !=''">
+	                AND a.apply_final_time >= #{startTime}
+	            </if>
+	            <if test="state != null and state !=''">
+	            	AND a.apply_final_state = #{state}
+	            </if>
+	            <if test="1 == 1">
+	            	ORDER BY a.apply_final_state = '1' DESC,c.apply_stock_time ASC,a.apply_final_time DESC
+	            </if>
+            </if>
+           
+           
+    </sql>
+    <sql id="shenhe_return_params">
+    	a.pid as pid,c.apply_number as applyNumber,e.`name` as customerName,c.supplier_name as supplierName,c.total_price as totalPrice,p.pledge_finance_amount as pledgeFinanceAmount,p.pledge_term as pledgeTerm
+    	<if test="node == 1 ">
+    		,a.apply_first_state as state,a.apply_first_time as trialTime
+    	</if>
+    	<if test="node == 2 ">
+    		,a.apply_rehear_state as state,a.apply_rehear_time as trialTime
+    	</if>
+    	<if test="node == 3 ">
+    		,a.apply_final_state as state,a.apply_final_time as trialTime
+    	</if>
+    
+    </sql>
+    <select id="selectTrialCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeStockTrialFrom" resultType = "int">
+	  	select COUNT(*) 
+	  	FROM pledge_stock_info p,apply_stock_info a,audit_task t,commodity_stock_info c,company_enterprise e
+		WHERE p.pid = a.pledge_id AND a.pid = t.order_info_id AND p.commodity_id = c.pid AND e.pid = c.company_id AND t.type = '2'
+		<include refid="shenhe_find_where" />
+	 </select>
+	 
+    <select id="selectTrialList" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeStockTrialFrom"
+    	 resultType = "cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeTrialListResponse">
+	  	SELECT <include refid="shenhe_return_params" />
+	  	FROM pledge_stock_info p,apply_stock_info a,audit_task t,commodity_stock_info c,company_enterprise e
+	  	WHERE p.pid = a.pledge_id AND a.pid = t.order_info_id AND p.commodity_id = c.pid AND e.pid = c.company_id AND t.type = '2'
+	   	<include refid="shenhe_find_where" />
+	   	limit #{startIndex},#{pageSize}
+	 </select>
+
+
+
+</mapper>

@@ -1,0 +1,22 @@
+server:
+  contextPath: /
+  port: 8080
+
+spring:
+  output:
+    ansi:
+      enabled: never
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            ##设置连接超时时间 10秒
+            timeoutInMilliseconds: 10000
+cn:
+  fintecher:
+    organize:
+      core:
+        url: http://localhost:8081

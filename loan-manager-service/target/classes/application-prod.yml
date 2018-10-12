@@ -1,0 +1,42 @@
+server:
+  contextPath: /
+  port: 8088
+
+spring:
+  output:
+    ansi:
+      enabled: never
+
+  rabbitmq:
+    host: 10.10.1.71
+    port: 5672
+    username: xxx
+    password: xxx
+    virtual-host: /xxx
+    listener:
+      concurrency: 4
+      max-concurrency: 4
+      retry:
+       enabled: true
+
+  redis:
+    ##redisIP
+    host: localhost
+    port: 6379
+    #连接超时时间3秒
+    timeout: 3000
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            ##设置连接超时时间 10秒
+            timeoutInMilliseconds: 10000
+cn:
+  fintecher:
+    organize:
+      core:
+        url: http://localhost:8087

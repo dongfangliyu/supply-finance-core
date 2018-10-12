@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.pledge.dao.PledgeApplyStockInfoDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity" id="applyStockInfoMap">
+        <result property="pid" column="pid"/>
+        <result property="pledgeId" column="pledge_id"/>
+        <result property="applyFirstState" column="apply_first_state"/>
+        <result property="applyRehearState" column="apply_rehear_state"/>
+        <result property="applyFinalState" column="apply_final_state"/>
+        <result property="applyFirstTime" column="apply_first_time"/>
+        <result property="applyRehearTime" column="apply_rehear_time"/>
+        <result property="applyFinalTime" column="apply_final_time"/>
+        <result property="applyType" column="apply_type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="applyStockInfo_find_List">
+		pid as pid,		pledge_id as pledgeId,		apply_first_state as applyFirstState,		apply_rehear_state as applyRehearState,		apply_final_state as applyFinalState,		apply_first_time as applyFirstTime,		apply_rehear_time as applyRehearTime,		apply_final_time as applyFinalTime,		apply_type as applyType,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="applyStockInfo_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="pledgeId != null" >
+		      	AND pledge_id = #{pledgeId}
+		    </if>
+			<if test="applyFirstState != null" >
+		      	AND apply_first_state = #{applyFirstState}
+		    </if>
+			<if test="applyRehearState != null" >
+		      	AND apply_rehear_state = #{applyRehearState}
+		    </if>
+			<if test="applyFinalState != null" >
+		      	AND apply_final_state = #{applyFinalState}
+		    </if>
+			<if test="applyFirstTime != null" >
+		      	AND apply_first_time = #{applyFirstTime}
+		    </if>
+			<if test="applyRehearTime != null" >
+		      	AND apply_rehear_time = #{applyRehearTime}
+		    </if>
+			<if test="applyFinalTime != null" >
+		      	AND apply_final_time = #{applyFinalTime}
+		    </if>
+			<if test="applyType != null" >
+		      	AND apply_type = #{applyType}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertApplyStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into apply_stock_info (pid,pledge_id,apply_first_state,apply_rehear_state,apply_final_state,apply_first_time,apply_rehear_time,apply_final_time,apply_type,create_by,create_at,update_at,update_by,status,remark)
+	    values (#{pid},#{pledgeId},#{applyFirstState},#{applyRehearState},#{applyFinalState},#{applyFirstTime},#{applyRehearTime},#{applyFinalTime},#{applyType},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByApplyStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity">
+	  	select
+	    	<include refid="applyStockInfo_find_List" />
+	    from apply_stock_info
+	    	<include refid="applyStockInfo_find_where" />
+	 </select>
+	 
+	 <select id="queryApplyStockInfoByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity">
+	  	select
+	    	<include refid="applyStockInfo_find_List" />
+	    from apply_stock_info where pid = #{pid}
+	 </select>
+	 
+	<update id="updateApplyStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeApplyStockInfoEntity" >
+    	update apply_stock_info
+	    	<set >
+				<if test="pledgeId != null" >
+			      	 pledge_id = #{pledgeId},
+			    </if>
+				<if test="applyFirstState != null" >
+			      	 apply_first_state = #{applyFirstState},
+			    </if>
+				<if test="applyRehearState != null" >
+			      	 apply_rehear_state = #{applyRehearState},
+			    </if>
+				<if test="applyFinalState != null" >
+			      	 apply_final_state = #{applyFinalState},
+			    </if>
+				<if test="applyFirstTime != null" >
+			      	 apply_first_time = #{applyFirstTime},
+			    </if>
+				<if test="applyRehearTime != null" >
+			      	 apply_rehear_time = #{applyRehearTime},
+			    </if>
+				<if test="applyFinalTime != null" >
+			      	 apply_final_time = #{applyFinalTime},
+			    </if>
+				<if test="applyType != null" >
+			      	 apply_type = #{applyType},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+<!--  ******************以上为自动生成sql语句 ******************  -->
+	<select id="countConfirmingTaskFirstCanReceiveNum" resultType="int">
+		SELECT count(*) FROM apply_stock_info WHERE apply_first_state = '0' AND `status` = 'NOL' AND apply_type = 3
+	</select>
+
+	<select id="countConfirmingTaskSecondCanReceiveNum" resultType="int">
+		SELECT count(*) FROM apply_stock_info WHERE apply_first_state = '4' AND `status` = 'NOL' AND apply_type = 3 AND apply_rehear_state = '0'
+	</select>
+
+	<select id="countConfirmingTaskThirdCanReceiveNum" resultType="int">
+		SELECT count(*) FROM apply_stock_info WHERE apply_rehear_state = '4' AND `status` = 'NOL' AND apply_type = 3 AND apply_final_state = '0'
+	</select>
+
+</mapper>

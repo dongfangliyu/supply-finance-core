@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditCreditInfoDao">
+
+	<resultMap id="RM_AuditCreditInfo" type="cn.fintecher.supply.finance.loan.manager.common.model.AuditCreditInfoEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="productType" column="product_type"/>
+		<result property="productCode" column="product_code"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="creditStatus" column="credit_status"/>
+        <result property="cycleSign" column="cycle_sign"/>
+        <result property="amount" column="amount"/>
+        <result property="effectiveStartTime" column="effective_start_time"/>
+        <result property="effectiveEndTime" column="effective_end_time"/>
+        <result property="type" column="type"/>
+        <result property="auditCompanyId" column="audit_company_id"/>
+		<result property="productNo" column="product_no"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		pid,name,product_type,product_code,contract_no,credit_status,cycle_sign,amount,effective_start_time,effective_end_time,type,audit_company_id,product_no
+	    ]]>
+	</sql>
+
+	<select id="searchCreditInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCreditInfoEntity">
+		SELECT <include refid="columns" />
+		<![CDATA[
+		    FROM audit_credit_info
+	        WHERE
+		       audit_company_id = #{id}
+	    ]]>
+	</select>
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="submitCreditReview" useGeneratedKeys="true" keyProperty="pid">
+    <![CDATA[
+        INSERT INTO audit_credit_info (
+        	pid ,
+        	name ,
+        	product_type ,
+        	product_code ,
+        	contract_no ,
+        	credit_status ,
+        	cycle_sign ,
+        	amount ,
+        	effective_start_time ,
+        	effective_end_time ,
+        	type ,
+        	audit_company_id ,
+        	product_no
+        ) VALUES (
+        	#{pid} ,
+        	#{name} ,
+        	#{productType} ,
+        	#{productCode},
+        	#{contractNo} ,
+        	#{creditStatus} ,
+        	#{cycleSign} ,
+        	#{amount} ,
+        	#{effectiveStartTime} ,
+        	#{effectiveEndTime} ,
+        	#{type} ,
+        	#{auditCompanyId} ,
+        	#{productNo}
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="updateCreditReview" >
+   
+	UPDATE audit_credit_info 
+		<set>
+				<if test="name != null and name != ''">name = #{name} ,</if>
+				<if test="productType != null and productType != ''">product_type = #{productType} ,</if>
+			    <if test="productCode !=null and productCode !=''">product_code = #{productCode}, </if>
+				<if test="contractNo != null and contractNo != ''">contract_no = #{contractNo} ,</if>
+				<if test="creditStatus != null and creditStatus != ''">credit_status = #{creditStatus} ,</if>
+				<if test="cycleSign != null and cycleSign != ''">cycle_sign = #{cycleSign} ,</if>
+				<if test="amount != null and amount != ''">amount = #{amount} ,</if>
+				<if test="effectiveStartTime !=null">effective_start_time = #{effectiveStartTime} ,</if>
+				<if test="effectiveEndTime !=null">effective_end_time = #{effectiveEndTime} ,</if>
+				<if test="type != null and type != ''">type = #{type} ,</if>
+				<if test="auditCompanyId != null and auditCompanyId != ''">audit_company_id = #{auditCompanyId} ,</if>
+			    <if test="productNo != null and productNo != ''">product_no = #{productNo} </if>
+		</set>
+	WHERE
+		pid = #{pid}
+    
+	</update>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM audit_credit_info WHERE
+        pid = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultMap="RM_AuditCreditInfo">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM audit_credit_info 
+	        WHERE 
+		        pid = #{id} 
+	    ]]>
+	</select>
+	
+	<select id="getEntityByEnterpriseId" resultMap="RM_AuditCreditInfo">
+		SELECT i.* from  audit_credit_info i, audit_company c 
+		where i.audit_company_id = c.pid and c.enterprise_id =#{id}
+	</select>
+
+	<select id="searchCreditInfoCount" resultType="Integer">
+		SELECT count(*)
+		<![CDATA[
+		    FROM audit_credit_info
+	        WHERE
+		       audit_company_id = #{pid}
+	    ]]>
+	</select>
+</mapper>
+

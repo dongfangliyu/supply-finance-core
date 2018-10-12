@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.company.dao.CompanyEnterpriseDao">
+
+	<resultMap id="CompanyEnterprise" type="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="enpsLicense" column="enps_license"/>
+        <result property="enpsCredit" column="enps_credit"/>
+        <result property="legalAddress" column="legal_address"/>
+        <result property="controller" column="controller"/>
+        <result property="fillPersion" column="fill_persion"/>
+        <result property="establishTime" column="establish_time"/>
+        <result property="registeredPrincipal" column="registered_principal"/>
+        <result property="realRegisteredPrincipal" column="real_registered_principal"/>
+        <result property="registeredAddressDetail" column="registered_address_detail"/>
+        <result property="operatingAddressDetail" column="operating_address_detail"/>
+        <result property="loanNum" column="loan_num"/>
+        <result property="state" column="state"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="creditNumber" column="credit_number"/>
+        <result property="creditStatus" column="credit_status"/>
+        <result property="creditPrice" column="credit_price"/>
+        <result property="urlTime" column="url_time"/>
+        <result property="successTime" column="success_time"/>
+        <result property="enterpriseType" column="enterprise_type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+		<result property="blacklistTime" column="blacklist_time"/>
+		<result property="blacklist" column="blacklist"/>
+	</resultMap>
+
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		<![CDATA[
+		pid,name,type,enps_license,enps_credit,legal_address,controller,fill_persion,establish_time,registered_principal,real_registered_principal,registered_address_detail,operating_address_detail,loan_num,state,submit_time,credit_number,credit_status,credit_price,url_time,success_time,enterprise_type,create_by,create_at,update_by,update_at,status,remark,blacklist_time,blacklist
+		 ]]>
+
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="saveEnterpriseEntity" useGeneratedKeys="true" keyProperty="pid">
+        INSERT INTO company_enterprise (
+        	name ,
+        	type ,
+        	enps_license ,
+        	enps_credit ,
+        	legal_address ,
+        	controller ,
+        	fill_persion ,
+        	establish_time ,
+        	registered_principal ,
+        	real_registered_principal ,
+        	registered_address_detail ,
+        	operating_address_detail ,
+        	loan_num ,
+        	state ,
+        	submit_time ,
+        	credit_number ,
+        	credit_status ,
+        	credit_price ,
+        	url_time ,
+        	success_time ,
+        	enterprise_type ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark ,
+        	blacklist_time,
+        	blacklist
+        ) VALUES (
+        	#{name} ,
+        	#{type} ,
+        	#{enpsLicense} ,
+        	#{enpsCredit} ,
+        	#{legalAddress} ,
+        	#{controller} ,
+        	#{fillPersion} ,
+        	#{establishTime} ,
+        	#{registeredPrincipal} ,
+        	#{realRegisteredPrincipal} ,
+        	#{registeredAddressDetail} ,
+        	#{operatingAddressDetail} ,
+        	#{loanNum} ,
+        	#{state} ,
+        	#{submitTime} ,
+        	#{creditNumber} ,
+        	#{creditStatus} ,
+        	#{creditPrice} ,
+        	#{urlTime} ,
+        	#{successTime} ,
+        	#{enterpriseType} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark} ,
+        	#{blacklistTime},
+        	#{blacklist}
+        )
+	</insert>
+    
+	<update id="updateCompanyEnterpriseEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+   
+	UPDATE company_enterprise 
+		<set>
+				<if test="name != null and name != ''">
+					name = #{name} ,
+				</if>
+				<if test="type != null and type != ''">
+					type = #{type} ,
+				</if>
+				<if test="enpsLicense != null and enpsLicense != ''">
+					enps_license = #{enpsLicense} ,
+				</if>
+				<if test="enpsCredit != null and enpsCredit != ''">
+					enps_credit = #{enpsCredit} ,
+				</if>
+				<if test="legalAddress != null and legalAddress != ''">
+					legal_address = #{legalAddress} ,
+				</if>
+				<if test="controller != null and controller != ''">
+					controller = #{controller} ,
+				</if>
+				<if test="fillPersion != null and fillPersion != ''">
+					fill_persion = #{fillPersion} ,
+				</if>
+				<if test="establishTime != null">
+					establish_time = #{establishTime} ,
+				</if>
+				<if test="registeredPrincipal != null and registeredPrincipal != ''">
+					registered_principal = #{registeredPrincipal} ,
+				</if>
+				<if test="realRegisteredPrincipal != null and realRegisteredPrincipal != ''">
+					real_registered_principal = #{realRegisteredPrincipal} ,
+				</if>
+				<if test="registeredAddressDetail != null and registeredAddressDetail != ''">
+					registered_address_detail = #{registeredAddressDetail} ,
+				</if>
+				<if test="operatingAddressDetail != null and operatingAddressDetail != ''">
+					operating_address_detail = #{operatingAddressDetail} ,
+				</if>
+				<if test="loanNum != null and loanNum != ''">
+					loan_num = #{loanNum} ,
+				</if>
+				<if test="state != null and state != ''">
+					state = #{state} ,
+				</if>
+				<if test="submitTime != null">
+					submit_time = #{submitTime} ,
+				</if>
+				<if test="creditNumber != null and creditNumber != ''">
+					credit_number = #{creditNumber} ,
+				</if>
+				<if test="creditStatus != null and creditStatus != ''">
+					credit_status = #{creditStatus} ,
+				</if>
+				<if test="creditPrice != null and creditPrice != ''">
+					credit_price = #{creditPrice} ,
+				</if>
+				<if test="urlTime != null">
+					url_time = #{urlTime} ,
+				</if>
+				<if test="successTime != null">
+					success_time = #{successTime} ,
+				</if>
+				<if test="enterpriseType != null and enterpriseType != ''">
+					enterprise_type = #{enterpriseType} ,
+				</if>
+				<if test="createBy != null and createBy != ''">
+					create_by = #{createBy} ,
+				</if>
+				<if test="createAt != null">
+					create_at = #{createAt} ,
+				</if>
+				<if test="updateBy != null and updateBy != ''">
+					update_by = #{updateBy} ,
+				</if>
+				<if test="updateAt != null">
+					update_at = #{updateAt} ,
+				</if>
+				<if test="status != null and status != ''">
+					status = #{status} ,
+				</if>
+				<if test="remark != null and remark != ''">
+					remark = #{remark},
+				</if>
+				<if test="blacklistTime != null">
+					blacklist_time = #{blacklistTime},
+				</if>
+				<if test="blacklist != null and blacklist != ''">
+					blacklist = #{blacklist}
+				</if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+    
+    <select id="searchCompanyByName" resultMap="CompanyEnterprise">
+		SELECT <include refid="columns" />
+		    FROM company_enterprise 
+	        WHERE 
+		        name = #{name} and status = 'NOL'
+	</select>
+
+
+    <select id="searchCompanyByNameAndEnterpriceType" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+		SELECT <include refid="columns" />
+		    FROM company_enterprise
+	        WHERE
+		        name = #{name} and enterprise_type = #{enterpriseType}  and status = 'NOL'
+	</select>
+
+    <select id="searchCompanyEnterpriseEntity" resultMap="CompanyEnterprise">
+		SELECT <include refid="columns" />
+		    FROM company_enterprise
+	        WHERE
+		        pid = #{pid} and status = 'NOL'
+	</select>
+
+
+	<select id="selectCustomerManagementList" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.CustomerFrom" resultType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CustomerEntity">
+
+	SELECT ce.`pid` as id,cu.`name`,cu.`user_name` as userName,co.name AS linkName,ce.`create_at` as time FROM `company_enterprise` AS ce , `company_user` AS cu ,`company_operation` AS co
+	WHERE cu.enterprise_id  = ce.pid AND cu.`enterprise_id`=co.`enps_id` AND cu.`type`=2 AND (
+	(ce.`fill_persion` =1 AND co.`type`='legal') OR (ce.`fill_persion` =2 AND co.`type`='agent'))
+		<include refid="page_find_where"/>
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="selectCustomerManagementCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.CustomerFrom" resultType="int">
+
+		SELECT count(*) FROM `company_enterprise` AS ce , `company_user` AS cu ,`company_operation` AS co
+		WHERE cu.enterprise_id  = ce.pid AND cu.`enterprise_id`=co.`enps_id` AND cu.`type`=2 AND (
+		(ce.`fill_persion` =1 AND co.`type`='legal') OR (ce.`fill_persion` =2 AND co.`type`='agent'))
+		<include refid="page_find_where"/>
+
+	</select>
+
+
+	<sql id="page_find_where">
+
+		<if test="companyName != null and companyName !='' " >
+			AND cu.`name` like CONCAT("%",#{companyName},"%")
+		</if>
+
+		<if test="userName != null and userName !='' " >
+			AND cu.`user_name` like CONCAT("%",#{userName},"%")
+		</if>
+		<if test="startTime != null and startTime !='' " >
+			AND  ce.`create_at` >=#{startTime}
+		</if>
+		<if test="endTime != null and endTime !='' " >
+			AND  ce.`create_at` &lt;=#{endTime}
+		</if>
+		<if test="linkMan != null and linkMan !='' " >
+			AND co.name like CONCAT("%",#{linkMan},"%")
+		</if>
+
+	</sql>
+
+
+	<select id="selectCustomerBlackList" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.BlackListFrom" resultType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CustomerEntity">
+
+		SELECT ce.`pid` AS id,cu.`name`,cu.`user_name` AS userName,ce.`create_at` AS TIME,ce.blacklist_time as blacklistTime FROM `company_enterprise` AS ce , `company_user` AS cu
+		WHERE cu.enterprise_id  = ce.pid AND cu.`type`=2  AND blacklist = 1
+		<include refid="page_find_where_blacklist"/>
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="selectCustomerBlackListCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.BlackListFrom" resultType="int">
+
+		SELECT count(*) FROM `company_enterprise` AS ce , `company_user` AS cu
+		WHERE cu.enterprise_id  = ce.pid AND cu.`type`=2  AND blacklist = 1
+		<include refid="page_find_where_blacklist"/>
+
+	</select>
+
+	<sql id="page_find_where_blacklist">
+
+		<if test="companyName != null and companyName !='' " >
+			AND cu.`name` like CONCAT("%",#{companyName},"%")
+		</if>
+
+		<if test="userName != null and userName !='' " >
+			AND cu.`user_name` like CONCAT("%",#{userName},"%")
+		</if>
+		<if test="startTime != null and startTime !='' " >
+			AND  ce.`create_at` >=#{startTime}
+		</if>
+		<if test="endTime != null and endTime !='' " >
+			AND  ce.`create_at` &lt;=#{endTime}
+		</if>
+		<if test="blackStartTime != null and blackStartTime !='' " >
+			AND  ce.`blacklist_time` >=#{blackStartTime}
+		</if>
+		<if test="blackEndTime != null and blackEndTime !='' " >
+			AND  ce.`blacklist_time` &lt;=#{blackEndTime}
+		</if>
+
+
+	</sql>
+
+	<select id="searchListConfirmationCompany" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseInfoEntity">
+		SELECT * from company_enterprise WHERE enterprise_type = '3' and status = 'NOL'
+	</select>
+
+</mapper>
+

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditTaskRemindDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity" id="taskRemindMap">
+        <result property="pid" column="pid"/>
+        <result property="orderInfoId" column="order_info_id"/>
+        <result property="advanceDay" column="advance_day"/>
+        <result property="remindDate" column="remind_date"/>
+        <result property="remindForm" column="remind_form"/>
+        <result property="remindTime" column="remind_time"/>
+        <result property="state" column="state"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="taskRemind_find_List">
+		pid as pid,		order_info_id as orderInfoId,		advance_day as advanceDay,		remind_date as remindDate,		remind_form as remindForm,		remind_time as remindTime,		state as state,		create_by as createBy,		create_at as createAt,		update_by as updateBy,		update_at as updateAt,		status as status,		remark as remark	</sql>
+	
+	<sql id="taskRemind_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="orderInfoId != null" >
+		      	AND order_info_id = #{orderInfoId}
+		    </if>
+			<if test="advanceDay != null" >
+		      	AND advance_day = #{advanceDay}
+		    </if>
+			<if test="remindDate != null" >
+		      	AND remind_date = #{remindDate}
+		    </if>
+			<if test="remindForm != null" >
+		      	AND remind_form = #{remindForm}
+		    </if>
+			<if test="remindTime != null" >
+		      	AND remind_time = #{remindTime}
+		    </if>
+			<if test="state != null" >
+		      	AND state = #{state}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertTaskRemind" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into audit_task_remind (pid,order_info_id,advance_day,remind_date,remind_form,remind_time,state,create_by,create_at,update_by,update_at,status,remark)
+	    values (#{pid},#{orderInfoId},#{advanceDay},#{remindDate},#{remindForm},#{remindTime},#{state},#{createBy},#{createAt},#{updateBy},#{updateAt},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByTaskRemind" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity">
+	  	select
+	    	<include refid="taskRemind_find_List" />
+	    from audit_task_remind
+	    	<include refid="taskRemind_find_where" />
+	 </select>
+	 
+	 <select id="queryTaskRemindByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity">
+	  	select
+	    	<include refid="taskRemind_find_List" />
+	    from audit_task_remind where pid = #{pid}
+	 </select>
+	 
+	<update id="updateTaskRemind" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity" >
+    	update audit_task_remind
+	    	<set >
+				<if test="orderInfoId != null" >
+			      	 order_info_id = #{orderInfoId},
+			    </if>
+				<if test="advanceDay != null" >
+			      	 advance_day = #{advanceDay},
+			    </if>
+				<if test="remindDate != null" >
+			      	 remind_date = #{remindDate},
+			    </if>
+				<if test="remindForm != null" >
+			      	 remind_form = #{remindForm},
+			    </if>
+				<if test="remindTime != null" >
+			      	 remind_time = #{remindTime},
+			    </if>
+				<if test="state != null" >
+			      	 state = #{state},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+
+
+	<sql id="search_Audit_Remind">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test=" 1 != 0">
+				and status = 'NOL'
+			</if>
+			<if test="orderInfoId != null and orderInfoId !=''">
+				AND order_info_id = #{orderInfoId}
+			</if>
+		</trim>
+	</sql>
+
+
+	<select id="searchRemindCount"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditTaskRemindForm"
+			resultType="int">
+		SELECT count(*) from audit_task_remind
+		<include refid="search_Audit_Remind"/>
+	</select>
+
+	<select id="searchRemind"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditTaskRemindForm"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity">
+		SELECT * from audit_task_remind
+		<include refid="search_Audit_Remind"/> order by create_at DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="selectAllRemind" resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskRemindEntity">
+		SELECT a.* FROM audit_task_remind  a
+		WHERE remind_date LIKE CONCAT("%",DATE_FORMAT(SYSDATE(), '%Y-%m-%d'),"%") AND `status` = 'NOL' AND state = '0'
+	</select>
+
+</mapper>

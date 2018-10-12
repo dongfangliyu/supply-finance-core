@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditResultDao">
+
+	<resultMap id="RM_AuditResult" type="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity">
+		<result property="pid" column="pid"/>
+		<result property="result" column="result"/>
+		<result property="content" column="content"/>
+		<result property="objectId" column="object_id"/>
+		<result property="objectType" column="object_type"/>
+		<result property="type" column="type"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createAt" column="create_at"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateAt" column="update_at"/>
+		<result property="status" column="status"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		pid as pid,
+		result as result,
+		content as content,
+		object_id as objectId,
+		object_type as objectType,
+		type as type,
+		create_by as createBy,
+		create_at as createAt,
+		update_by as updateBy,
+		update_at as updateAt,
+		status as status,
+		remark as remark
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="saveAuditResultEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity" useGeneratedKeys="true" keyProperty="pid">
+    <![CDATA[
+        INSERT INTO audit_result (
+        	pid ,
+        	result ,
+        	content ,
+        	object_id ,
+        	object_type ,
+        	type ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark
+        ) VALUES (
+        	#{pid} ,
+        	#{result} ,
+        	#{content} ,
+        	#{objectId} ,
+        	#{objectType} ,
+        	#{type} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark}
+        )
+    ]]>
+	</insert>
+
+	<select id="searchResultByObjId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity">
+		SELECT <include refid="columns" />
+		FROM audit_result
+		WHERE
+		object_id = #{pid} and type =#{type} and status = 'NOL'
+	</select>
+
+	<update id="updateAuditResult" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity">
+		UPDATE audit_result
+		<set>
+			<if test="result != null and result != ''">result = #{result} ,</if>
+			<if test="content != null and content != ''">content = #{content} ,</if>
+			<if test="objectId != null and objectId != ''">object_id = #{objectId} ,</if>
+			<if test="objectType != null and objectType != ''">object_type = #{objectType} ,</if>
+			<if test="type != null and type != ''">type = #{type} ,</if>
+			<if test="createBy != null and createBy != ''">create_by = #{createBy} ,</if>
+			<if test="createAt != null">create_at = #{createAt} ,</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy} ,</if>
+			<if test="updateAt != null">update_at = #{updateAt} ,</if>
+			<if test="status != null and status != ''">status = #{status} ,</if>
+			<if test="remark != null and remark != ''">remark = #{remark} </if>
+		</set>
+		WHERE
+		pid = #{pid}
+
+	</update>
+
+	<delete id="delete">
+    <![CDATA[
+        DELETE FROM audit_result WHERE
+        pid = #{id}
+    ]]>
+    </delete>
+
+	<select id="searchAuditResultByObjectId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity">
+		SELECT <include refid="columns" />
+		FROM audit_result
+		WHERE
+		object_id = #{objectId} and object_type = #{objectType} and status = 'NOL'
+	</select>
+
+	<select id="searchAuditResult" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity">
+		SELECT <include refid="columns" />
+		FROM audit_result
+		WHERE
+		object_id = #{objectId} and type =#{type} and status = 'NOL'
+	</select>
+
+	<select id="searchResultList" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditSearchResultListForm">
+       select result as result,
+		      content as content,
+		      object_id as objectId,
+		      object_type as objectType,
+		      type as type,
+		      create_at as createAt
+		from audit_result
+		where object_id = #{id}  and type =#{type} and status = 'NOL'
+	</select>
+
+	<select id="searchAllResultList" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity">
+		SELECT <include refid="columns" />
+		FROM audit_result
+		WHERE
+		object_id = #{objectId} and status = 'NOL'
+	</select>
+
+	<select id="searchSurveyOpinion" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditResultEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditResultForm">
+		SELECT <include refid="columns" />
+		FROM audit_result
+		where object_id = #{id} and type =#{type} and status = 'NOL'
+	</select>
+</mapper>
+

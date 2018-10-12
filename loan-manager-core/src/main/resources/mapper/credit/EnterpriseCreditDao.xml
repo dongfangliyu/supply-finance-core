@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.credit.dao.EnterpriseCreditDao">
+
+    <resultMap id="RM_CompanyEnterprise" type="cn.fintecher.supply.finance.loan.manager.core.model.CompanyEnterpriseEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="enpsLicense" column="enps_license"/>
+        <result property="enpsCredit" column="enps_credit"/>
+        <result property="legalAddress" column="legal_address"/>
+        <result property="controller" column="controller"/>
+        <result property="fillPersion" column="fill_persion"/>
+        <result property="establishTime" column="establish_time"/>
+        <result property="registeredPrincipal" column="registered_principal"/>
+        <result property="realRegisteredPrincipal" column="real_registered_principal"/>
+        <result property="registeredAddressDetail" column="registered_address_detail"/>
+        <result property="operatingAddressDetail" column="operating_address_detail"/>
+        <result property="loanNum" column="loan_num"/>
+        <result property="state" column="state"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="creditNumber" column="credit_number"/>
+        <result property="creditStatus" column="credit_status"/>
+        <result property="creditPrice" column="credit_price"/>
+        <result property="urlTime" column="url_time"/>
+        <result property="successTime" column="success_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+        <![CDATA[
+		pid,name,type,enps_license,enps_credit,legal_address,controller,fill_persion,establish_time,registered_principal,real_registered_principal,registered_address_detail,operating_address_detail,loan_num,state,submit_time,credit_number,credit_status,credit_price,url_time,success_time,create_by,create_at,update_by,update_at,status,remark
+	    ]]>
+    </sql>
+
+
+    <select id="searchCompanyCreditStatus" resultMap="RM_CompanyEnterprise">
+        SELECT *
+		    FROM company_enterprise ce
+	        WHERE
+		        pid = #{code}
+
+    </select>
+
+
+</mapper>
+

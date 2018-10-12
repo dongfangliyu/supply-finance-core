@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.company.dao.CompanyBlacklistDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity" id="blacklistMap">
+        <result property="pid" column="pid"/>
+        <result property="companyId" column="company_id"/>
+        <result property="event" column="event"/>
+        <result property="causationInfo" column="causation_info"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="blacklist_find_List">
+		pid as pid,		company_id as companyId,		event as event,		causation_info as causationInfo,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="blacklist_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="companyId != null" >
+		      	AND company_id = #{companyId}
+		    </if>
+			<if test="event != null" >
+		      	AND event = #{event}
+		    </if>
+			<if test="causationInfo != null" >
+		      	AND causation_info = #{causationInfo}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertBlacklist" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into company_blacklist (pid,company_id,event,causation_info,create_by,create_at,update_at,update_by,status,remark)
+	    values (#{pid},#{companyId},#{event},#{causationInfo},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByBlacklist" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity">
+	  	select
+	    	<include refid="blacklist_find_List" />
+	    from company_blacklist
+	    	<include refid="blacklist_find_where" />
+	 </select>
+	 
+	 <select id="queryBlacklistByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity">
+	  	select
+	    	<include refid="blacklist_find_List" />
+	    from company_blacklist where pid = #{pid}
+	 </select>
+	 
+	<update id="updateBlacklist" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity" >
+    	update company_blacklist
+	    	<set >
+				<if test="companyId != null" >
+			      	 company_id = #{companyId},
+			    </if>
+				<if test="event != null" >
+			      	 event = #{event},
+			    </if>
+				<if test="causationInfo != null" >
+			      	 causation_info = #{causationInfo},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+<!--  ******************以上为自动生成sql语句 ******************  -->
+
+
+	<select id="selectBlackList" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.BlackListFrom"
+			resultType = "cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyBlacklistEntity">
+		select
+		<include refid="blacklist_find_List" />
+		from company_blacklist where company_id = #{userName}
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="selectBlackListCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.BlackListFrom" resultType="int">
+		select
+		count(*)
+		from company_blacklist  where company_id = #{userName}
+	</select>
+
+</mapper>

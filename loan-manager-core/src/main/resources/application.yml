@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: loan-manager-core 
+    
+    
+
+ 
+logging:
+  level: debug
+  level.cn.fintecher.supply.finance.loan.manager.core: debug
+  path: /data/projectLog/loan-manager-core/
+  file: loan-manager-core.log  

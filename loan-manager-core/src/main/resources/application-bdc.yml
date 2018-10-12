@@ -1,0 +1,50 @@
+server:
+  contextPath: /
+  port: 8013
+
+#MYBATIS
+mybatis:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: cn.fintecher.supply.finance.loan.manager.core.**.entity.**
+  configuration:
+        map-underscore-to-camel-case: true
+
+spring:
+  output:
+    ansi:
+      enabled: never
+
+##jpa 使用
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+      platform: mysql
+      url: jdbc:mysql://172.16.10.35:3306/supplycfdb33?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: zwuser
+      password: zwusermysql!
+      dribver-class-name: com.mysql.jdbc.Driver
+      max-active: 1000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            ##设置连接超时时间 10秒
+            timeoutInMilliseconds: 100000
+cn:
+  fintecher:
+    organize:
+      core:
+        url: http://localhost:8087
+
+#注册中心配置
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://172.16.10.114:8010/eureka

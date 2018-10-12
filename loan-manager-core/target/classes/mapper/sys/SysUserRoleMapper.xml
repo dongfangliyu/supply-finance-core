@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysUserRoleDao">
+
+    <resultMap id="RM_SysUserRole" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysUserRole">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="roleId" column="role_id"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+	    <![CDATA[
+
+		id,user_id,role_id
+
+        ]]>
+	</sql>
+
+    <!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO sys_user_role (
+        	id ,
+        	user_id ,
+        	role_id 
+        ) VALUES (
+        	#{id} ,
+        	#{userId} ,
+        	#{roleId} 
+        )
+    ]]>
+        <!--
+            oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL
+            DB2: order="BEFORE"" values nextval for sequenceName
+        <selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+            SELECT sequenceName.nextval AS ID FROM DUAL
+        </selectKey>
+        -->
+    </insert>
+
+    <update id="update">
+    <![CDATA[
+
+        UPDATE sys_user_role SET
+	        user_id = #{userId} ,
+	        role_id = #{roleId} 
+        WHERE 
+	        id = #{id} 
+
+        ]]>
+	</update>
+
+    <delete id="deleteByUserId">
+		delete from sys_user_role where user_id = #{userId}
+	</delete>
+
+    <select id="getById" resultMap="RM_SysUserRole">
+        SELECT
+        <include refid="columns"/>
+        <![CDATA[
+		    FROM sys_user_role 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+    </select>
+
+    <sql id="findPage_where">
+        <where>
+            <if test="id != null and id != ''">
+                AND id = #{id}
+            </if>
+            <if test="userId != null and userId != ''">
+                AND user_id = #{userId}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                AND role_id = #{roleId}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user_role
+        (
+        `user_id`,
+        `role_id`
+        )
+        values
+        <foreach collection="roleIdList" item="item" index="index" separator=",">
+            (
+            #{userId},
+            #{item}
+            )
+        </foreach>
+    </insert>
+
+    <select id="findRolesByUsername" resultType="String">
+        SELECT
+            t3.role_code
+        FROM
+            sys_user_role t1
+        LEFT JOIN sys_user t2 ON t1.user_id = t2.id
+        LEFT JOIN sys_role t3 ON t1.role_id = t3.role_id
+        WHERE t2.username = #{userName}
+
+    </select>
+
+    <select id="findRoleIdByUsername" resultType="String">
+        SELECT
+            t3.role_id
+        FROM
+            sys_user_role t1
+        LEFT JOIN sys_user t2 ON t1.user_id = t2.id
+        LEFT JOIN sys_role t3 ON t1.role_id = t3.role_id
+        WHERE t2.username = #{userName}
+    </select>
+
+
+    <select id="findFunctionByRoleIds" resultType="String">
+        SELECT
+            t1.code
+        FROM
+            sys_role_menu t1
+        LEFT JOIN sys_menu t2 ON t1.menu_id = t2.menu_id
+        WHERE t1.role_id in
+        <foreach item="roleId" collection="roleIds" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+    </select>
+
+	<select id="getUsersByRoleId" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		SELECT
+            t2.*
+        FROM
+            sys_user_role t1,
+            sys_user t2
+        WHERE
+            t1.user_id = t2.id
+        AND t2.`status` = 1
+        AND t1.role_id = #{roleId}
+	</select>
+
+    <resultMap id="RM_SysRole" type="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity">
+        <result property="roleId" column="role_id"/>
+        <result property="roleName" column="role_name"/>
+        <result property="remark" column="remark"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="status" column="status"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createUserId" column="create_user_id"/>
+        <result property="updateUserId" column="update_user_id"/>
+        <result property="roleCode" column="role_code"/>
+    </resultMap>
+
+	<select id="getRolesByUserId" resultMap="RM_SysRole">
+		SELECT
+            t2.*
+        FROM
+            sys_user_role t1,
+            sys_role t2
+        WHERE
+            t1.role_id = t2.role_id
+        AND t2.`status` = 1
+        AND t1.user_id = #{userId}
+	</select>
+
+</mapper>
+

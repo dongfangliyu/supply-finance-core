@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.overdue.dao.OverdueRepaymentRecordDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity" id="repaymentRecordMap">
+        <result property="pid" column="pid"/>
+        <result property="repaymentTime" column="repayment_time"/>
+        <result property="returnedPrincipal" column="returned_principal"/>
+        <result property="returnedInterest" column="returned_interest"/>
+        <result property="returnedPenalty" column="returned_penalty"/>
+        <result property="unpaidPenalty" column="unpaid_penalty"/>
+        <result property="unpaidPrincipal" column="unpaid_principal"/>
+        <result property="unpaidInterest" column="unpaid_interest"/>
+        <result property="penaltyFee" column="penalty_fee"/>
+        <result property="overdueDay" column="overdue_day"/>
+        <result property="orderId" column="order_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="repaymentRecord_find_List">
+		pid as pid,		repayment_time as repaymentTime,		returned_principal as returnedPrincipal,		returned_interest as returnedInterest,		returned_penalty as returnedPenalty,		unpaid_penalty as unpaidPenalty,		unpaid_principal as unpaidPrincipal,		unpaid_interest as unpaidInterest,		penalty_fee as penaltyFee,		overdue_day as overdueDay,		order_id as orderId,		create_by as createBy,		create_at as createAt,		update_by as updateBy,		update_at as updateAt,		status as status,		remark as remark	</sql>
+	
+	<sql id="repaymentRecord_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="repaymentTime != null" >
+		      	AND repayment_time = #{repaymentTime}
+		    </if>
+			<if test="returnedPrincipal != null" >
+		      	AND returned_principal = #{returnedPrincipal}
+		    </if>
+			<if test="returnedInterest != null" >
+		      	AND returned_interest = #{returnedInterest}
+		    </if>
+			<if test="returnedPenalty != null" >
+		      	AND returned_penalty = #{returnedPenalty}
+		    </if>
+			<if test="unpaidPenalty != null" >
+		      	AND unpaid_penalty = #{unpaidPenalty}
+		    </if>
+			<if test="unpaidPrincipal != null" >
+		      	AND unpaid_principal = #{unpaidPrincipal}
+		    </if>
+			<if test="unpaidInterest != null" >
+		      	AND unpaid_interest = #{unpaidInterest}
+		    </if>
+			<if test="penaltyFee != null" >
+		      	AND penalty_fee = #{penaltyFee}
+		    </if>
+			<if test="overdueDay != null" >
+		      	AND overdue_day = #{overdueDay}
+		    </if>
+			<if test="orderId != null" >
+		      	AND order_id = #{orderId}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertRepaymentRecord" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into overdue_repayment_record (pid,repayment_time,returned_principal,returned_interest,returned_penalty,unpaid_penalty,unpaid_principal,unpaid_interest,penalty_fee,overdue_day,order_id,create_by,create_at,update_by,update_at,status,remark)
+	    values (#{pid},#{repaymentTime},#{returnedPrincipal},#{returnedInterest},#{returnedPenalty},#{unpaidPenalty},#{unpaidPrincipal},#{unpaidInterest},#{penaltyFee},#{overdueDay},#{orderId},#{createBy},#{createAt},#{updateBy},#{updateAt},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByRepaymentRecord" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity">
+	  	select
+	    	<include refid="repaymentRecord_find_List" />
+	    from overdue_repayment_record
+	    	<include refid="repaymentRecord_find_where" />
+	    order by update_at DESC
+	 </select>
+	 
+	 <select id="queryRepaymentRecordByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity">
+	  	select
+	    	<include refid="repaymentRecord_find_List" />
+	    from overdue_repayment_record where pid = #{pid}
+	 </select>
+	 
+	<update id="updateRepaymentRecord" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity" >
+    	update overdue_repayment_record
+	    	<set >
+				<if test="repaymentTime != null" >
+			      	 repayment_time = #{repaymentTime},
+			    </if>
+				<if test="returnedPrincipal != null" >
+			      	 returned_principal = #{returnedPrincipal},
+			    </if>
+				<if test="returnedInterest != null" >
+			      	 returned_interest = #{returnedInterest},
+			    </if>
+				<if test="returnedPenalty != null" >
+			      	 returned_penalty = #{returnedPenalty},
+			    </if>
+				<if test="unpaidPenalty != null" >
+			      	 unpaid_penalty = #{unpaidPenalty},
+			    </if>
+				<if test="unpaidPrincipal != null" >
+			      	 unpaid_principal = #{unpaidPrincipal},
+			    </if>
+				<if test="unpaidInterest != null" >
+			      	 unpaid_interest = #{unpaidInterest},
+			    </if>
+				<if test="penaltyFee != null" >
+			      	 penalty_fee = #{penaltyFee},
+			    </if>
+				<if test="overdueDay != null" >
+			      	 overdue_day = #{overdueDay},
+			    </if>
+				<if test="orderId != null" >
+			      	 order_id = #{orderId},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+	<sql id="page_find_where">
+		<where>
+			<if test="id != null" >
+				AND order_id =#{id}
+			</if>
+			
+		</where>
+	</sql>
+	
+	<select id="queryListByRecordForm" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.request.OverdueOrderRecordForm"
+		resultType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueRepaymentRecordEntity">
+			 select  * 
+		     from overdue_repayment_record
+		     <include refid="page_find_where"/>
+		     ORDER BY update_at DESC
+		     limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="queryCountByRecordForm" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.request.OverdueOrderRecordForm"
+		resultType="int">
+			 select count(pid)
+		     from overdue_repayment_record
+		     <include refid="page_find_where"/>
+	</select>
+
+</mapper>

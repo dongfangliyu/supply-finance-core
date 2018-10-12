@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.company.dao.CompanyOperationDao">
+
+	<resultMap id="RM_CompanyOperation" type="cn.fintecher.supply.finance.loan.manager.common.model.CompanyOperationEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="cardType" column="card_type"/>
+        <result property="cardNum" column="card_num"/>
+        <result property="sex" column="sex"/>
+        <result property="mail" column="mail"/>
+        <result property="address" column="address"/>
+        <result property="enpsId" column="enps_id"/>
+        <result property="type" column="type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		<![CDATA[
+		pid,name,phone,card_type,card_num,sex,mail,address,enps_id,type,create_by,create_at,update_by,update_at,status,remark
+		 ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="saveCompanyOperationEntity" >
+        INSERT INTO company_operation (
+        	name ,
+        	phone ,
+        	card_type ,
+        	card_num ,
+        	sex ,
+        	mail ,
+        	address ,
+        	enps_id ,
+        	type ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark 
+        ) VALUES (
+        	#{name} ,
+        	#{phone} ,
+        	#{cardType} ,
+        	#{cardNum} ,
+        	#{sex} ,
+        	#{mail} ,
+        	#{address} ,
+        	#{enpsId} ,
+        	#{type} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark} 
+        )
+	</insert>
+    
+	<update id="updateCompanyOperationEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyOperationEntity">
+   
+	UPDATE company_operation 
+		<set>
+				<if test="name != null and name != ''">
+					name = #{name} ,
+				</if>
+				<if test="phone != null and phone != ''">
+					phone = #{phone} ,
+				</if>
+				<if test="cardType != null and cardType != ''">
+					card_type = #{cardType} ,
+				</if>
+				<if test="cardNum != null and cardNum != ''">
+					card_num = #{cardNum} ,
+				</if>
+				<if test="sex != null and sex != ''">
+					sex = #{sex} ,
+				</if>
+				<if test="mail != null and mail != ''">
+					mail = #{mail} ,
+				</if>
+				<if test="address != null and address != ''">
+					address = #{address} ,
+				</if>
+				<if test="enpsId != null and enpsId != ''">
+					enps_id = #{enpsId} ,
+				</if>
+				<if test="type != null and type != ''">
+					type = #{type} ,
+				</if>
+				<if test="createBy != null and createBy != ''">
+					create_by = #{createBy} ,
+				</if>
+				<if test="createAt != null">
+					create_at = #{createAt} ,
+				</if>
+				<if test="updateBy != null and updateBy != ''">
+					update_by = #{updateBy} ,
+				</if>
+				<if test="updateAt != null">
+					update_at = #{updateAt} ,
+				</if>
+				<if test="status != null and status != ''">
+					status = #{status} ,
+				</if>
+				<if test="remark != null and remark != ''">
+					remark = #{remark}
+				</if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+    <select id="searchCompanyOperation" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyOperationEntity">
+		SELECT <include refid="columns" />
+		    FROM company_operation 
+	        WHERE
+				enps_id = #{enpsId}
+	</select>
+	
+    <select id="getById" resultMap="RM_CompanyOperation">
+		SELECT <include refid="columns" />
+		    FROM company_operation
+	        WHERE
+		        pid = #{id}
+	</select>
+
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="pid != null and pid != ''">
+				AND pid = #{pid}
+			</if>
+	       <if test="name != null and name != ''">
+				AND name = #{name}
+			</if>
+	       <if test="phone != null and phone != ''">
+				AND phone = #{phone}
+			</if>
+	       <if test="cardType != null and cardType != ''">
+				AND card_type = #{cardType}
+			</if>
+	       <if test="cardNum != null and cardNum != ''">
+				AND card_num = #{cardNum}
+			</if>
+	       <if test="sex != null and sex != ''">
+				AND sex = #{sex}
+			</if>
+	       <if test="mail != null and mail != ''">
+				AND mail = #{mail}
+			</if>
+	       <if test="address != null and address != ''">
+				AND address = #{address}
+			</if>
+	       <if test="enpsId != null and enpsId != ''">
+				AND enps_id = #{enpsId}
+			</if>
+	       <if test="type != null and type != ''">
+				AND type = #{type}
+			</if>
+	       <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
+			</if>
+	       <if test="createAtBegin != null  and createAtBegin != ''">
+				AND create_at &gt;= #{createAtBegin}
+		   </if>
+		   <if test="createAtEnd  != null and createAtEnd != ''">
+				AND create_at &lt;= #{createAtEnd}
+		   </if>
+	       <if test="updateBy != null and updateBy != ''">
+				AND update_by = #{updateBy}
+			</if>
+	       <if test="updateAtBegin != null  and updateAtBegin != ''">
+				AND update_at &gt;= #{updateAtBegin}
+		   </if>
+		   <if test="updateAtEnd  != null and updateAtEnd != ''">
+				AND update_at &lt;= #{updateAtEnd}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+
+    <select id="find" resultMap="RM_CompanyOperation">
+    SELECT <include refid="columns"/> FROM company_operation 
+	<include refid="findPage_where"/>
+    </select>
+
+	<select id="searchCompanyLegal" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyOperationEntity">
+		SELECT <include refid="columns" />
+		FROM company_operation
+		WHERE
+		enps_id = #{enpsId} and  type = 'legal' limit 1
+	</select>
+
+</mapper>
+

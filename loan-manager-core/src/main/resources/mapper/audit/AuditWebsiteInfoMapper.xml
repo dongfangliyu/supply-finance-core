@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditWebsiteInfoDao">
+
+	<resultMap id="RM_AuditWebsiteInfo" type="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditWebsiteInfoDao">
+        <result property="pid" column="pid"/>
+        <result property="gsxt" column="gsxt"/>
+        <result property="zhongdengwang" column="zhongdengwang"/>
+        <result property="xinxiwang" column="xinxiwang"/>
+        <result property="fayuan" column="fayuan"/>
+        <result property="wangdai" column="wangdai"/>
+        <result property="auditId" column="audit_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		pid,gsxt,zhongdengwang,xinxiwang,fayuan,wangdai,audit_id,create_by,create_at,update_by,update_at,status,remark
+	    ]]>
+	</sql>
+
+	<select id="searchWebsiteInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditWebsiteInfoEntity">
+		SELECT <include refid="columns" />
+		FROM audit_website_info
+		WHERE
+		audit_id = #{id} and status = 'NOL'
+	</select>
+
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="submitWebsiteInfo" useGeneratedKeys="true" keyProperty="pid">
+    <![CDATA[
+        INSERT INTO audit_website_info (
+        	gsxt ,
+        	zhongdengwang ,
+        	xinxiwang ,
+        	fayuan ,
+        	wangdai ,
+        	audit_id ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark 
+        ) VALUES (
+        	#{gsxt} ,
+        	#{zhongdengwang} ,
+        	#{xinxiwang} ,
+        	#{fayuan} ,
+        	#{wangdai} ,
+        	#{auditId} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark} 
+        )
+    ]]>
+	</insert>
+    
+	<update id="update" >
+	UPDATE audit_website_info
+		<set>
+				<if test="gsxt != null and gsxt != ''">gsxt = #{gsxt} ,</if>
+				<if test="zhongdengwang != null and zhongdengwang != ''">zhongdengwang = #{zhongdengwang} ,</if>
+				<if test="xinxiwang != null and xinxiwang != ''">xinxiwang = #{xinxiwang} ,</if>
+				<if test="fayuan != null and fayuan != ''">fayuan = #{fayuan} ,</if>
+				<if test="wangdai != null and wangdai != ''">wangdai = #{wangdai} ,</if>
+				<if test="auditId != null and auditId != ''">audit_id = #{auditId} ,</if>
+				<if test="createBy != null and createBy != ''">create_by = #{createBy} ,</if>
+				<if test="createAt != null and createAt != ''">create_at = #{createAt} ,</if>
+				<if test="updateBy != null and updateBy != ''">update_by = #{updateBy} ,</if>
+				<if test="updateAt != null and updateAt != ''">update_at = #{updateAt} ,</if>
+				<if test="status != null and status != ''">status = #{status} ,</if>
+				<if test="remark != null and remark != ''">remark = #{remark} </if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="pid != null and pid != ''">
+				AND pid = #{pid}
+			</if>
+	       <if test="gsxt != null and gsxt != ''">
+				AND gsxt = #{gsxt}
+			</if>
+	       <if test="zhongdengwang != null and zhongdengwang != ''">
+				AND zhongdengwang = #{zhongdengwang}
+			</if>
+	       <if test="xinxiwang != null and xinxiwang != ''">
+				AND xinxiwang = #{xinxiwang}
+			</if>
+	       <if test="fayuan != null and fayuan != ''">
+				AND fayuan = #{fayuan}
+			</if>
+	       <if test="wangdai != null and wangdai != ''">
+				AND wangdai = #{wangdai}
+			</if>
+	       <if test="auditId != null and auditId != ''">
+				AND auditId = #{audit_id}
+			</if>
+	       <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
+			</if>
+	       <if test="createAtBegin != null  and createAtBegin != ''">
+				AND create_at &gt;= #{createAtBegin}
+		   </if>
+		   <if test="createAtEnd  != null and createAtEnd != ''">
+				AND create_at &lt;= #{createAtEnd}
+		   </if>
+	       <if test="updateBy != null and updateBy != ''">
+				AND update_by = #{updateBy}
+			</if>
+	       <if test="updateAtBegin != null  and updateAtBegin != ''">
+				AND update_at &gt;= #{updateAtBegin}
+		   </if>
+		   <if test="updateAtEnd  != null and updateAtEnd != ''">
+				AND update_at &lt;= #{updateAtEnd}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+		
+</mapper>
+

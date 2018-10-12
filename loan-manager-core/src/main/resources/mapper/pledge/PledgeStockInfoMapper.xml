@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.pledge.dao.PledgeStockInfoDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity" id="stockInfoMap">
+        <result property="pid" column="pid"/>
+        <result property="commodityId" column="commodity_id"/>
+        <result property="pledgeApplyState" column="pledge_apply_state"/>
+        <result property="pledgeApplyTime" column="pledge_apply_time"/>
+        <result property="pledgeNoPassTime" column="pledge_no_pass_time"/>
+        <result property="pledgeFinanceAmount" column="pledge_finance_amount"/>
+        <result property="pledgeTerm" column="pledge_term"/>
+        <result property="pledgeEarmarking" column="pledge_earmarking"/>
+        <result property="trialState" column="trial_state"/>
+        <result property="contractApplyState" column="contract_apply_state"/>
+        <result property="contractUserTime" column="contract_user_time"/>
+        <result property="contractApplyPledgeRate" column="contract_apply_pledge_rate"/>
+        <result property="contractApplyTerm" column="contract_apply_term"/>
+        <result property="contractApplyAmount" column="contract_apply_amount"/>
+        <result property="contractApplyPrice" column="contract_apply_price"/>
+        <result property="contractApplyServiceFee" column="contract_apply_service_fee"/>
+        <result property="contractApplyInterest" column="contract_apply_interest"/>
+        <result property="contractApproveTerm" column="contract_approve_term"/>
+        <result property="contractElectronics" column="contract_electronics"/>
+        <result property="contractApproveAmount" column="contract_approve_amount"/>
+        <result property="proRoductId" column="pro_roduct_id"/>
+        <result property="proContractId" column="pro_contract_id"/>
+        <result property="loanState" column="loan_state"/>
+        <result property="loanTime" column="loan_time"/>
+        <result property="loanStartTime" column="loan_start_time"/>
+        <result property="loanEndTime" column="loan_end_time"/>
+        <result property="releasePledge" column="release_pledge"/>
+        <result property="releaseTime" column="release_time"/>
+        <result property="releaseApplTime" column="release_appl_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="contractPlatformTime" column="contract_platform_time"/>
+		<result property="financeState" column="finance_state"/>
+		<result property="releaseRepaymentTime" column="release_repayment_time"/>
+    </resultMap>
+    
+	<sql id="stockInfo_find_List">
+		pid as pid,		commodity_id as commodityId,		pledge_apply_state as pledgeApplyState,		pledge_apply_time as pledgeApplyTime,		pledge_no_pass_time as pledgeNoPassTime,		pledge_finance_amount as pledgeFinanceAmount,		pledge_term as pledgeTerm,		pledge_earmarking as pledgeEarmarking,		trial_state as trialState,		contract_apply_state as contractApplyState,		contract_user_time as contractUserTime,		contract_apply_pledge_rate as contractApplyPledgeRate,		contract_apply_term as contractApplyTerm,		contract_apply_amount as contractApplyAmount,		contract_apply_price as contractApplyPrice,		contract_apply_service_fee as contractApplyServiceFee,		contract_apply_interest as contractApplyInterest,		contract_approve_term as contractApproveTerm,		contract_electronics as contractElectronics,		contract_approve_amount as contractApproveAmount,		pro_roduct_id as proRoductId,		pro_contract_id as proContractId,		loan_state as loanState,		loan_time as loanTime,		loan_start_time as loanStartTime,		loan_end_time as loanEndTime,		release_pledge as releasePledge,		release_time as releaseTime,		release_appl_time as releaseApplTime,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark,		contract_platform_time as contractPlatformTime, finance_state  as financeState, release_repayment_time as releaseRepaymentTime	</sql>
+	
+	<sql id="stockInfo_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="commodityId != null" >
+		      	AND commodity_id = #{commodityId}
+		    </if>
+			<if test="pledgeApplyState != null" >
+		      	AND pledge_apply_state = #{pledgeApplyState}
+		    </if>
+			<if test="pledgeApplyTime != null" >
+		      	AND pledge_apply_time = #{pledgeApplyTime}
+		    </if>
+			<if test="pledgeNoPassTime != null" >
+		      	AND pledge_no_pass_time = #{pledgeNoPassTime}
+		    </if>
+			<if test="pledgeFinanceAmount != null" >
+		      	AND pledge_finance_amount = #{pledgeFinanceAmount}
+		    </if>
+			<if test="pledgeTerm != null" >
+		      	AND pledge_term = #{pledgeTerm}
+		    </if>
+			<if test="pledgeEarmarking != null" >
+		      	AND pledge_earmarking = #{pledgeEarmarking}
+		    </if>
+			<if test="trialState != null" >
+		      	AND trial_state = #{trialState}
+		    </if>
+			<if test="contractApplyState != null" >
+		      	AND contract_apply_state = #{contractApplyState}
+		    </if>
+			<if test="contractUserTime != null" >
+		      	AND contract_user_time = #{contractUserTime}
+		    </if>
+			<if test="contractApplyPledgeRate != null" >
+		      	AND contract_apply_pledge_rate = #{contractApplyPledgeRate}
+		    </if>
+			<if test="contractApplyTerm != null" >
+		      	AND contract_apply_term = #{contractApplyTerm}
+		    </if>
+			<if test="contractApplyAmount != null" >
+		      	AND contract_apply_amount = #{contractApplyAmount}
+		    </if>
+			<if test="contractApplyPrice != null" >
+		      	AND contract_apply_price = #{contractApplyPrice}
+		    </if>
+			<if test="contractApplyServiceFee != null" >
+		      	AND contract_apply_service_fee = #{contractApplyServiceFee}
+		    </if>
+			<if test="contractApplyInterest != null" >
+		      	AND contract_apply_interest = #{contractApplyInterest}
+		    </if>
+			<if test="contractApproveTerm != null" >
+		      	AND contract_approve_term = #{contractApproveTerm}
+		    </if>
+			<if test="contractElectronics != null" >
+		      	AND contract_electronics = #{contractElectronics}
+		    </if>
+			<if test="contractApproveAmount != null" >
+		      	AND contract_approve_amount = #{contractApproveAmount}
+		    </if>
+			<if test="proRoductId != null" >
+		      	AND pro_roduct_id = #{proRoductId}
+		    </if>
+			<if test="proContractId != null" >
+		      	AND pro_contract_id = #{proContractId}
+		    </if>
+			<if test="loanState != null" >
+		      	AND loan_state = #{loanState}
+		    </if>
+			<if test="loanTime != null" >
+		      	AND loan_time = #{loanTime}
+		    </if>
+			<if test="loanStartTime != null" >
+		      	AND loan_start_time = #{loanStartTime}
+		    </if>
+			<if test="loanEndTime != null" >
+		      	AND loan_end_time = #{loanEndTime}
+		    </if>
+			<if test="releasePledge != null" >
+		      	AND release_pledge = #{releasePledge}
+		    </if>
+			<if test="releaseTime != null" >
+		      	AND release_time = #{releaseTime}
+		    </if>
+			<if test="releaseApplTime != null" >
+		      	AND release_appl_time = #{releaseApplTime}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+			<if test="contractPlatformTime != null" >
+		      	AND contract_platform_time = #{contractPlatformTime}
+		    </if>
+			<if test="financeState != null" >
+				AND finance_state = #{financeState}
+			</if>
+			<if test="releaseRepaymentTime != null" >
+				AND release_repayment_time = #{releaseRepaymentTime}
+			</if>
+
+	    </where>
+	 </sql>
+	 
+	<insert id="insertStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into pledge_stock_info (pid,commodity_id,pledge_apply_state,pledge_apply_time,pledge_no_pass_time,pledge_finance_amount,pledge_term,pledge_earmarking,trial_state,contract_apply_state,contract_user_time,contract_apply_pledge_rate,contract_apply_term,contract_apply_amount,contract_apply_price,contract_apply_service_fee,contract_apply_interest,contract_approve_term,contract_electronics,contract_approve_amount,pro_roduct_id,pro_contract_id,loan_state,loan_time,loan_start_time,loan_end_time,release_pledge,release_time,release_appl_time,create_by,create_at,update_at,update_by,status,remark,contract_platform_time,finance_state,release_repayment_time)
+	    values (#{pid},#{commodityId},#{pledgeApplyState},#{pledgeApplyTime},#{pledgeNoPassTime},#{pledgeFinanceAmount},#{pledgeTerm},#{pledgeEarmarking},#{trialState},#{contractApplyState},#{contractUserTime},#{contractApplyPledgeRate},#{contractApplyTerm},#{contractApplyAmount},#{contractApplyPrice},#{contractApplyServiceFee},#{contractApplyInterest},#{contractApproveTerm},#{contractElectronics},#{contractApproveAmount},#{proRoductId},#{proContractId},#{loanState},#{loanTime},#{loanStartTime},#{loanEndTime},#{releasePledge},#{releaseTime},#{releaseApplTime},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark},#{contractPlatformTime},#{financeState},#{releaseRepaymentTime})
+	</insert>
+	
+	<select id="selectByStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity">
+	  	select
+	    	<include refid="stockInfo_find_List" />
+	    from pledge_stock_info
+	    	<include refid="stockInfo_find_where" />
+	 </select>
+	 
+	 <select id="queryStockInfoByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity">
+	  	select
+	    	<include refid="stockInfo_find_List" />
+	    from pledge_stock_info where pid = #{pid}
+	 </select>
+	 
+	<update id="updateStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity" >
+    	update pledge_stock_info
+	    	<set >
+				<if test="commodityId != null" >
+			      	 commodity_id = #{commodityId},
+			    </if>
+				<if test="pledgeApplyState != null" >
+			      	 pledge_apply_state = #{pledgeApplyState},
+			    </if>
+				<if test="pledgeApplyTime != null" >
+			      	 pledge_apply_time = #{pledgeApplyTime},
+			    </if>
+				<if test="pledgeNoPassTime != null" >
+			      	 pledge_no_pass_time = #{pledgeNoPassTime},
+			    </if>
+				<if test="pledgeFinanceAmount != null" >
+			      	 pledge_finance_amount = #{pledgeFinanceAmount},
+			    </if>
+				<if test="pledgeTerm != null" >
+			      	 pledge_term = #{pledgeTerm},
+			    </if>
+				<if test="pledgeEarmarking != null" >
+			      	 pledge_earmarking = #{pledgeEarmarking},
+			    </if>
+				<if test="trialState != null" >
+			      	 trial_state = #{trialState},
+			    </if>
+				<if test="contractApplyState != null" >
+			      	 contract_apply_state = #{contractApplyState},
+			    </if>
+				<if test="contractUserTime != null" >
+			      	 contract_user_time = #{contractUserTime},
+			    </if>
+				<if test="contractApplyPledgeRate != null" >
+			      	 contract_apply_pledge_rate = #{contractApplyPledgeRate},
+			    </if>
+				<if test="contractApplyTerm != null" >
+			      	 contract_apply_term = #{contractApplyTerm},
+			    </if>
+				<if test="contractApplyAmount != null" >
+			      	 contract_apply_amount = #{contractApplyAmount},
+			    </if>
+				<if test="contractApplyPrice != null" >
+			      	 contract_apply_price = #{contractApplyPrice},
+			    </if>
+				<if test="contractApplyServiceFee != null" >
+			      	 contract_apply_service_fee = #{contractApplyServiceFee},
+			    </if>
+				<if test="contractApplyInterest != null" >
+			      	 contract_apply_interest = #{contractApplyInterest},
+			    </if>
+				<if test="contractApproveTerm != null" >
+			      	 contract_approve_term = #{contractApproveTerm},
+			    </if>
+				<if test="contractElectronics != null" >
+			      	 contract_electronics = #{contractElectronics},
+			    </if>
+				<if test="contractApproveAmount != null" >
+			      	 contract_approve_amount = #{contractApproveAmount},
+			    </if>
+				<if test="proRoductId != null" >
+			      	 pro_roduct_id = #{proRoductId},
+			    </if>
+				<if test="proContractId != null" >
+			      	 pro_contract_id = #{proContractId},
+			    </if>
+				<if test="loanState != null" >
+			      	 loan_state = #{loanState},
+			    </if>
+				<if test="loanTime != null" >
+			      	 loan_time = #{loanTime},
+			    </if>
+				<if test="loanStartTime != null" >
+			      	 loan_start_time = #{loanStartTime},
+			    </if>
+				<if test="loanEndTime != null" >
+			      	 loan_end_time = #{loanEndTime},
+			    </if>
+				<if test="releasePledge != null" >
+			      	 release_pledge = #{releasePledge},
+			    </if>
+				<if test="releaseTime != null" >
+			      	 release_time = #{releaseTime},
+			    </if>
+				<if test="releaseApplTime != null" >
+			      	 release_appl_time = #{releaseApplTime},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+				<if test="contractPlatformTime != null" >
+			      	 contract_platform_time = #{contractPlatformTime},
+			    </if>
+				<if test="financeState != null" >
+					finance_state = #{financeState},
+				</if>
+				<if test="releaseRepaymentTime != null" >
+					release_repayment_time = #{releaseRepaymentTime},
+				</if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+<!--  ******************以上为自动生成sql语句 ******************  -->
+	<select id="searchPledgeInfoByCommodityId" resultType = "cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity">
+		select
+		<include refid="stockInfo_find_List" />
+		from pledge_stock_info where commodity_id = #{pid}
+    </select>
+
+	<select id="selectWebSigningList" resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeSigningResponse" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeStockFrom">
+		SELECT ps.`pid`,cs.`pid` as commId,
+			ce.`name`,cs.`apply_number`,cs.`supplier_name`,cs.`product_brand`,cs.`product_type`,cs.`product_model`,cs.`product_number`,bd.value as product_unit,cs.`unit_price`,
+			cs.`total_price`,ps.`contract_apply_price`,ps.`contract_apply_pledge_rate`,ps.`contract_apply_term`,ps.`contract_apply_amount`,ps.`contract_apply_state` as state,ps.`contract_electronics`,ps.`contract_user_time` as contractUserTime
+		 FROM `pledge_stock_info` AS ps,`commodity_stock_info` AS cs,company_enterprise AS ce,base_dictionary as bd WHERE
+		ps.`commodity_id` = cs.`pid` AND cs.`company_id` = ce.`pid` AND bd.pid = cs.product_unit AND ps.`pledge_apply_state` = 1
+		<include refid="stockInfo_page_where" />
+		order by  ps.contract_apply_state ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="selectWebSigningListCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeStockFrom">
+		SELECT
+		count(*)
+		FROM `pledge_stock_info` AS ps,`commodity_stock_info` AS cs,company_enterprise AS ce WHERE
+		ps.`commodity_id` = cs.`pid` AND cs.`company_id` = ce.`pid` AND ps.`pledge_apply_state` = 1
+		<include refid="stockInfo_page_where" />
+
+	</select>
+
+	<select id="selectAdminSigningList" resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeSigningResponse" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeStockFrom">
+		SELECT ps.`pid`,cs.`pid` as commId,
+		ce.`name` as companyName,cs.`apply_number`,cs.`supplier_name`,cs.`product_brand`,cs.`product_type`,cs.`product_model`,cs.`product_number`,bd.value as product_unit,cs.`unit_price`,
+		cs.`total_price`,ps.`contract_apply_price`,ps.`contract_apply_pledge_rate`,ps.`contract_apply_term`,ps.`contract_apply_amount`,ps.`contract_electronics` as state,ps.`contract_electronics`,ps.`contract_platform_time` as contractUserTime
+		FROM `pledge_stock_info` AS ps,`commodity_stock_info` AS cs,company_enterprise AS ce,base_dictionary as bd  WHERE
+		ps.`commodity_id` = cs.`pid` AND cs.`company_id` = ce.`pid` AND bd.pid = cs.product_unit  AND ps.`pledge_apply_state` = 1 AND ps.`contract_apply_state` = 1
+		<include refid="stockInfo_page_where_admin" />
+		order by  ps.contract_electronics ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="selectAdminSigningListCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.request.PledgeStockFrom">
+		SELECT
+		count(*)
+		FROM `pledge_stock_info` AS ps,`commodity_stock_info` AS cs,company_enterprise AS ce WHERE
+		ps.`commodity_id` = cs.`pid` AND cs.`company_id` = ce.`pid` AND ps.`pledge_apply_state` = 1 AND ps.`contract_apply_state` = 1
+		<include refid="stockInfo_page_where_admin" />
+
+	</select>
+
+
+	<!--  ******************以下为放款的sql ******************  -->
+
+	<select id="searchFinanceLoanListCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.form.PledgeFinanceLoanForm">
+		SELECT
+		count(psi.pid)
+		FROM
+		pledge_stock_info psi
+		LEFT JOIN commodity_stock_info csi ON  csi.pid = psi.commodity_id
+		LEFT JOIN finance_stock_info fsi on fsi.commodity_id = csi.pid
+		LEFT JOIN company_enterprise ce on ce.pid = csi.company_id
+		LEFT JOIN base_dictionary bd on bd.pid = csi.product_unit
+		<include refid="financeClient_loan_search" />
+
+	</select>
+
+	<select id="searchFinanceLoanList" resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeFinanceLoanResponse" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.form.PledgeFinanceLoanForm">
+		SELECT
+		csi.pid pid,
+		ce.name companyName,
+		csi.apply_number applyNumber,
+		csi.supplier_name supplierName,
+		csi.product_brand productBrand,
+		csi.product_type productType,
+		csi.product_model productModel,
+		csi.product_number productNumber,
+		bd.value productUnit,
+		psi.contract_apply_price contractApplyPrice,
+		psi.contract_apply_pledge_rate contractApplyPledgeRate,
+		psi.contract_apply_term contractApplyTerm,
+		psi.contract_apply_amount contractApplyAmount,
+		fsi.finance_first_state financeFirstState,
+		fsi.finance_rehear_state financeRehearState,
+		fsi.finance_first_time financeFirstTime,
+		fsi.finance_rehear_time financeRehearTime,
+		fsi.loan_time loanTime,
+		fsi.loan_start_time loanStartTime,
+		fsi.loan_end_time loanEndTime
+		FROM
+		pledge_stock_info psi
+		LEFT JOIN commodity_stock_info csi ON  csi.pid = psi.commodity_id
+		LEFT JOIN finance_stock_info fsi on fsi.commodity_id = csi.pid
+		LEFT JOIN company_enterprise ce on ce.pid = csi.company_id
+		LEFT JOIN base_dictionary bd on bd.pid = csi.product_unit
+		<include refid="financeClient_loan_search" />
+		limit #{startIndex},#{pageSize}
+
+	</select>
+
+
+	<sql id="financeClient_loan_search">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="1==1">
+				AND psi.contract_apply_state = '1' and psi.contract_electronics = '1'
+				and psi.finance_state = '1' and fsi.finance_first_state = '1' and fsi.finance_rehear_state = '1'
+				and psi.pledge_apply_state = '1' and psi.status = 'NOL'
+			</if>
+			<if test="companyName != null and companyName !=''">
+				AND csi.supplier_name LIKE concat('%',#{companyName},'%')
+			</if>
+			<if test="applyNumber != null and applyNumber !=''">
+				AND csi.apply_number LIKE concat('%',#{applyNumber},'%')
+			</if>
+			<if test="startTime != null">
+				AND fsi.loan_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND fsi.loan_time &lt;= #{endTime}
+			</if>
+			<if test="state != null and state !=''">
+				and fsi.finance_first_state = #{state}
+			</if>
+			<if test="companyId != null and companyId !=''">
+				and csi.company_id = #{companyId}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="selectFinanceLoanListCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.form.PledgeFinanceLoanForm">
+		SELECT
+		count(psi.pid)
+		FROM
+		pledge_stock_info psi
+		LEFT JOIN commodity_stock_info csi ON  csi.pid = psi.commodity_id
+		LEFT JOIN finance_stock_info fsi on fsi.commodity_id = csi.pid
+		LEFT JOIN company_enterprise ce on ce.pid = csi.company_id
+		LEFT JOIN base_dictionary bd on bd.pid = csi.product_unit
+		<include refid="financeFirst_loan_search" />
+	</select>
+
+	<select id="selectFinanceLoanList" resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeFinanceLoanResponse" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.form.PledgeFinanceLoanForm">
+		SELECT
+			csi.pid pid,
+			ce.name companyName,
+			csi.apply_number applyNumber,
+			csi.supplier_name supplierName,
+			csi.product_brand productBrand,
+			csi.product_type productType,
+			csi.product_model productModel,
+			csi.product_number productNumber,
+			bd.value productUnit,
+			psi.contract_apply_price contractApplyPrice,
+			psi.contract_apply_pledge_rate contractApplyPledgeRate,
+			psi.contract_apply_term contractApplyTerm,
+			psi.contract_apply_amount contractApplyAmount,
+			fsi.finance_first_state financeFirstState,
+			fsi.finance_rehear_state financeRehearState,
+			fsi.finance_first_time financeFirstTime,
+			fsi.finance_rehear_time financeRehearTime,
+			fsi.loan_time loanTime,
+			fsi.loan_start_time loanStartTime,
+			fsi.loan_end_time loanEndTime
+		FROM
+			pledge_stock_info psi
+		LEFT JOIN commodity_stock_info csi ON  csi.pid = psi.commodity_id
+		LEFT JOIN finance_stock_info fsi on fsi.commodity_id = csi.pid
+		LEFT JOIN company_enterprise ce on ce.pid = csi.company_id
+		LEFT JOIN base_dictionary bd on bd.pid = csi.product_unit
+		<include refid="financeFirst_loan_search" />
+		order by fsi.finance_first_state = '0' DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<sql id="financeFirst_loan_search">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="1==1">
+				AND psi.contract_apply_state = '1' and psi.contract_electronics = '1'
+				and psi.pledge_apply_state = '1' and psi.status = 'NOL'
+			</if>
+			<if test="companyName != null and companyName !=''">
+				AND ce.name LIKE concat('%',#{companyName},'%')
+			</if>
+			<if test="applyNumber != null and applyNumber !=''">
+				AND csi.apply_number LIKE concat('%',#{applyNumber},'%')
+			</if>
+			<if test="startTime != null">
+				AND fsi.finance_first_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND fsi.finance_first_time &lt;= #{endTime}
+			</if>
+			<if test="state != null and state !=''">
+				and fsi.finance_first_state = #{state}
+			</if>
+			<if test="companyId != null and companyId !=''">
+				and csi.company_id = #{companyId}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="selectFinanceReviewLoanListCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.form.PledgeFinanceLoanForm">
+		SELECT
+		count(psi.pid)
+		FROM
+		pledge_stock_info psi
+		LEFT JOIN commodity_stock_info csi ON  csi.pid = psi.commodity_id
+		LEFT JOIN finance_stock_info fsi on fsi.commodity_id = csi.pid
+		LEFT JOIN company_enterprise ce on ce.pid = csi.company_id
+		LEFT JOIN base_dictionary bd on bd.pid = csi.product_unit
+		<include refid="financeReview_loan_search" />
+	</select>
+
+	<select id="selectFinanceReviewLoanList" resultType="cn.fintecher.supply.finance.loan.manager.common.pledge.response.PledgeFinanceLoanResponse" parameterType="cn.fintecher.supply.finance.loan.manager.common.pledge.form.PledgeFinanceLoanForm">
+		SELECT
+				csi.pid pid,
+				ce.name companyName,
+				csi.apply_number applyNumber,
+				csi.supplier_name supplierName,
+				csi.product_brand productBrand,
+				csi.product_type productType,
+				csi.product_model productModel,
+				csi.product_number productNumber,
+				bd.value productUnit,
+				psi.contract_apply_price contractApplyPrice,
+				psi.contract_apply_pledge_rate contractApplyPledgeRate,
+				psi.contract_apply_term contractApplyTerm,
+				psi.contract_apply_amount contractApplyAmount,
+				fsi.finance_first_state financeFirstState,
+				fsi.finance_rehear_state financeRehearState,
+				fsi.finance_first_time financeFirstTime,
+				fsi.finance_rehear_time financeRehearTime,
+				fsi.loan_time loanTime,
+				fsi.loan_start_time loanStartTime,
+				fsi.loan_end_time loanEndTime
+			FROM
+				pledge_stock_info psi
+			LEFT JOIN commodity_stock_info csi ON  csi.pid = psi.commodity_id
+			LEFT JOIN finance_stock_info fsi on fsi.commodity_id = csi.pid
+			LEFT JOIN company_enterprise ce on ce.pid = csi.company_id
+			LEFT JOIN base_dictionary bd on bd.pid = csi.product_unit
+			<include refid="financeReview_loan_search" />
+		order by fsi.finance_rehear_state = '0' DESC
+			limit #{startIndex},#{pageSize}
+	</select>
+
+	<sql id="financeReview_loan_search">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="1==1">
+				AND psi.contract_apply_state = '1' and psi.contract_electronics = '1'
+				and fsi.finance_first_state = '1'
+				and psi.pledge_apply_state = '1' and psi.status = 'NOL'
+			</if>
+			<if test="companyName != null and companyName !=''">
+				AND ce.name LIKE concat('%',#{companyName},'%')
+			</if>
+			<if test="applyNumber != null and applyNumber !=''">
+				AND csi.apply_number LIKE concat('%',#{applyNumber},'%')
+			</if>
+			<if test="startTime != null">
+				AND fsi.finance_rehear_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND fsi.finance_rehear_time &lt;= #{endTime}
+			</if>
+			<if test="state != null and state !=''">
+				and fsi.finance_rehear_state = #{state}
+			</if>
+			<if test="companyId != null and companyId !=''">
+				and csi.company_id = #{companyId}
+			</if>
+		</trim>
+	</sql>
+
+
+
+	<sql id="stockInfo_page_where">
+		<if test="companyName != null and companyName != ''" >
+			AND ce.name like CONCAT("%",#{companyName},"%")
+		</if>
+		<if test="supplieName != null and supplieName != ''" >
+			AND cs.supplier_name like CONCAT("%",#{supplieName},"%")
+		</if>
+		<if test="applyNumber != null and applyNumber != ''" >
+			AND cs.apply_number like CONCAT("%",#{applyNumber},"%")
+		</if>
+
+		<if test="state != null and state != ''" >
+			AND ps.contract_apply_state = #{state}
+		</if>
+		<if test="signingStartTime != null " >
+			AND ps.contract_user_time >= #{signingStartTime}
+		</if>
+		<if test="signingEndTime != null " >
+			AND ps.contract_user_time &lt;= #{signingEndTime}
+		</if>
+		<if test="ownerId != null and ownerId != ''">
+			AND ce.`pid`= #{ownerId}
+		</if>
+	</sql>
+
+	<sql id="stockInfo_page_where_admin">
+		<if test="companyName != null and companyName != ''" >
+			AND ce.name like CONCAT("%",#{companyName},"%")
+		</if>
+		<if test="supplieName != null and supplieName != ''" >
+			AND cs.supplier_name like CONCAT("%",#{supplieName},"%")
+		</if>
+		<if test="applyNumber != null and applyNumber != ''" >
+			AND cs.apply_number like CONCAT("%",#{applyNumber},"%")
+		</if>
+
+		<if test="state != null and state != ''" >
+			AND ps.contract_electronics = #{state}
+		</if>
+		<if test="signingStartTime != null " >
+			AND ps.contract_platform_time >= #{signingStartTime}
+		</if>
+		<if test="signingEndTime != null " >
+			AND ps.contract_platform_time &lt;= #{signingEndTime}
+		</if>
+	</sql>
+</mapper>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.register.dao.BaseBankInfoDao">
+
+	<resultMap id="RM_BaseBankInfo" type="cn.fintecher.supply.finance.loan.manager.common.model.BaseBankInfoEntity">
+        <result property="pid" column="pid"/>
+        <result property="bankOpen" column="bank_open"/>
+        <result property="bankBranch" column="bank_branch"/>
+        <result property="accountType" column="account_type"/>
+        <result property="objectId" column="object_id"/>
+        <result property="objectType" column="object_type"/>
+        <result property="accountName" column="account_name"/>
+        <result property="accountUse" column="account_use"/>
+        <result property="bankCard" column="bank_card"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		pid as pid,
+		bank_open as bankOpen,
+		bank_branch as bankBranch,
+		account_type as accountType,
+		object_id as objectId,
+		object_type as objectType,
+		account_name as accountName,
+		account_use as accountUse,
+		bank_card as bankCard,
+		create_by as createBy,
+		create_at as createAt,
+		update_by as updateBy,
+		update_at as updateAt,
+		status as status,
+		remark as remark
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="saveBaseInfoEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.BaseBankInfoEntity" useGeneratedKeys="true">
+        INSERT INTO base_bank_info (
+        	bank_open ,
+        	bank_branch ,
+        	account_type ,
+        	object_id ,
+        	object_type ,
+        	account_name ,
+        	account_use ,
+        	bank_card ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark 
+        ) VALUES (
+        	#{bankOpen} ,
+        	#{bankBranch} ,
+        	#{accountType} ,
+        	#{objectId} ,
+        	#{objectType} ,
+        	#{accountName} ,
+        	#{accountUse} ,
+        	#{bankCard} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark} 
+        )
+	</insert>
+    
+	<update id="update" >
+   
+	UPDATE base_bank_info 
+		<set>
+				<if test="bankOpen != null and bankOpen != ''">
+					bank_open = #{bankOpen} ,
+				</if>
+				<if test="bankBranch != null and bankBranch != ''">
+					bank_branch = #{bankBranch} ,
+				</if>
+				<if test="accountType != null and accountType != ''">
+					account_type = #{accountType} ,
+				</if>
+				<if test="objectId != null and objectId != ''">
+					object_id = #{objectId} ,
+				</if>
+				<if test="objectType != null and objectType != ''">
+					object_type = #{objectType} ,
+				</if>
+				<if test="accountName != null and accountName != ''">
+					account_name = #{accountName} ,
+				</if>
+				<if test="accountUse != null and accountUse != ''">
+					account_use = #{accountUse} ,
+				</if>
+				<if test="bankCard != null and bankCard != ''">
+					bank_card = #{bankCard} ,
+				</if>
+				<if test="createBy != null and createBy != ''">
+					create_by = #{createBy} ,
+				</if>
+				<if test="createAt != null ">
+					create_at = #{createAt} ,
+				</if>
+				<if test="updateBy != null and updateBy != ''">
+					update_by = #{updateBy} ,
+				</if>
+				<if test="updateAt != null ">
+					update_at = #{updateAt} ,
+				</if>
+				<if test="status != null and status != ''">
+					status = #{status} ,
+				</if>
+				<if test="remark != null and remark != ''">
+					remark = #{remark}
+				</if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+    
+    <select id="searchBaseBankInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.model.BaseBankInfoEntity">
+		SELECT <include refid="columns" />
+		    FROM base_bank_info 
+	        WHERE
+				object_id = #{objectId}
+	</select>
+	
+    <select id="getById" resultMap="RM_BaseBankInfo">
+		SELECT <include refid="columns" />
+		    FROM base_bank_info
+	        WHERE
+		        pid = #{id}
+	</select>
+
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="pid != null and pid != ''">
+				AND pid = #{pid}
+			</if>
+	       <if test="bankOpen != null and bankOpen != ''">
+				AND bank_open = #{bankOpen}
+			</if>
+	       <if test="bankBranch != null and bankBranch != ''">
+				AND bank_branch = #{bankBranch}
+			</if>
+	       <if test="accountType != null and accountType != ''">
+				AND account_type = #{accountType}
+			</if>
+	       <if test="objectId != null and objectId != ''">
+				AND object_id = #{objectId}
+			</if>
+	       <if test="objectType != null and objectType != ''">
+				AND object_type = #{objectType}
+			</if>
+	       <if test="accountName != null and accountName != ''">
+				AND account_name = #{accountName}
+			</if>
+	       <if test="accountUse != null and accountUse != ''">
+				AND account_use = #{accountUse}
+			</if>
+	       <if test="bankCard != null and bankCard != ''">
+				AND bank_card = #{bankCard}
+			</if>
+	       <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
+			</if>
+	       <if test="createAtBegin != null  and createAtBegin != ''">
+				AND create_at &gt;= #{createAtBegin}
+		   </if>
+		   <if test="createAtEnd  != null and createAtEnd != ''">
+				AND create_at &lt;= #{createAtEnd}
+		   </if>
+	       <if test="updateBy != null and updateBy != ''">
+				AND update_by = #{updateBy}
+			</if>
+	       <if test="updateAtBegin != null  and updateAtBegin != ''">
+				AND update_at &gt;= #{updateAtBegin}
+		   </if>
+		   <if test="updateAtEnd  != null and updateAtEnd != ''">
+				AND update_at &lt;= #{updateAtEnd}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+
+	<select id="getLoanBankByCompanyId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.BaseBankInfoEntity">
+		SELECT <include refid="columns" />
+		FROM base_bank_info
+		WHERE
+		object_id = #{companyId} and account_use = '1' and  status = 'NOL'
+	</select>
+
+	<select id="getRepayBankBySignId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.BaseBankInfoEntity">
+		SELECT <include refid="columns" />
+		FROM base_bank_info
+		WHERE
+		object_id = #{signId} and account_use = '2' and  status = 'NOL' and object_type = '2'
+	</select>
+</mapper>
+

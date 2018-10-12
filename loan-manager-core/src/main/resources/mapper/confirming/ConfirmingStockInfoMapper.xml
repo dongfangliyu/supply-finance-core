@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.confirming.dao.ConfirmingStockInfoDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity"
+               id="stockInfoMap">
+        <result property="pid" column="pid"/>
+        <result property="bussineNo" column="bussine_no"/>
+        <result property="proProductId" column="pro_product_id"/>
+        <result property="companyId" column="company_id"/>
+        <result property="companyDealerId" column="company_dealer_id"/>
+        <result property="confirmDealerState" column="confirm_dealer_state"/>
+        <result property="confirmtDealerTime" column="confirmt_dealer_time"/>
+        <result property="confirmCorecompanyState" column="confirm_corecompany_state"/>
+        <result property="confirmCorecompanyTime" column="confirm_corecompany_time"/>
+        <result property="confirmApplyState" column="confirm_apply_state"/>
+        <result property="contractApplyAmount" column="contract_apply_amount"/>
+        <result property="contractApplyTerm" column="contract_apply_term"/>
+        <result property="contractApplyPrice" column="contract_apply_price"/>
+        <result property="contractApprovalTerm" column="contract_approval_term"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="contractType" column="contract_type"/>
+        <result property="contractState" column="contract_state"/>
+        <result property="contractDealerTime" column="contract_dealer_time"/>
+        <result property="contractCorecompanyTime" column="contract_corecompany_time"/>
+        <result property="contractPlatformTime" column="contract_platform_time"/>
+        <result property="confirmNotAmount" column="confirm_not_amount"/>
+        <result property="fileCode" column="file_code"/>
+        <result property="contractAmount" column="contract_amount"/>
+
+    </resultMap>
+
+    <sql id="stockInfo_find_List">
+		pid as pid,
+		bussine_no as bussineNo,
+		pro_product_id as proProductId,
+		company_id as companyId,
+		company_dealer_id as companyDealerId,
+		confirm_dealer_state as confirmDealerState,
+        confirmt_dealer_time as confirmtDealerTime,
+        confirm_corecompany_state as confirmCorecompanyState,
+        confirm_corecompany_time as confirmCorecompanyTime,
+        confirm_apply_state as confirmApplyState,
+        contract_apply_amount as contractApplyAmount,
+        contract_apply_term as contractApplyTerm,
+        contract_apply_price as contractApplyPrice,
+        contract_approval_term as contractApprovalTerm,
+        contract_no as contractNo,
+        contract_type as contractType,
+        contract_state as contractState,
+        contract_dealer_time as contractDealerTime,
+        contract_corecompany_time as contractCorecompanyTime,
+        contract_platform_time as contractPlatformTime,
+        confirm_not_amount as confirmNotAmount
+        file_code as fileCode
+        contract_amount as contractAmount
+    </sql>
+
+
+    <sql id="stockInfo_find_where">
+        <where>
+            <if test="pid != null">AND pid = #{pid}</if>
+            <if test="bussineNo != null">AND bussine_no = #{bussineNo}</if>
+            <if test="proProductId != null">AND pro_product_id = #{proProductId}</if>
+            <if test="companyId != null">AND company_id = #{companyId}</if>
+            <if test="companyDealerId != null">AND company_dealer_id = #{companyDealerId}</if>
+            <if test="confirmDealerState != null">AND confirm_dealer_state = #{confirmDealerState}</if>
+            <if test="confirmtDealerTime != null">AND confirmt_dealer_time = #{confirmtDealerTime}</if>
+            <if test="confirmCorecompanyState != null">AND confirm_corecompany_state = #{confirmCorecompanyState}</if>
+            <if test="confirmCorecompanyTime != null">AND confirm_corecompany_time = #{confirmCorecompanyTime}</if>
+            <if test="confirmApplyState != null">AND confirm_apply_state = #{confirmApplyState}</if>
+            <if test="contractApplyAmount != null">AND contract_apply_amount = #{contractApplyAmount}</if>
+            <if test="contractApplyTerm != null">AND contract_apply_term = #{contractApplyTerm}</if>
+            <if test="contractApplyPrice != null">AND contract_apply_price = #{contractApplyPrice}</if>
+            <if test="contractApprovalTerm != null">AND contract_approval_term = #{contractApprovalTerm}</if>
+            <if test="contractNo != null">AND contract_no = #{contractNo}</if>
+            <if test="contractType != null">AND contract_type = #{contractType}</if>
+            <if test="contractState != null">AND contract_state = #{contractState}</if>
+            <if test="contractDealerTime != null">AND contract_dealer_time = #{contractDealerTime}</if>
+            <if test="contractCorecompanyTime != null">AND contract_corecompany_time = #{contractCorecompanyTime}</if>
+            <if test="contractPlatformTime != null">AND contract_platform_time = #{contractPlatformTime}</if>
+            <if test="confirmNotAmount != null">AND confirm_not_amount = #{confirmNotAmount}</if>
+            <if test="fileCode != null">AND file_code = #{fileCode}</if>
+            <if test="contractAmount != null">AND contract_amount = #{contractAmount}</if>
+        </where>
+    </sql>
+
+    <insert id="insertStockInfo"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity"
+            useGeneratedKeys="true" keyProperty="pid">
+	    insert into confirming_stock_info (bussine_no,pro_product_id,company_id,company_dealer_id,confirm_dealer_state,confirmt_dealer_time,confirm_corecompany_state,confirm_corecompany_time,confirm_apply_state,contract_apply_amount,contract_apply_term,contract_apply_price,contract_approval_term,contract_no,contract_type,contract_state,contract_dealer_time,contract_corecompany_time,contract_platform_time,confirm_not_amount,file_code,contract_amount)
+	    values (#{bussineNo},#{proProductId},#{companyId},#{companyDealerId},#{confirmDealerState},#{confirmtDealerTime},#{confirmCorecompanyState},#{confirmCorecompanyTime},#{confirmApplyState},#{contractApplyAmount},#{contractApplyTerm},#{contractApplyPrice},#{contractApprovalTerm},#{contractNo},#{contractType},#{contractState},#{contractDealerTime},#{contractCorecompanyTime},#{contractPlatformTime},#{confirmNotAmount},#{fileCode},#{contractAmount})
+	</insert>
+
+    <select id="selectByStockInfo"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity">
+        select
+        <include refid="stockInfo_find_List"/>
+        from confirming_stock_info
+        <include refid="stockInfo_find_where"/>
+    </select>
+
+
+    <select id="queryStockInfoByPid"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity">
+        select *
+        from confirming_stock_info where pid = #{pid}
+    </select>
+
+    <update id="updateStockInfo"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.confirming.entity.ConfirmingStockInfoEntity">
+        update confirming_stock_info
+        <set>
+            <if test="bussineNo != null">bussine_no = #{bussineNo},</if>
+            <if test="proProductId != null">pro_product_id = #{proProductId},</if>
+            <if test="companyId != null">company_id = #{companyId},</if>
+            <if test="companyDealerId != null">company_dealer_id = #{companyDealerId},</if>
+            <if test="confirmDealerState != null">confirm_dealer_state = #{confirmDealerState},</if>
+            <if test="confirmtDealerTime != null">confirmt_dealer_time = #{confirmtDealerTime},</if>
+            <if test="confirmCorecompanyState != null">confirm_corecompany_state = #{confirmCorecompanyState},</if>
+            <if test="confirmCorecompanyTime != null">confirm_corecompany_time = #{confirmCorecompanyTime},</if>
+            <if test="confirmApplyState != null">confirm_apply_state = #{confirmApplyState},</if>
+            <if test="contractApplyAmount != null">contract_apply_amount = #{contractApplyAmount},</if>
+            <if test="contractApplyTerm != null">contract_apply_term = #{contractApplyTerm},</if>
+            <if test="contractApplyPrice != null">contract_apply_price = #{contractApplyPrice},</if>
+            <if test="contractApprovalTerm != null">contract_approval_term = #{contractApprovalTerm},</if>
+            <if test="contractNo != null">contract_no = #{contractNo},</if>
+            <if test="contractType != null">contract_type = #{contractType},</if>
+            <if test="contractState != null">contract_state = #{contractState},</if>
+            <if test="contractDealerTime != null">contract_dealer_time = #{contractDealerTime},</if>
+            <if test="contractCorecompanyTime != null">contract_corecompany_time = #{contractCorecompanyTime},</if>
+            <if test="contractPlatformTime != null">contract_platform_time = #{contractPlatformTime},</if>
+            <if test="confirmNotAmount != null">confirm_not_amount = #{confirmNotAmount},</if>
+            <if test="fileCode != null"> file_code = #{fileCode},</if>
+            <if test="contractAmount != null"> contract_amount = #{contractAmount},</if>
+        </set>
+        where pid = #{pid}
+    </update>
+
+    <!--  ******************以上为自动生成sql语句 ******************  -->
+
+
+    <select id="searchDebitAndCreditList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.debitandcredit.request.SearchDebitAndCredit"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.debitandcredit.response.ConfirmingStockList">
+        SELECT
+        csi.pid,
+        csi.bussine_no AS bussineNo,
+        pp.product_no AS productNo,
+        pp.name AS proName,
+        ce.name AS companyName,
+        ces.name AS dcName,
+        csi.contract_no AS contractNo,
+        csi.contract_apply_price AS contractApplyPrice,
+        csi.contract_approval_term AS contractApprovalTerm,
+        csi.contract_state AS contractState,
+        csi.contract_dealer_time AS contractDealerTime
+        FROM confirming_stock_info csi 
+        LEFT JOIN pro_product pp ON pp.pid = csi.pro_product_id 
+        LEFT JOIN company_enterprise ce ON ce.pid = csi.company_id
+        LEFT JOIN company_enterprise ces ON ces.pid = csi.company_dealer_id
+        WHERE csi.confirm_apply_state = 4
+        <include refid="search_sign" />
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="qureyPageCount" resultType="Integer" parameterType="cn.fintecher.supply.finance.loan.manager.common.debitandcredit.request.SearchDebitAndCredit">
+        SELECT COUNT(csi.pid)
+        FROM confirming_stock_info csi
+        LEFT JOIN pro_product pp ON pp.pid = csi.pro_product_id 
+        LEFT JOIN company_enterprise ce ON ce.pid = csi.company_id
+        LEFT JOIN company_enterprise ces ON ces.pid = csi.company_dealer_id
+        WHERE csi.confirm_apply_state = 4
+        <include refid="search_sign" />
+    </select>
+
+    <select id="queryCongirmingBankInfo"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.model.BaseBankInfoEntity">
+        SELECT
+         bi.bank_open  AS bankOpen ,
+         bi.bank_branch AS bankBranch,
+         bi.account_type AS  accountType,
+         bi.account_name AS  accountName,
+         bi.bank_card AS bankCard
+        FROM base_bank_info bi
+        WHERE bi.object_id = #{ccompanyDealerId}
+         AND bi.object_type = #{objectId}
+    </select>
+
+
+    <select id="searchAllFileByOwnerId"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessFileEntity">
+        SELECT pid as pid, file_name as fileName, category as category, full_path as fullPath, path as path, `group` as
+        `group`, owner_id as ownerId, commodity_id as commodityId, create_by as createBy, create_at as createAt,
+        update_at as updateAt, update_by as updateBy, status as status, remark as remark FROM business_file bf
+        WHERE bf.owner_id = #{pid}
+
+    </select>
+
+    <select id="searchMaiginAccount"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.debitandcredit.request.SubmitDebitAndCredit">
+        SELECT
+        pid as pid,
+        bank_open as bankOpen,
+        bank_branch as bankBranch,
+        account_type as accountType,
+        account_name as accountName,
+        bank_card as bankCard,
+        account_use as currentUserName
+        FROM base_bank_info
+        WHERE
+        object_type = #{objectType} AND object_id = #{companyDealerId}
+    </select>
+    
+    <sql id="search_sign">	
+		<if test="dcName != null and dcName !=''">
+            AND ce.name like CONCAT("%",#{dcName},"%")
+        </if>
+        <if test="supName != null and supName !=''">
+            AND ces.name like CONCAT("%",#{supName},"%")
+        </if>
+        <if test="firstTime != null and firstTime !=''">
+            AND csi.contract_dealer_time >= #{firstTime}
+        </if>
+        <if test="lastTime != null and lastTime !=''">
+            AND csi.contract_dealer_time &lt;= #{lastTime}
+        </if>
+        <if test="dcStatus == '0'.toString() and dcStatus !=''">
+            AND csi.contract_state = '0'
+        </if>
+		<if test="dcStatus == '1'.toString() and dcStatus !=''">
+			AND csi.contract_state >= '1'
+		</if>
+		<if test="dcStatus == '2'.toString() and lastTime !=''">
+			AND csi.contract_state = '1'
+		</if>
+		<if test="dcStatus == '3'.toString() and lastTime !=''">
+			AND csi.contract_state >= '2'
+		</if>
+		<if test="dcStatus == '4'.toString() and lastTime !=''">
+			AND csi.contract_state = '2'
+		</if>
+		<if test="dcStatus == '5'.toString() and lastTime !=''">
+			AND csi.contract_state >= '3'
+		</if>
+	</sql>
+
+    <select id="loanConfirmingStockInfoList" resultType="cn.fintecher.supply.finance.loan.manager.common.confirming.response.ConfirmingStockInfoListResponse">
+        select t1.*,t2.name as companyName,t3.name as companyDealerName,t4.name as productName,t4.product_no as productNO from confirming_stock_info t1
+        left join company_enterprise t2 on t1.company_id = t2.pid
+        left join company_enterprise t3 on t1.company_dealer_id = t3.pid
+        left join pro_product t4 on t1.pro_product_id = t4.pid
+        <include refid="loanConfirming_page_find_where"/>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="countLoanConfirmingStockInfoList" resultType="int">
+        select count(t1.pid)from confirming_stock_info t1
+        left join company_enterprise t2 on t1.company_id = t2.pid
+        left join company_enterprise t3 on t1.company_dealer_id = t3.pid
+        left join pro_product t4 on t1.pro_product_id = t4.pid
+        <include refid="loanConfirming_page_find_where"/>
+    </select>
+
+    <sql id="loanConfirming_page_find_where">
+        <where>
+            <if test="companyName != null and companyName !='' ">
+                AND t2.name like CONCAT("%",#{companyName},"%")
+            </if>
+            <if test="companyDealerName != null and companyDealerName !='' ">
+                AND t3.name like CONCAT("%",#{companyDealerName},"%")
+            </if>
+            <if test="contractType != null and contractType !='' ">
+                AND t1.contract_type = #{contractType}
+            </if>
+            <if test="contractNo != null and contractNo !='' ">
+                AND t1.contract_no like CONCAT("%",#{contractNo},"%")
+            </if>
+            <if test="confirmDealerState != null and confirmDealerState !='' ">
+                AND t1.confirm_dealer_state = #{confirmDealerState}
+            </if>
+            <if test="confirmApplyState != null and confirmApplyState !='' ">
+                AND t1.confirm_apply_state = #{confirmApplyState}
+            </if>
+            <if test="companyDealerId !=null and companyDealerId!=''">
+                AND t1.company_dealer_id = #{companyDealerId}
+            </if>
+            <if test="companyId !=null and companyId!=''">
+                AND t1.company_id = #{companyId}
+            </if>
+            <if test="productNO !=null and productNO!=''">
+                AND t4.product_no like CONCAT("%",#{productNO},"%")
+            </if>
+            <if test="productName !=null and productName!=''">
+                AND t4.name like CONCAT("%",#{productName},"%")
+            </if>
+            <if test="bussineNo !=null and bussineNo!=''">
+                AND t1.bussine_no like CONCAT("%",#{bussineNo},"%")
+            </if>
+        </where>
+    </sql>
+
+</mapper>

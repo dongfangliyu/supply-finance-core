@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.business.dao.BusinessOrderDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity" id="orderMap">
+        <result property="pid" column="pid"/>
+        <result property="enterpriseId" column="enterprise_id"/>
+        <result property="enterpriseName" column="enterprise_name"/>
+        <result property="supplierId" column="supplier_id"/>
+        <result property="supplierName" column="supplier_name"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="certificateAmount" column="certificate_amount"/>
+        <result property="accountStartTime" column="account_start_time"/>
+        <result property="accountEndTime" column="account_end_time"/>
+        <result property="accountConfirmTime" column="account_confirm_time"/>
+        <result property="enterCategory" column="enter_category"/>
+        <result property="enterCategoryValue" column="enter_category_value"/>
+        <result property="suppCategory" column="supp_category"/>
+        <result property="suppCategoryValue" column="supp_category_value"/>
+        <result property="suppCode" column="supp_code"/>
+        <result property="state" column="state"/>
+        <result property="inviteTime" column="invite_time"/>
+        <result property="orderCode" column="order_code"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="accountNo" column="accountNo"/>
+        <result property="serviceFee" column="service_fee"/>
+        <result property="interestRate" column="interest_rate"/>
+        <result property="rebateRatio" column="rebate_ratio"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="passingTime" column="passing_time"/>
+        <result property="financingStatus" column="financing_status"/>
+        <result property="applicationAmount" column="application_amount"/>
+        <result property="applicationTerm" column="application_term"/>
+        <result property="processStatus" column="process_status"/>
+    </resultMap>
+    
+	<sql id="order_find_List">
+		pid as pid,account_confirm_time as accountConfirmTime,application_amount as applicationAmount,application_term as applicationTerm,process_status as processStatus,service_fee as serviceFee,interest_rate as interestRate,rebate_ratio as rebateRatio,submit_time as submitTime,passing_time as passingTime,financing_status as financingStatus,accountNo as accountNo,enterprise_id as enterpriseId,		enterprise_name as enterpriseName,		supplier_id as supplierId,		supplier_name as supplierName,		contract_no as contractNo,		certificate_amount as certificateAmount,		account_start_time as accountStartTime,		account_end_time as accountEndTime,		enter_category as enterCategory,		enter_category_value as enterCategoryValue,		supp_category as suppCategory,		supp_category_value as suppCategoryValue,		supp_code as suppCode,		state as state,		invite_time as inviteTime,		order_code as orderCode,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark ,interest as interest	</sql>
+	
+	<sql id="order_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="accountConfirmTime != null" >
+		      	AND account_confirm_time = #{accountConfirmTime}
+		    </if>
+			<if test="processStatus != null" >
+		      	AND process_status = #{processStatus}
+		    </if>
+			<if test="applicationTerm != null" >
+		      	AND application_term = #{applicationTerm}
+		    </if>
+			<if test="applicationAmount != null" >
+		      	AND application_amount = #{applicationAmount}
+		    </if>
+			<if test="financingStatus != null" >
+		      	AND financing_status = #{financingStatus}
+		    </if>
+			<if test="passingTime != null" >
+		      	AND passing_time = #{passingTime}
+		    </if>
+			<if test="submitTime != null" >
+		      	AND submit_time = #{submitTime}
+		    </if>
+			<if test="rebateRatio != null" >
+		      	AND rebate_ratio = #{rebateRatio}
+		    </if>
+			<if test="interestRate != null" >
+		      	AND interest_rate = #{interestRate}
+		    </if>
+			<if test="serviceFee != null" >
+		      	AND service_fee = #{serviceFee}
+		    </if>
+			<if test="accountNo != null" >
+		      	AND accountNo = #{accountNo}
+		    </if>
+			<if test="enterpriseId != null" >
+		      	AND enterprise_id = #{enterpriseId}
+		    </if>
+			<if test="enterpriseName != null" >
+		      	AND enterprise_name = #{enterpriseName}
+		    </if>
+			<if test="supplierId != null" >
+		      	AND supplier_id = #{supplierId}
+		    </if>
+			<if test="supplierName != null" >
+		      	AND supplier_name = #{supplierName}
+		    </if>
+			<if test="contractNo != null" >
+		      	AND contract_no = #{contractNo}
+		    </if>
+			<if test="certificateAmount != null" >
+		      	AND certificate_amount = #{certificateAmount}
+		    </if>
+			<if test="accountStartTime != null" >
+		      	AND account_start_time = #{accountStartTime}
+		    </if>
+			<if test="accountEndTime != null" >
+		      	AND account_end_time = #{accountEndTime}
+		    </if>
+			<if test="enterCategory != null" >
+		      	AND enter_category = #{enterCategory}
+		    </if>
+			<if test="enterCategoryValue != null" >
+		      	AND enter_category_value = #{enterCategoryValue}
+		    </if>
+			<if test="suppCategory != null" >
+		      	AND supp_category = #{suppCategory}
+		    </if>
+			<if test="suppCategoryValue != null" >
+		      	AND supp_category_value = #{suppCategoryValue}
+		    </if>
+			<if test="suppCode != null" >
+		      	AND supp_code = #{suppCode}
+		    </if>
+			<if test="state != null" >
+		      	AND state = #{state}
+		    </if>
+			<if test="inviteTime != null" >
+		      	AND invite_time = #{inviteTime}
+		    </if>
+			<if test="orderCode != null" >
+		      	AND order_code = #{orderCode}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	<insert id="insertOrder" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into business_order (pid,account_confirm_time,service_fee,interest_rate,rebate_ratio,submit_time,passing_time,financing_status,application_amount,application_term,process_status,accountNo,enterprise_id,enterprise_name,supplier_id,supplier_name,contract_no,certificate_amount,account_start_time,account_end_time,enter_category,enter_category_value,supp_category,supp_category_value,supp_code,state,invite_time,order_code,create_by,create_at,update_at,update_by,status,remark,interest)
+	    values (#{pid},#{accountConfirmTime},#{serviceFee},#{interestRate},#{rebateRatio},#{submitTime},#{passingTime},#{financingStatus},#{applicationAmount},#{applicationTerm},#{processStatus},#{accountNo},#{enterpriseId},#{enterpriseName},#{supplierId},#{supplierName},#{contractNo},#{certificateAmount},#{accountStartTime},#{accountEndTime},#{enterCategory},#{enterCategoryValue},#{suppCategory},#{suppCategoryValue},#{suppCode},#{state},#{inviteTime},#{orderCode},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark},#{interest})
+	</insert>
+	
+	<select id="selectByOrder" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity">
+	  	select
+	    	<include refid="order_find_List" />
+	    from business_order
+	    	<include refid="order_find_where" />
+	 </select>
+	 
+	 <select id="queryOrderByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity">
+	  	select
+	    	<include refid="order_find_List" />
+	    from business_order where pid = #{pid}
+	 </select>
+	 
+	<update id="updateOrder" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity" >
+    	update business_order
+	    	<set >
+		    	<if test="processStatus != null" >
+			      	 process_status = #{processStatus},
+			    </if>
+			    <if test="accountConfirmTime != null" >
+			      	 account_confirm_time = #{accountConfirmTime},
+			    </if>
+				<if test="applicationTerm != null" >
+			      	 application_term = #{applicationTerm},
+			    </if>
+				<if test="applicationAmount != null" >
+			      	 application_amount = #{applicationAmount},
+			    </if>
+				<if test="financingStatus != null" >
+			      	 financing_status = #{financingStatus},
+			    </if>
+				<if test="passingTime != null" >
+			      	 passing_time = #{passingTime},
+			    </if>
+				<if test="submitTime != null" >
+			      	 submit_time = #{submitTime},
+			    </if>
+				<if test="rebateRatio != null" >
+			      	 rebate_ratio = #{rebateRatio},
+			    </if>
+				<if test="interestRate != null" >
+			      	 interest_rate = #{interestRate},
+			    </if>
+				<if test="serviceFee != null" >
+			      	 service_fee = #{serviceFee},
+			    </if>
+				<if test="enterpriseId != null" >
+			      	 enterprise_id = #{enterpriseId},
+			    </if>
+				<if test="accountNo != null" >
+			      	 accountNo = #{accountNo},
+			    </if>
+				<if test="enterpriseName != null" >
+			      	 enterprise_name = #{enterpriseName},
+			    </if>
+				<if test="supplierId != null" >
+			      	 supplier_id = #{supplierId},
+			    </if>
+				<if test="supplierName != null" >
+			      	 supplier_name = #{supplierName},
+			    </if>
+				<if test="contractNo != null" >
+			      	 contract_no = #{contractNo},
+			    </if>
+				<if test="certificateAmount != null" >
+			      	 certificate_amount = #{certificateAmount},
+			    </if>
+				<if test="accountStartTime != null" >
+			      	 account_start_time = #{accountStartTime},
+			    </if>
+				<if test="accountEndTime != null" >
+			      	 account_end_time = #{accountEndTime},
+			    </if>
+				<if test="enterCategory != null" >
+			      	 enter_category = #{enterCategory},
+			    </if>
+				<if test="enterCategoryValue != null" >
+			      	 enter_category_value = #{enterCategoryValue},
+			    </if>
+				<if test="suppCategory != null" >
+			      	 supp_category = #{suppCategory},
+			    </if>
+				<if test="suppCategoryValue != null" >
+			      	 supp_category_value = #{suppCategoryValue},
+			    </if>
+				<if test="suppCode != null" >
+			      	 supp_code = #{suppCode},
+			    </if>
+				<if test="state != null" >
+			      	 state = #{state},
+			    </if>
+				<if test="inviteTime != null" >
+			      	 invite_time = #{inviteTime},
+			    </if>
+				<if test="orderCode != null" >
+			      	 order_code = #{orderCode},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+				<if test="interest != null" >
+					interest = #{interest}
+				</if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+	<sql id="order_page_find_where">
+		<where>
+			<if test="enterpriseName != null and enterpriseName !='' " >
+				AND enterprise_name like CONCAT("%",#{enterpriseName},"%")
+			</if>
+			<if test="state != null and state !='' " >
+				AND state = #{state}
+			</if>
+			<if test="accountStartTime != null and accountStartTime !='' " >
+				AND account_end_time >= #{accountStartTime}
+			</if>
+			<if test="accountEndTime != null and accountEndTime !='' " >
+				AND account_end_time &lt;= #{accountEndTime}
+			</if>
+			<if test="certificateCategory != null and certificateCategory !='' " >
+				AND enter_category = #{certificateCategory}
+			</if>
+			<if test="contractNo != null and contractNo !='' " >
+				AND contract_no like CONCAT("%",#{contractNo},"%")
+			</if>
+			<if test="supplierId != null and supplierId !='' " >
+				AND supplier_id = #{supplierId}
+			</if>
+			<if test="status != null and status !='' " >
+				AND status = #{status}
+			</if>
+	    </where>
+	 </sql>
+	<select id="queryPageCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.request.BusinessOrderFrom"
+			resultType="int">
+		select count(*) from business_order
+		<include refid="order_page_find_where" />
+	</select>
+	<select id="queryPageList" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.request.BusinessOrderFrom"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity">
+		select <include refid="order_find_List" /> from business_order
+		<include refid="order_page_find_where" />
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="queryFinancingPageList" resultType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity">
+		select <include refid="order_find_List" /> from business_order
+		<include refid="financing_page_find_where" />
+		order by financing_status ASC , submit_time ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="queryFinancingPageCount" resultType="int">
+		select count(*) from business_order
+		<include refid="financing_page_find_where" />
+	</select>
+
+	<sql id="financing_page_find_where">
+		<where>
+			supplier_id = #{currentCompanyId} AND state = '1' AND status = 'NOL'
+			<if test="enterpriseName != null and enterpriseName !='' " >
+				AND enterprise_name like CONCAT("%",#{enterpriseName},"%")
+			</if>
+			<if test="financingStatus != null and financingStatus !='' " >
+				AND financing_status = #{financingStatus}
+			</if>
+			<if test="accountStartTime != null and accountStartTime !='' " >
+				AND account_end_time >= #{accountStartTime}
+			</if>
+			<if test="accountEndTime != null and accountEndTime !='' " >
+				AND account_end_time &lt;= #{accountEndTime}
+			</if>
+			<if test="certificateCategory != null and certificateCategory !='' " >
+				AND enter_category = #{certificateCategory}
+			</if>
+			<if test="contractNo != null and contractNo !='' " >
+				AND contract_no like CONCAT("%",#{contractNo},"%")
+			</if>
+		</where>
+	</sql>
+
+	<select id="searchBusinessOrederByOwnerId" resultType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessOrderEntity">
+		select
+		<include refid="order_find_List" />
+		from business_order where enterprise_id = #{ownerId}
+	</select>
+
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysRoleDeptDao">
+
+	<resultMap id="RM_SysRoleDept" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysRoleDept">
+        <result property="id" column="id"/>
+        <result property="roleId" column="role_id"/>
+        <result property="deptId" column="dept_id"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,role_id,dept_id
+	    ]]>
+	</sql>
+
+	<update id="update" >
+    <![CDATA[
+        UPDATE sys_role_dept SET
+	        role_id = #{roleId} ,
+	        dept_id = #{deptId} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    
+    <select id="getById" resultMap="RM_SysRoleDept">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM sys_role_dept 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="id != null and id != ''">
+				AND id = #{id}
+			</if>
+	       <if test="roleId != null and roleId != ''">
+				AND role_id = #{roleId}
+			</if>
+	       <if test="deptId != null and deptId != ''">
+				AND dept_id = #{deptId}
+			</if>
+		</where>
+	</sql>
+
+	<delete id="delete">
+		delete from sys_role_dept where role_id = #{id}
+	</delete>
+
+	<insert id="save">
+		insert into sys_role_dept
+		(
+		`role_id`,
+		`dept_id`
+		)
+		values
+		<foreach collection="deptIdList" item="item" index="index" separator="," >
+			(
+			#{roleId},
+			#{item}
+			)
+		</foreach>
+	</insert>
+	
+</mapper>
+

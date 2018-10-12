@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.business.dao.BusinessReceivableDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity" id="orderMap">
+        <result property="pid" column="pid"/>
+        <result property="enterpriseId" column="enterprise_id"/>
+        <result property="enterpriseName" column="enterprise_name"/>
+        <result property="supplierId" column="supplier_id"/>
+        <result property="supplierName" column="supplier_name"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="certificateAmount" column="certificate_amount"/>
+        <result property="accountStartTime" column="account_start_time"/>
+        <result property="accountEndTime" column="account_end_time"/>
+        <result property="certificateCategory" column="certificate_category"/>
+        <result property="certificateCategoryValue" column="certificate_category_value"/>
+        <result property="state" column="state"/>
+        <result property="inviteTime" column="invite_time"/>
+        <result property="orderCode" column="order_code"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="accountNo" column="accountNo"/>
+        <result property="serviceFee" column="service_fee"/>
+        <result property="interestRate" column="interest_rate"/>
+        <result property="rebateRatio" column="rebate_ratio"/>
+    </resultMap>
+    
+	<sql id="receivable_find_List">
+		pid as pid,service_fee as serviceFee,interest_rate as interestRate,rebate_ratio as rebateRatio,accountNo as accountNo,	enterprise_id as enterpriseId,		enterprise_name as enterpriseName,		supplier_id as supplierId,		supplier_name as supplierName,		contract_no as contractNo,		certificate_amount as certificateAmount,		account_start_time as accountStartTime,		account_end_time as accountEndTime,		certificate_category as certificateCategory,		certificate_category_value as certificateCategoryValue,		state as state,		invite_time as inviteTime,		order_code as orderCode,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="receivable_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="serviceFee != null" >
+		      	AND service_fee = #{serviceFee}
+		    </if>
+			<if test="interestRate != null" >
+		      	AND interest_rate = #{interestRate}
+		    </if>
+			<if test="rebateRatio != null" >
+		      	AND rebate_ratio = #{rebateRatio}
+		    </if>
+			<if test="accountNo != null" >
+		      	AND accountNo = #{accountNo}
+		    </if>
+			<if test="enterpriseId != null" >
+		      	AND enterprise_id = #{enterpriseId}
+		    </if>
+			<if test="enterpriseName != null" >
+		      	AND enterprise_name = #{enterpriseName}
+		    </if>
+			<if test="supplierId != null" >
+		      	AND supplier_id = #{supplierId}
+		    </if>
+			<if test="supplierName != null" >
+		      	AND supplier_name = #{supplierName}
+		    </if>
+			<if test="contractNo != null" >
+		      	AND contract_no = #{contractNo}
+		    </if>
+			<if test="certificateAmount != null" >
+		      	AND certificate_amount = #{certificateAmount}
+		    </if>
+			<if test="accountStartTime != null" >
+		      	AND account_start_time = #{accountStartTime}
+		    </if>
+			<if test="accountEndTime != null" >
+		      	AND account_end_time = #{accountEndTime}
+		    </if>
+			<if test="certificateCategory != null" >
+		      	AND certificate_category = #{certificateCategory}
+		    </if>
+			<if test="certificateCategoryValue != null" >
+		      	AND certificate_category_value = #{certificateCategoryValue}
+		    </if>
+			<if test="state != null" >
+		      	AND state = #{state}
+		    </if>
+			<if test="inviteTime != null" >
+		      	AND invite_time = #{inviteTime}
+		    </if>
+			<if test="orderCode != null" >
+		      	AND order_code = #{orderCode}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertReceivable" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into business_receivable (pid,service_fee,interest_rate,rebate_ratio,accountNo,enterprise_id,enterprise_name,supplier_id,supplier_name,contract_no,certificate_amount,account_start_time,account_end_time,certificate_category,certificate_category_value,state,invite_time,order_code,create_by,create_at,update_at,update_by,status,remark)
+	    values (#{pid},#{serviceFee},#{interestRate},#{rebateRatio},#{accountNo},#{enterpriseId},#{enterpriseName},#{supplierId},#{supplierName},#{contractNo},#{certificateAmount},#{accountStartTime},#{accountEndTime},#{certificateCategory},#{certificateCategoryValue},#{state},#{inviteTime},#{orderCode},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByReceivable" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity">
+	  	select
+	    	<include refid="receivable_find_List" />
+	    from business_receivable
+	    	<include refid="receivable_find_where" />
+	 </select>
+	 
+	 <select id="queryReceivableByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity">
+	  	select
+	    	<include refid="receivable_find_List" />
+	    from business_receivable where pid = #{pid} and `status` = 'NOL'
+	 </select>
+	 
+	<update id="updateReceivable" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity" >
+    	update business_receivable
+	    	<set >
+				<if test="enterpriseId != null" >
+			      	 enterprise_id = #{enterpriseId},
+			    </if>
+				<if test="serviceFee != null" >
+			      	 service_fee = #{serviceFee},
+			    </if>
+				<if test="interestRate != null" >
+			      	 interest_rate = #{interestRate},
+			    </if>
+				<if test="rebateRatio != null" >
+			      	 rebate_ratio = #{rebateRatio},
+			    </if>
+				<if test="accountNo != null" >
+			      	 accountNo = #{accountNo},
+			    </if>
+				<if test="enterpriseName != null" >
+			      	 enterprise_name = #{enterpriseName},
+			    </if>
+				<if test="supplierId != null" >
+			      	 supplier_id = #{supplierId},
+			    </if>
+				<if test="supplierName != null" >
+			      	 supplier_name = #{supplierName},
+			    </if>
+				<if test="contractNo != null" >
+			      	 contract_no = #{contractNo},
+			    </if>
+				<if test="certificateAmount != null" >
+			      	 certificate_amount = #{certificateAmount},
+			    </if>
+				<if test="accountStartTime != null" >
+			      	 account_start_time = #{accountStartTime},
+			    </if>
+				<if test="accountEndTime != null" >
+			      	 account_end_time = #{accountEndTime},
+			    </if>
+				<if test="certificateCategory != null" >
+			      	 certificate_category = #{certificateCategory},
+			    </if>
+				<if test="certificateCategoryValue != null" >
+			      	 certificate_category_value = #{certificateCategoryValue},
+			    </if>
+				<if test="state != null" >
+			      	 state = #{state},
+			    </if>
+				<if test="inviteTime != null" >
+			      	 invite_time = #{inviteTime},
+			    </if>
+				<if test="orderCode != null" >
+			      	 order_code = #{orderCode},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+	<sql id="receivable_page_find_where">
+		<where>
+			<if test="supplierName != null and supplierName != '' " >
+				AND supplier_name like CONCAT("%",#{supplierName},"%")
+			</if>
+			<if test="state != null and state != '' " >
+				AND state = #{state}
+			</if>
+			<if test="accountStartTime != null and accountStartTime != '' " >
+				AND account_end_time >= #{accountStartTime}
+			</if>
+			<if test="accountEndTime != null and accountEndTime != '' " >
+				AND account_end_time &lt;= #{accountEndTime}
+			</if>
+			<if test="certificateCategory != null and certificateCategory != '' " >
+				AND certificate_category = #{certificateCategory}
+			</if>
+			<if test="contractNo != null and contractNo != '' " >
+				AND contract_no like CONCAT("%",#{contractNo},"%")
+			</if>
+			<if test="enterpriseId != null and enterpriseId != '' " >
+				AND enterprise_id = #{enterpriseId}
+			</if>
+			<if test="status != null and status != '' " >
+				AND status = #{status}
+			</if>
+	    </where>
+	 </sql>
+	<select id="queryPageCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.request.BusinessReceivableFrom"
+			resultType="int">
+		select count(*) from business_receivable
+		<include refid="receivable_page_find_where" />
+	</select>
+	<select id="queryPageList" parameterType="cn.fintecher.supply.finance.loan.manager.common.business.request.BusinessReceivableFrom"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.business.entity.BusinessReceivableEntity">
+		select <include refid="receivable_find_List" /> from business_receivable
+		<include refid="receivable_page_find_where" />
+		order by update_at DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="queryNewAccountNo" resultType="java.lang.String">
+		select accountNo from business_receivable where to_days(create_at) = to_days(now()) ORDER BY create_at DESC LIMIT 0,1
+	</select>
+
+</mapper>

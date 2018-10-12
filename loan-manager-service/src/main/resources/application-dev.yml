@@ -1,0 +1,77 @@
+server:
+  contextPath: /
+  port: 8082
+
+spring:
+  output:
+    ansi:
+      enabled: never
+
+  rabbitmq:
+    host: 10.10.1.71
+    port: 5672
+    username: xxx
+    password: xxx
+    virtual-host: /xxx
+    listener:
+      concurrency: 4
+      max-concurrency: 4
+      retry:
+       enabled: true
+
+  redis:
+    ##redisIP
+    host: 127.0.0.1
+    ##新加的
+    password: xcarloan123
+    port: 6379
+    #连接超时时间3秒
+    timeout: 3000
+    pool:
+      max-idle: 8
+      max-wait: -1
+      min-idle: 0
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            ##设置连接超时时间 10秒
+            timeoutInMilliseconds: 180000
+cn:
+  fintecher:
+    organize:
+      core:
+        url: http://localhost:8087
+
+loan:
+  manager:
+    core:
+      url: http://localhost:8081
+    service:
+      url: http://localhost:8082
+
+file:
+  service:
+    url: http://172.16.10.206:9091
+
+
+authorization:
+  service:
+      url: http://172.16.10.114:8090/authorization-services
+
+remoteTokenServices:
+  clientId: my-trusted-client-with-secret
+  clientSecret: somesecret
+  checkTokenEndpointUrl: http://172.16.10.114:8090/authorization-service/oauth/check_token
+  tokenEndpointUrl: http://172.16.10.114:8090/authorization-service/oauth/token
+  revokeTokenUrl: http://172.16.10.114:8090/authorization-service/oauth/revoke_token
+
+       #注册中心配置
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://localhost:8090/eureka

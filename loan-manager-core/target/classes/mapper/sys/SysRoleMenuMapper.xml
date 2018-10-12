@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysRoleMenuDao">
+
+	<resultMap id="RM_SysRoleMenu" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysRoleMenu">
+        <result property="id" column="id"/>
+        <result property="roleId" column="role_id"/>
+        <result property="menuId" column="menu_id"/>
+        <result property="userId" column="user_id"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,role_id,menu_id,user_id
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO sys_role_menu (
+        	id ,
+        	role_id ,
+        	menu_id ,
+        	user_id 
+        ) VALUES (
+        	#{id} ,
+        	#{roleId} ,
+        	#{menuId} ,
+        	#{userId} 
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="update" >
+    <![CDATA[
+        UPDATE sys_role_menu SET
+	        role_id = #{roleId} ,
+	        menu_id = #{menuId} ,
+	        user_id = #{userId} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    <select id="getById" resultMap="RM_SysRoleMenu">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM sys_role_menu 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="id != null and id != ''">
+				AND id = #{id}
+			</if>
+	       <if test="roleId != null and roleId != ''">
+				AND role_id = #{roleId}
+			</if>
+	       <if test="menuId != null and menuId != ''">
+				AND menu_id = #{menuId}
+			</if>
+	       <if test="userId != null and userId != ''">
+				AND user_id = #{userId}
+			</if>
+		</where>
+	</sql>
+
+	<delete id="delete">
+		delete from sys_role_menu where role_id = #{roleId}
+	</delete>
+
+	<insert id="save">
+		insert into sys_role_menu
+		(
+		`role_id`,
+		`menu_id`,
+		`user_id`
+		)
+		values
+		<foreach collection="menuIdList" item="item" index="index" separator="," >
+			(
+			#{roleId},
+			#{item},
+			#{userId}
+			)
+		</foreach>
+	</insert>
+
+	<select id="queryMenuIdList" resultType="int">
+		select menu_id from sys_role_menu where role_id = #{roleId}
+	</select>
+
+</mapper>
+

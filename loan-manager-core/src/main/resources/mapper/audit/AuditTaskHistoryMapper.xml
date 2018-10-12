@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditTaskHistoryDao">
+
+     <resultMap type="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskHistoryEntity" id="taskHistoryMap">
+        <result property="pid" column="pid"/>
+        <result property="node" column="node"/>
+        <result property="approvalTime" column="approval_time"/>
+        <result property="result" column="result"/>
+        <result property="resultStatus" column="result_status"/>
+        <result property="applicationAmount" column="application_amount"/>
+        <result property="guarantee" column="guarantee"/>
+        <result property="applicationTerm" column="application_term"/>
+        <result property="approvalMan" column="approval_man"/>
+        <result property="orderId" column="order_id"/>
+        <result property="content" column="content"/>
+        <result property="productType" column="product_type"/>
+        <result property="productNo" column="product_no"/>
+        <result property="contractApplyPrice" column="contract_apply_price"/>
+        <result property="contractApplyPledgeRate" column="contract_apply_pledge_rate"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="type" column="type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="taskHistory_find_List">
+		pid as pid,		node as node,		approval_time as approvalTime,		result as result,		result_status as resultStatus,		application_amount as applicationAmount,		guarantee as guarantee,		application_term as applicationTerm,		approval_man as approvalMan,		order_id as orderId,		content as content,		product_type as productType,		product_no as productNo,		contract_apply_price as contractApplyPrice,		contract_apply_pledge_rate as contractApplyPledgeRate,		contract_no as contractNo,		type as type,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="taskHistory_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="node != null" >
+		      	AND node = #{node}
+		    </if>
+			<if test="approvalTime != null" >
+		      	AND approval_time = #{approvalTime}
+		    </if>
+			<if test="result != null" >
+		      	AND result = #{result}
+		    </if>
+			<if test="resultStatus != null" >
+		      	AND result_status = #{resultStatus}
+		    </if>
+			<if test="applicationAmount != null" >
+		      	AND application_amount = #{applicationAmount}
+		    </if>
+			<if test="guarantee != null" >
+		      	AND guarantee = #{guarantee}
+		    </if>
+			<if test="applicationTerm != null" >
+		      	AND application_term = #{applicationTerm}
+		    </if>
+			<if test="approvalMan != null" >
+		      	AND approval_man = #{approvalMan}
+		    </if>
+			<if test="orderId != null" >
+		      	AND order_id = #{orderId}
+		    </if>
+			<if test="content != null" >
+		      	AND content = #{content}
+		    </if>
+			<if test="productType != null" >
+		      	AND product_type = #{productType}
+		    </if>
+			<if test="productNo != null" >
+		      	AND product_no = #{productNo}
+		    </if>
+			<if test="contractApplyPrice != null" >
+		      	AND contract_apply_price = #{contractApplyPrice}
+		    </if>
+			<if test="contractApplyPledgeRate != null" >
+		      	AND contract_apply_pledge_rate = #{contractApplyPledgeRate}
+		    </if>
+			<if test="contractNo != null" >
+		      	AND contract_no = #{contractNo}
+		    </if>
+			<if test="type != null" >
+		      	AND type = #{type}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertTaskHistory" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskHistoryEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into audit_task_history (pid,node,approval_time,result,result_status,application_amount,guarantee,application_term,approval_man,order_id,content,product_type,product_no,contract_apply_price,contract_apply_pledge_rate,contract_no,type,create_by,create_at,update_at,update_by,status,remark)
+	    values (#{pid},#{node},#{approvalTime},#{result},#{resultStatus},#{applicationAmount},#{guarantee},#{applicationTerm},#{approvalMan},#{orderId},#{content},#{productType},#{productNo},#{contractApplyPrice},#{contractApplyPledgeRate},#{contractNo},#{type},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByTaskHistory" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskHistoryEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskHistoryEntity">
+	  	select
+	    	<include refid="taskHistory_find_List" />
+	    from audit_task_history
+	    	<include refid="taskHistory_find_where" />
+		order by pid desc
+	 </select>
+	 
+	 <select id="queryTaskHistoryByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskHistoryEntity">
+	  	select
+	    	<include refid="taskHistory_find_List" />
+	    from audit_task_history where pid = #{pid}
+	 </select>
+	 
+	<update id="updateTaskHistory" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditTaskHistoryEntity" >
+    	update audit_task_history
+	    	<set >
+				<if test="node != null" >
+			      	 node = #{node},
+			    </if>
+				<if test="approvalTime != null" >
+			      	 approval_time = #{approvalTime},
+			    </if>
+				<if test="result != null" >
+			      	 result = #{result},
+			    </if>
+				<if test="resultStatus != null" >
+			      	 result_status = #{resultStatus},
+			    </if>
+				<if test="applicationAmount != null" >
+			      	 application_amount = #{applicationAmount},
+			    </if>
+				<if test="guarantee != null" >
+			      	 guarantee = #{guarantee},
+			    </if>
+				<if test="applicationTerm != null" >
+			      	 application_term = #{applicationTerm},
+			    </if>
+				<if test="approvalMan != null" >
+			      	 approval_man = #{approvalMan},
+			    </if>
+				<if test="orderId != null" >
+			      	 order_id = #{orderId},
+			    </if>
+				<if test="content != null" >
+			      	 content = #{content},
+			    </if>
+				<if test="productType != null" >
+			      	 product_type = #{productType},
+			    </if>
+				<if test="productNo != null" >
+			      	 product_no = #{productNo},
+			    </if>
+				<if test="contractApplyPrice != null" >
+			      	 contract_apply_price = #{contractApplyPrice},
+			    </if>
+				<if test="contractApplyPledgeRate != null" >
+			      	 contract_apply_pledge_rate = #{contractApplyPledgeRate},
+			    </if>
+				<if test="contractNo != null" >
+			      	 contract_no = #{contractNo},
+			    </if>
+				<if test="type != null" >
+			      	 type = #{type},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	
+<!--  ******************以上为自动生成sql语句 ******************  -->
+
+</mapper>

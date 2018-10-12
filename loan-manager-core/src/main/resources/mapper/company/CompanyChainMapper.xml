@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.company.dao.CompanyChainDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity" id="chainMap">
+        <result property="pid" column="pid"/>
+        <result property="companyName" column="company_name"/>
+        <result property="linkMan" column="link_man"/>
+        <result property="mobile" column="mobile"/>
+        <result property="email" column="email"/>
+        <result property="state" column="state"/>
+        <result property="type" column="type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="owerId" column="ower_id"/>
+		<result property="applyState" column="apply_state"/>
+    </resultMap>
+    
+	<sql id="chain_find_List">
+		pid as pid,	ower_id as owerId,	company_name as companyName,		link_man as linkMan,		mobile as mobile,		email as email,		state as state,		type as type,		create_by as createBy,		create_at as createAt,		update_by as updateBy,		update_at as updateAt,		status as status,		remark as remark, apply_state as applyState</sql>
+	
+	<sql id="chain_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="owerId != null" >
+		      	AND ower_id = #{owerId}
+		    </if>
+			<if test="companyName != null" >
+		      	AND company_name = #{companyName}
+		    </if>
+			<if test="linkMan != null" >
+		      	AND link_man = #{linkMan}
+		    </if>
+			<if test="mobile != null" >
+		      	AND mobile = #{mobile}
+		    </if>
+			<if test="email != null" >
+		      	AND email = #{email}
+		    </if>
+			<if test="state != null" >
+		      	AND state = #{state}
+		    </if>
+			<if test="type != null" >
+		      	AND type = #{type}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+			<if test="applyState != null" >
+				AND apply_state = #{applyState}
+			</if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertChain" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into company_chain (pid,ower_id,company_name,link_man,mobile,email,state,type,create_by,create_at,update_by,update_at,status,remark,apply_state)
+	    values (#{pid},#{owerId},#{companyName},#{linkMan},#{mobile},#{email},#{state},#{type},#{createBy},#{createAt},#{updateBy},#{updateAt},#{status},#{remark},#{applyState})
+	</insert>
+	
+	<select id="selectByChain" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity">
+	  	select
+	    	<include refid="chain_find_List" />
+	    from company_chain
+	    	<include refid="chain_find_where" />
+	 </select>
+	 
+	 <select id="queryChainByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity">
+	  	select
+	    	<include refid="chain_find_List" />
+	    from company_chain where pid = #{pid} and status = 'NOL'
+	 </select>
+	 
+	<update id="updateChain" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity" >
+    	update company_chain
+	    	<set >
+				<if test="companyName != null" >
+			      	 company_name = #{companyName},
+			    </if>
+				<if test="linkMan != null" >
+			      	 link_man = #{linkMan},
+			    </if>
+				<if test="mobile != null" >
+			      	 mobile = #{mobile},
+			    </if>
+				<if test="email != null" >
+			      	 email = #{email},
+			    </if>
+				<if test="state != null" >
+			      	 state = #{state},
+			    </if>
+				<if test="type != null" >
+			      	 type = #{type},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="applyState != null" >
+					apply_state = #{applyState},
+				</if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	<sql id="chain_page_find_where">
+		<where>
+			<if test="companyName != null and companyName != ''" >
+				AND company_name like CONCAT("%",#{companyName},"%")
+			</if>
+			<if test="state != null and state != ''" >
+				AND state = #{state}
+			</if>
+			<if test="timeStart != null and timeStart != ''" >
+				AND create_at >= #{timeStart}
+			</if>
+			<if test="timeEnd != null and timeEnd != ''" >
+				AND create_at &lt;= #{timeEnd}
+			</if>
+			<if test="owerId != null and owerId != ''" >
+				AND ower_id = #{owerId}
+			</if>
+			<if test="status != null and status != ''" >
+				AND status = #{status}
+			</if>
+			<if test="type != null and type != ''" >
+				AND type = #{type}
+			</if>
+
+	    </where>
+	 </sql>
+
+	<select id="queryPageCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.CompanyChainFrom"
+			resultType="int">
+		select count(*) from company_chain
+		<include refid="chain_page_find_where" />
+	</select>
+
+	<select id="queryPageList" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.CompanyChainFrom"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity">
+		select <include refid="chain_find_List" /> from company_chain
+		<include refid="chain_page_find_where" />
+
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="searchDownLoadList" parameterType="cn.fintecher.supply.finance.loan.manager.common.company.request.CompanyChainFrom"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity">
+		select <include refid="chain_find_List" /> from company_chain
+		<include refid="chain_page_find_where" />
+		
+	</select>
+
+	<select id="getByCompanyName" resultType="cn.fintecher.supply.finance.loan.manager.common.company.entity.CompanyChainEntity">
+		select * from company_chain where company_name = #{companyName} LIMIT 1
+	</select>
+
+</mapper>

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.commodity.dao.CommodityStockInfoDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity" id="stockInfoMap">
+        <result property="pid" column="pid"/>
+        <result property="companyId" column="company_id"/>
+        <result property="applyNumber" column="apply_number"/>
+        <result property="supplierName" column="supplier_name"/>
+        <result property="productBrand" column="product_brand"/>
+        <result property="productType" column="product_type"/>
+        <result property="productNumber" column="product_number"/>
+        <result property="productUnit" column="product_unit"/>
+        <result property="unitPrice" column="unit_price"/>
+        <result property="totalPrice" column="total_price"/>
+        <result property="productAddressProvince" column="product_address_province"/>
+        <result property="productAddressCity" column="product_address_city"/>
+        <result property="productModel" column="product_model"/>
+        <result property="productGrade" column="product_grade"/>
+        <result property="productStandard" column="product_standard"/>
+        <result property="productSize" column="product_size"/>
+        <result property="effectiveStartTime" column="effective_start_time"/>
+        <result property="effectiveEndTime" column="effective_end_time"/>
+        <result property="productionDate" column="production_date"/>
+        <result property="applyStockTime" column="apply_stock_time"/>
+        <result property="state" column="state"/>
+        <result property="actualStockDate" column="actual_stock_date"/>
+        <result property="productColour" column="product_colour"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+		<!--<collection property="pledgeStockInfoEntity" javaType="cn.fintecher.supply.finance.loan.manager.common.pledge.entity.PledgeStockInfoEntity">-->
+			<!--<result property="pid" column="pid"/>-->
+			<!--<result property="commodityId" column="commodity_id"/>-->
+			<!--<result property="pledgeApplyState" column="pledge_apply_state"/>-->
+			<!--<result property="pledgeApplyTime" column="pledge_apply_time"/>-->
+			<!--<result property="pledgeNoPassTime" column="pledge_no_pass_time"/>-->
+			<!--<result property="pledgeFinanceAmount" column="pledge_finance_amount"/>-->
+			<!--<result property="pledgeTerm" column="pledge_term"/>-->
+			<!--<result property="pledgeEarmarking" column="pledge_earmarking"/>-->
+			<!--<result property="contractApplyState" column="contract_apply_state"/>-->
+			<!--<result property="contractApplyTime" column="contract_apply_time"/>-->
+			<!--<result property="contractApplyPledgeRate" column="contract_apply_pledge_rate"/>-->
+			<!--<result property="contractApplyTerm" column="contract_apply_term"/>-->
+			<!--<result property="contractApplyAmount" column="contract_apply_amount"/>-->
+			<!--<result property="contractApplyPrice" column="contract_apply_price"/>-->
+			<!--<result property="contractApplyServiceFee" column="contract_apply_service_fee"/>-->
+			<!--<result property="contractApplyInterest" column="contract_apply_interest"/>-->
+			<!--<result property="contractApproveTerm" column="contract_approve_term"/>-->
+			<!--<result property="contractElectronics" column="contract_electronics"/>-->
+			<!--<result property="contractApproveAmount" column="contract_approve_amount"/>-->
+			<!--<result property="proRoductId" column="pro_roduct_id"/>-->
+			<!--<result property="proContractId" column="pro_contract_id"/>-->
+			<!--<result property="loanState" column="loan_state"/>-->
+			<!--<result property="loanTime" column="loan_time"/>-->
+			<!--<result property="loanStartTime" column="loan_start_time"/>-->
+			<!--<result property="loanEndTime" column="loan_end_time"/>-->
+			<!--<result property="releasePledge" column="release_pledge"/>-->
+			<!--<result property="releaseTime" column="release_time"/>-->
+			<!--<result property="releaseApplTime" column="release_appl_time"/>-->
+			<!--<result property="createBy" column="create_by"/>-->
+			<!--<result property="createAt" column="create_at"/>-->
+			<!--<result property="updateAt" column="update_at"/>-->
+			<!--<result property="updateBy" column="update_by"/>-->
+			<!--<result property="status" column="status"/>-->
+			<!--<result property="remark" column="remark"/>-->
+			<!--<result property="financeState" column="finance_state"/>-->
+		<!--</collection>-->
+    </resultMap>
+    
+	<sql id="stockInfo_find_List">
+		pid as pid,		company_id as companyId,		apply_number as applyNumber,		supplier_name as supplierName,		product_brand as productBrand,		product_type as productType,		product_number as productNumber,		product_unit as productUnit,		unit_price as unitPrice,		total_price as totalPrice,		product_address_province as productAddressProvince,		product_address_city as productAddressCity,		product_model as productModel,		product_grade as productGrade,		product_standard as productStandard,		product_size as productSize,		effective_start_time as effectiveStartTime,		effective_end_time as effectiveEndTime,		production_date as productionDate,		apply_stock_time as applyStockTime,		state as state,		actual_stock_date as actualStockDate,		product_colour as productColour,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark	</sql>
+	
+	<sql id="stockInfo_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="companyId != null" >
+		      	AND company_id = #{companyId}
+		    </if>
+			<if test="applyNumber != null" >
+		      	AND apply_number = #{applyNumber}
+		    </if>
+			<if test="supplierName != null" >
+		      	AND supplier_name = #{supplierName}
+		    </if>
+			<if test="productBrand != null" >
+		      	AND product_brand = #{productBrand}
+		    </if>
+			<if test="productType != null" >
+		      	AND product_type = #{productType}
+		    </if>
+			<if test="productNumber != null" >
+		      	AND product_number = #{productNumber}
+		    </if>
+			<if test="productUnit != null" >
+		      	AND product_unit = #{productUnit}
+		    </if>
+			<if test="unitPrice != null" >
+		      	AND unit_price = #{unitPrice}
+		    </if>
+			<if test="totalPrice != null" >
+		      	AND total_price = #{totalPrice}
+		    </if>
+			<if test="productAddressProvince != null" >
+		      	AND product_address_province = #{productAddressProvince}
+		    </if>
+			<if test="productAddressCity != null" >
+		      	AND product_address_city = #{productAddressCity}
+		    </if>
+			<if test="productModel != null" >
+		      	AND product_model = #{productModel}
+		    </if>
+			<if test="productGrade != null" >
+		      	AND product_grade = #{productGrade}
+		    </if>
+			<if test="productStandard != null" >
+		      	AND product_standard = #{productStandard}
+		    </if>
+			<if test="productSize != null" >
+		      	AND product_size = #{productSize}
+		    </if>
+			<if test="effectiveStartTime != null" >
+		      	AND effective_start_time = #{effectiveStartTime}
+		    </if>
+			<if test="effectiveEndTime != null" >
+		      	AND effective_end_time = #{effectiveEndTime}
+		    </if>
+			<if test="productionDate != null" >
+		      	AND production_date = #{productionDate}
+		    </if>
+			<if test="applyStockTime != null" >
+		      	AND apply_stock_time = #{applyStockTime}
+		    </if>
+			<if test="state != null" >
+		      	AND state = #{state}
+		    </if>
+			<if test="actualStockDate != null" >
+		      	AND actual_stock_date = #{actualStockDate}
+		    </if>
+			<if test="productColour != null" >
+		      	AND product_colour = #{productColour}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into commodity_stock_info (pid,company_id,apply_number,supplier_name,product_brand,product_type,product_number,product_unit,unit_price,total_price,product_address_province,product_address_city,product_model,product_grade,product_standard,product_size,effective_start_time,effective_end_time,production_date,apply_stock_time,state,actual_stock_date,product_colour,create_by,create_at,update_at,update_by,status,remark)
+	    values (#{pid},#{companyId},#{applyNumber},#{supplierName},#{productBrand},#{productType},#{productNumber},#{productUnit},#{unitPrice},#{totalPrice},#{productAddressProvince},#{productAddressCity},#{productModel},#{productGrade},#{productStandard},#{productSize},#{effectiveStartTime},#{effectiveEndTime},#{productionDate},#{applyStockTime},#{state},#{actualStockDate},#{productColour},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity">
+	  	select
+	    	<include refid="stockInfo_find_List" />
+	    from commodity_stock_info
+	    	<include refid="stockInfo_find_where" />
+	 </select>
+	 
+	 <select id="queryStockInfoByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity">
+	  	select
+	    	<include refid="stockInfo_find_List" />
+	    from commodity_stock_info where pid = #{pid}
+	 </select>
+	 
+	<update id="updateStockInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity" >
+    	update commodity_stock_info
+	    	<set >
+				<if test="companyId != null" >
+			      	 company_id = #{companyId},
+			    </if>
+				<if test="applyNumber != null" >
+			      	 apply_number = #{applyNumber},
+			    </if>
+				<if test="supplierName != null" >
+			      	 supplier_name = #{supplierName},
+			    </if>
+				<if test="productBrand != null" >
+			      	 product_brand = #{productBrand},
+			    </if>
+				<if test="productType != null" >
+			      	 product_type = #{productType},
+			    </if>
+				<if test="productNumber != null" >
+			      	 product_number = #{productNumber},
+			    </if>
+				<if test="productUnit != null" >
+			      	 product_unit = #{productUnit},
+			    </if>
+				<if test="unitPrice != null" >
+			      	 unit_price = #{unitPrice},
+			    </if>
+				<if test="totalPrice != null" >
+			      	 total_price = #{totalPrice},
+			    </if>
+				<if test="productAddressProvince != null" >
+			      	 product_address_province = #{productAddressProvince},
+			    </if>
+				<if test="productAddressCity != null" >
+			      	 product_address_city = #{productAddressCity},
+			    </if>
+				<if test="productModel != null" >
+			      	 product_model = #{productModel},
+			    </if>
+				<if test="productGrade != null" >
+			      	 product_grade = #{productGrade},
+			    </if>
+				<if test="productStandard != null" >
+			      	 product_standard = #{productStandard},
+			    </if>
+				<if test="productSize != null" >
+			      	 product_size = #{productSize},
+			    </if>
+				<if test="effectiveStartTime != null" >
+			      	 effective_start_time = #{effectiveStartTime},
+			    </if>
+				<if test="effectiveEndTime != null" >
+			      	 effective_end_time = #{effectiveEndTime},
+			    </if>
+				<if test="productionDate != null" >
+			      	 production_date = #{productionDate},
+			    </if>
+				<if test="applyStockTime != null" >
+			      	 apply_stock_time = #{applyStockTime},
+			    </if>
+				<if test="state != null" >
+			      	 state = #{state},
+			    </if>
+				<if test="actualStockDate != null" >
+			      	 actual_stock_date = #{actualStockDate},
+			    </if>
+				<if test="productColour != null" >
+			      	 product_colour = #{productColour},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+
+<!--  ******************以上为自动生成sql语句 ******************  -->
+	<sql id="stockInfo_page_where">
+		<where>
+			<if test=" 1 == 1" >
+		      	AND company_id = #{companyId}
+		    </if>
+			<if test="supplierName != null and supplierName != ''" >
+		      	AND supplier_name like CONCAT("%",#{supplierName},"%")
+		    </if>
+		    <if test="applyNumber != null and applyNumber != ''" >
+		      	AND apply_number like CONCAT("%",#{applyNumber},"%")
+		    </if>
+		    <if test="productBrand != null and productBrand != ''" >
+		      	AND product_brand like CONCAT("%",#{productBrand},"%")
+		    </if>
+		    <if test="productType != null and productType != ''" >
+		      	AND product_type like CONCAT("%",#{productType},"%")
+		    </if>
+		    <if test="state != null and state != ''" >
+		      	AND state = #{state}
+		    </if>
+		    <if test="applyStockTimeStart != null " >
+		      	AND apply_stock_time >= #{applyStockTimeStart}
+		    </if>
+		    <if test="applyStockTimeEnd != null " >
+		      	AND apply_stock_time &lt;= #{applyStockTimeEnd}
+		    </if>
+		    <if test="actualStockDateStart != null " >
+		      	AND actual_stock_date >= #{actualStockDateStart}
+		    </if>
+		    <if test="actualStockDateEnd != null " >
+		      	AND actual_stock_date &lt;= #{actualStockDateEnd}
+		    </if>
+		</where>
+	</sql>
+
+	<select id="queryPageCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.query.CommodityStockForm">
+		select count(*) from commodity_stock_info
+	    	<include refid="stockInfo_page_where" />
+	</select>
+	
+	<select id="queryPageList" resultType="cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.query.CommodityStockForm">
+		select 
+			<include refid="stockInfo_find_List" />
+		from commodity_stock_info
+	    	<include refid="stockInfo_page_where" />
+	    	ORDER BY state = '1' DESC,update_at DESC
+	    	limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="queryNewWarehousingNo" resultType="String">
+		select apply_number from commodity_stock_info where to_days(create_at) = to_days(now()) ORDER BY create_at DESC LIMIT 0,1
+	</select>
+
+
+	<select id="selectStockList" resultType="cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.query.CommodityStockForm">
+
+		SELECT cs.`pid`,cs.`apply_number`,ce.`name` as remark,cs.`supplier_name`,cs.`product_brand`,cs.`product_type`,cs.`product_number`,cs.`product_unit`,
+		cs.`unit_price`,cs.`total_price`,cs.`product_address_city`,cs.`product_address_province`,cs.`state`,cs.`apply_stock_time`,cs.`actual_stock_date`,cs.product_model
+		FROM commodity_stock_info AS cs, company_enterprise AS ce
+		WHERE cs.`company_id` = ce.`pid`
+		<include refid="stockInfo_page_where_admin" />
+		limit #{startIndex},#{pageSize}
+	</select>
+
+
+	<select id="selectStockListCount" resultType="int" parameterType="cn.fintecher.supply.finance.loan.manager.common.commodity.query.CommodityStockForm">
+		select count(*) FROM commodity_stock_info AS cs, company_enterprise AS ce
+		WHERE cs.`company_id` = ce.`pid`
+		<include refid="stockInfo_page_where_admin" />
+	</select>
+
+	<sql id="stockInfo_page_where_admin">
+			<if test="supplierName != null and supplierName != ''" >
+				AND cs.supplier_name like CONCAT("%",#{supplierName},"%")
+			</if>
+			<if test="applyNumber != null and applyNumber != ''" >
+				AND cs.apply_number like CONCAT("%",#{applyNumber},"%")
+			</if>
+			<if test="productBrand != null and productBrand != ''" >
+				AND cs.product_brand like CONCAT("%",#{productBrand},"%")
+			</if>
+			<if test="productType != null and productType != ''" >
+				AND cs.product_type like CONCAT("%",#{productType},"%")
+			</if>
+			<if test="state != null and state != ''" >
+				AND cs.state = #{state}
+			</if>
+			<if test="applyStockTimeStart != null " >
+				AND cs.apply_stock_time >= #{applyStockTimeStart}
+			</if>
+			<if test="applyStockTimeEnd != null " >
+				AND cs.apply_stock_time &lt;= #{applyStockTimeEnd}
+			</if>
+			<if test="actualStockDateStart != null " >
+				AND cs.actual_stock_date >= #{actualStockDateStart}
+			</if>
+			<if test="actualStockDateEnd != null " >
+				AND cs.actual_stock_date &lt;= #{actualStockDateEnd}
+			</if>
+			<if test="companyName != null and companyName != ''" >
+				AND ce.name like CONCAT("%",#{companyName},"%")
+			</if>
+
+	</sql>
+
+	<select id="selectCommodityStockInfo" resultType = "cn.fintecher.supply.finance.loan.manager.common.commodity.entity.CommodityStockInfoEntity">
+		SELECT cs.`pid`,cs.`apply_number`,ce.`name` as remark,cs.`supplier_name`,cs.`product_brand`,cs.`product_type`,cs.`product_number`,cs.`product_unit`,
+		cs.`unit_price`,cs.`total_price`,cs.`product_address_city`,cs.`product_address_province`,cs.`state`,cs.`apply_stock_time`,cs.`actual_stock_date`,
+		cs.`product_size`,cs.`product_model`,cs.`product_grade`,cs.`product_standard`,cs.`effective_start_time`,cs.`effective_end_time`,cs.`production_date`,cs.`apply_stock_time`,cs.`actual_stock_date`,cs.`product_colour`
+		FROM commodity_stock_info AS cs, company_enterprise AS ce
+		WHERE cs.`company_id` = ce.`pid` and cs.pid = #{pid}
+	</select>
+
+
+	<select id="searchWarehouseUnpackList" parameterType="cn.fintecher.supply.finance.loan.manager.common.warehouse.request.WarehouseUnpackForm" resultType = "cn.fintecher.supply.finance.loan.manager.common.warehouse.response.WarehouseUnpackListResponse">
+		select cs.pid, cs.`apply_number`,cs.`supplier_name`,cs.`product_brand`,cs.`product_type`,cs.`product_number`,cs.product_unit,cs.unit_price,cs.product_model,
+		ps.contract_apply_pledge_rate,ps.contract_apply_term,ps.contract_apply_amount,ps.contract_apply_service_fee,ps.contract_apply_interest,ps.release_time,ps.release_appl_time,ps.release_pledge,
+		fs.loan_time,fs.loan_start_time,fs.loan_end_time,
+		bd.value
+		from commodity_stock_info cs inner join pledge_stock_info ps on ps.commodity_id = cs.pid
+		inner join company_enterprise ce on ce.pid = cs.company_id
+		inner join finance_stock_info fs on fs.commodity_id = ps.pid
+		inner join base_dictionary bd  on cs.product_unit = bd.pid
+		<include refid="warehouse_unpack_where" />
+		order by release_pledge = '0' DESC, release_pledge = '1' DESC ,release_time DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<sql id="warehouse_unpack_where">
+		<where>
+			<if test=" 1 == 1" >
+				AND ce.pid = #{companyId}
+			</if>
+			<if test=" 1 != 0">
+				and ps.finance_state = '1'
+			</if>
+			<if test="supplierName != null and supplierName != ''" >
+				AND cs.supplier_name like CONCAT("%",#{supplierName},"%")
+			</if>
+			<if test="WarehouseUnpackNumber != null and WarehouseUnpackNumber != ''" >
+				AND cs.apply_number like CONCAT("%",#{WarehouseUnpackNumber},"%")
+			</if>
+			<if test="state != null and state != ''" >
+				AND cs.state = #{state}
+			</if>
+			<if test="WarehouseUnpackTimeStart != null " >
+				AND cs.release_time >= #{WarehouseUnpackTimeStart}
+			</if>
+			<if test="WarehouseUnpackTimeEnd != null " >
+				AND cs.release_time &lt;= #{applyStockTimeEnd}
+			</if>
+		</where>
+	</sql>
+
+	<select id="searchWarehouseUnpackListCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.warehouse.request.WarehouseUnpackForm" resultType="Integer">
+		select count(*) from commodity_stock_info cs inner join pledge_stock_info ps on ps.commodity_id = cs.pid
+		inner join company_enterprise ce on ce.pid = cs.company_id
+		inner join finance_stock_info fs on fs.commodity_id = ps.pid
+		inner join base_dictionary bd  on cs.product_unit = bd.pid
+		<include refid="warehouse_unpack_where" />
+	</select>
+
+	<select id="searchAdminWarehouseUnpackList" parameterType="cn.fintecher.supply.finance.loan.manager.common.warehouse.request.WarehouseUnpackAdminForm" resultType="cn.fintecher.supply.finance.loan.manager.common.warehouse.response.WarehouseUnpackListResponse">
+		select cs.pid, cs.`apply_number`,cs.`supplier_name`,cs.`product_brand`,cs.`product_type`,cs.`product_number`,cs.product_unit,cs.unit_price,cs.product_model,
+		ps.contract_apply_pledge_rate,ps.contract_apply_term,ps.contract_apply_amount,ps.contract_apply_service_fee,ps.contract_apply_interest,ps.release_time,ps.release_appl_time,ps.release_pledge,
+		fs.loan_time,fs.loan_start_time,fs.loan_end_time,
+		bd.value
+		from commodity_stock_info cs inner join pledge_stock_info ps on ps.commodity_id = cs.pid
+		inner join company_enterprise ce on ce.pid = cs.company_id
+		inner join finance_stock_info fs on fs.commodity_id = ps.pid
+		inner join base_dictionary bd  on cs.product_unit = bd.pid
+		<include refid="warehouse_unpack_where_admin" />
+		order by ps.release_pledge = '0' DESC,ps.release_time DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<sql id="warehouse_unpack_where_admin">
+		<where>
+			<if test=" 1 != 0">
+				and ps.finance_state = '1'
+			</if>
+			<if test="customerName != null and customerName != ''" >
+				AND ce.name like CONCAT("%",#{customerName},"%")e
+			</if>
+			<if test="WarehouseNumber != null and WarehouseNumber != ''" >
+				AND cs.apply_number like CONCAT("%",#{WarehouseNumber},"%")
+			</if>
+			<if test="state != null and state != ''" >
+				AND ps.release_pledge = #{state}
+			</if>
+			<if test="WarehouseUnpackTimeStart != null " >
+				AND ps.release_time >= #{WarehouseUnpackTimeStart}
+			</if>
+			<if test="WarehouseUnpackTimeEnd != null " >
+				AND ps.release_time &lt;= #{applyStockTimeEnd}
+			</if>
+		</where>
+	</sql>
+
+	<select id="searchAdminWarehouseUnpackListCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.warehouse.request.WarehouseUnpackAdminForm" resultType="Integer">
+		select count(*)
+		from commodity_stock_info cs inner join pledge_stock_info ps on ps.commodity_id = cs.pid
+		inner join company_enterprise ce on ce.pid = cs.company_id
+		inner join finance_stock_info fs on fs.commodity_id = ps.pid
+		inner join base_dictionary bd  on cs.product_unit = bd.pid
+		<include refid="warehouse_unpack_where_admin" />
+	</select>
+</mapper>

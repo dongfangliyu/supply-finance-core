@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysRoleDao">
+
+	<resultMap id="RM_SysRole" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysRole">
+        <result property="roleId" column="role_id"/>
+        <result property="roleName" column="role_name"/>
+        <result property="remark" column="remark"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="status" column="status"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createUserId" column="create_user_id"/>
+        <result property="updateUserId" column="update_user_id"/>
+        <result property="roleCode" column="role_code"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		role_id,role_name,remark,dept_id,create_time,status,update_time,create_user_id,update_user_id,role_code
+	    ]]>
+	</sql>
+
+
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM sys_role WHERE
+        role_id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultMap="RM_SysRole">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM sys_role 
+	        WHERE 
+		        role_id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="roleId != null and roleId != ''">
+				AND role_id = #{roleId}
+			</if>
+	       <if test="roleName != null and roleName != ''">
+				AND role_name = #{roleName}
+			</if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+	       <if test="deptId != null and deptId != ''">
+				AND dept_id = #{deptId}
+			</if>
+	       <if test="createTime != null and createTime != ''">
+				AND create_time = #{createTime}
+			</if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="updateTime != null and updateTime != ''">
+				AND update_time = #{updateTime}
+			</if>
+	       <if test="createUserId != null and createUserId != ''">
+				AND create_user_id = #{createUserId}
+			</if>
+	       <if test="updateUserId != null and updateUserId != ''">
+				AND update_user_id = #{updateUserId}
+			</if>
+	       <if test="roleCode != null and roleCode != ''">
+				AND role_code = #{roleCode}
+			</if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity"
+			useGeneratedKeys="true" keyProperty="roleId">
+		insert into sys_role (
+		role_id, role_name, remark,
+		dept_id, create_time,
+		status, update_time,
+		create_user_id, update_user_id, role_code
+		)
+		values (
+		#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+		#{deptId,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR},
+		#{createUserId,jdbcType=INTEGER}, #{updateUserId,jdbcType=INTEGER},
+		#{roleCode,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="update" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity">
+		update sys_role
+		<set>
+			<if test="roleName != null">`role_name` = #{roleName}, </if>
+			<if test="remark != null">`remark` = #{remark}, </if>
+			<if test="deptId != null">`dept_id` = #{deptId},</if>
+			<if test="createTime != null">`create_time` = #{createTime},</if>
+			<if test="status != null">`status` = #{status},</if>
+			<if test="updateTime != null">`update_time` = #{updateTime},</if>
+			<if test="createUserId != null">`create_user_id` = #{createUserId},</if>
+			<if test="updateUserId != null">`update_user_id` = #{updateUserId},</if>
+			<if test="roleCode != null">`role_code` = #{roleCode},</if>
+		</set>
+		where role_id = #{roleId}
+	</update>
+
+	<select id="findRolePage" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity">
+		select * from sys_role r
+		<include refid="role_query_condition" />
+		order by create_time desc,update_time desc
+		limit #{vo.startIndex},#{vo.pageSize}
+	</select>
+
+	<select id="findRolePageCount" resultType="int">
+		SELECT count(*) FROM sys_role r
+		<include refid="role_query_condition" />
+	</select>
+
+	<sql id="role_query_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="vo.roleName != null and vo.roleName != ''">
+				and r.role_name like concat ('%',#{vo.roleName},'%')
+			</if>
+			<if test="vo.status != null">
+				AND r.status= #{vo.status,jdbcType=INTEGER}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="queryObject" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity">
+		select
+		role_id, role_name, remark, dept_id, create_time, status, update_time, role_code
+		from sys_role where role_id = #{roleId}
+	</select>
+
+	<select id="queryAllRoles" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity">
+		select * from sys_role where status = '1'
+	</select>
+
+	<select id="getByRoleCode" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysRoleEntity">
+		select  * from  sys_role where  role_code = #{roleCode}
+	</select>
+</mapper>
+

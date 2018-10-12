@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.credit.dao.EnterpriseFileDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity" id="basicsFileMap">
+        <result property="pid" column="pid"/>
+        <result property="fileName" column="file_name"/>
+        <result property="fileSuffix" column="file_suffix"/>
+        <result property="category" column="category"/>
+        <result property="fullPath" column="full_path"/>
+        <result property="path" column="path"/>
+        <result property="group" column="group"/>
+        <result property="ownerId" column="owner_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="year" column="year"/>
+    </resultMap>
+
+   <!-- 用于select查询公用抽取的列 -->
+     <sql id="file_common_column_sql">
+        pid as pid,
+        file_name as fileName,
+        file_suffix as fileSuffix,
+        category as category,
+        full_path as fullPath,
+        path as path,
+        `group` as `group`,
+        owner_id as ownerId,
+        create_by as createBy,
+        create_at as createAt,
+        update_by as updateBy,
+        update_at as updateAt,
+        status as status,
+        remark as remark,
+        year as year
+    </sql>
+
+    <select id="searchAllFile" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity">
+        select * from company_file  where owner_id=#{pid} and status='NOL'
+    </select>
+
+    <select id="searchAllFileInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity">
+        SELECT <include refid="file_common_column_sql" />
+		    FROM company_file
+	       <include refid="search_AuditRegister" />
+    </select>
+
+    <sql id="search_AuditRegister">
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test=" 1 != 0">
+                and status = 'NOL'
+            </if>
+            <if test="ownerId != null and ownerId !=''">
+                AND owner_id = #{ownerId}
+            </if>
+            <if test="category != null and category !=''">
+                AND category = #{category}
+            </if>
+            <if test="year != null and year !=''">
+                AND year = #{year}
+            </if>
+        </trim>
+    </sql>
+
+
+
+
+    <insert id="insert" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity" useGeneratedKeys="true" keyProperty="pid">
+		insert into company_file
+		(
+        `pid`,
+            `file_name`,
+            `file_suffix`,
+            `category`,
+            `full_path`,
+            `path`,
+            `group`,
+            `owner_id`,
+            `create_by`,
+            `create_at`,
+            `update_by`,
+            `update_at`,
+            `status`,
+            `remark`,
+            `year`
+        )
+		values
+		(
+        #{pid},
+            #{fileName},
+            #{fileSuffix},
+            #{category},
+            #{fullPath},
+            #{path},
+            #{group},
+            #{ownerId},
+            #{createBy},
+            #{createAt},
+            #{updateBy},
+            #{updateAt},
+            #{status},
+            #{remark},
+            #{year}
+        )
+	</insert>
+
+    <update id="deleteCompanyCreditDoc" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity">
+      update company_file
+        <set>
+            <if test="fileName != null">
+                file_name = #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="fileSuffix!= null">
+                file_suffix= #{fileSuffix,jdbcType=VARCHAR},
+            </if>
+            <if test="category!= null">
+                category = #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="fullPath!= null">
+                full_path = #{fullPath,jdbcType=VARCHAR},
+            </if>
+            <if test="path!= null">
+                path = #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="group!= null">
+                group = #{group,jdbcType=VARCHAR},
+            </if>
+            <if test="ownerId!= null">
+                owner_id = #{ownerId,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy!= null">
+                create_by= #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt!= null">
+                create_at= #{createAt,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy!= null">
+                update_by= #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updateAt!= null">
+                update_at= #{updateAt,jdbcType=VARCHAR},
+            </if>
+            <if test="status!= null">
+                status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="remark!= null">
+                remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="year!= null">
+                year = #{year,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE
+        pid = #{pid}
+
+    </update>
+
+    <update id="updateCompanyFile" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity">
+      update company_file as cf
+        <set>
+            <if test="fileName != null">
+                cf.file_name = #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="fileSuffix!= null">
+                cf.file_suffix= #{fileSuffix,jdbcType=VARCHAR},
+            </if>
+            <if test="category!= null">
+                cf.category = #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="fullPath!= null">
+                cf.full_path = #{fullPath,jdbcType=VARCHAR},
+            </if>
+            <if test="path!= null">
+                cf.path = #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="group!= null">
+                cf.`group` = #{group},
+            </if>
+            <if test="ownerId!= null">
+                cf.owner_id = #{ownerId},
+            </if>
+            <if test="createBy!= null">
+                cf.create_by= #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt!= null">
+                cf.create_at= #{createAt,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy!= null">
+                cf.update_by= #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updateAt!= null">
+                cf.update_at= #{updateAt,jdbcType=VARCHAR},
+            </if>
+            <if test="status!= null">
+                cf.status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="remark!= null">
+                cf.remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="year!= null">
+                cf.year = #{year,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE
+        cf.pid = #{pid}
+
+    </update>
+
+    <select id="searchAccountingStatementInfo"  resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity">
+        select <include refid="file_common_column_sql"/>
+        from company_file where `owner_id` = #{pid} and status = 'NOL'
+    </select>
+
+    <select id="searchAllFileByFid" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyFileEntity">
+        select * from company_file  where pid=#{pid} and status='NOL'
+    </select>
+
+
+
+</mapper>
+

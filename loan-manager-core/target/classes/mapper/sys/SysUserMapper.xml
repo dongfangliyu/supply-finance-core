@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysUserDao">
+
+	<resultMap id="RM_SysUser" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysUser">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="iphone" column="iphone"/>
+        <result property="state" column="state"/>
+        <result property="type" column="type"/>
+        <result property="enpsId" column="enps_id"/>
+        <result property="supId" column="sup_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateUserId" column="update_user_id"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="salt" column="salt"/>
+        <result property="username" column="username"/>
+        <result property="realname" column="realname"/>
+        <result property="email" column="email"/>
+        <result property="mobile" column="mobile"/>
+        <result property="status" column="status"/>
+        <result property="compId" column="comp_id"/>
+        <result property="position" column="position"/>
+        <result property="isRepairPerson" column="is_repair_person"/>
+        <result property="createUserId" column="create_user_id"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,name,password,iphone,state,type,enps_id,sup_id,update_time,create_time,update_user_id,dept_id,salt,username,realname,email,mobile,status,comp_id,position,is_repair_person,create_user_id
+	    ]]>
+	</sql>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM sys_user WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultMap="RM_SysUser">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM sys_user 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="id != null and id != ''">
+				AND id = #{id}
+			</if>
+	       <if test="name != null and name != ''">
+				AND name = #{name}
+			</if>
+	       <if test="password != null and password != ''">
+				AND password = #{password}
+			</if>
+	       <if test="iphone != null and iphone != ''">
+				AND iphone = #{iphone}
+			</if>
+	       <if test="state != null and state != ''">
+				AND state = #{state}
+			</if>
+	       <if test="type != null and type != ''">
+				AND type = #{type}
+			</if>
+	       <if test="enpsId != null and enpsId != ''">
+				AND enps_id = #{enpsId}
+			</if>
+	       <if test="supId != null and supId != ''">
+				AND sup_id = #{supId}
+			</if>
+	       <if test="updateTime != null and updateTime != ''">
+				AND update_time = #{updateTime}
+			</if>
+	       <if test="createTime != null and createTime != ''">
+				AND create_time = #{createTime}
+			</if>
+	       <if test="updateUserId != null and updateUserId != ''">
+				AND update_user_id = #{updateUserId}
+			</if>
+	       <if test="deptId != null and deptId != ''">
+				AND dept_id = #{deptId}
+			</if>
+	       <if test="salt != null and salt != ''">
+				AND salt = #{salt}
+			</if>
+	       <if test="username != null and username != ''">
+				AND username = #{username}
+			</if>
+	       <if test="realname != null and realname != ''">
+				AND realname = #{realname}
+			</if>
+	       <if test="email != null and email != ''">
+				AND email = #{email}
+			</if>
+	       <if test="mobile != null and mobile != ''">
+				AND mobile = #{mobile}
+			</if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="compId != null and compId != ''">
+				AND comp_id = #{compId}
+			</if>
+	       <if test="position != null and position != ''">
+				AND position = #{position}
+			</if>
+	       <if test="isRepairPerson != null and isRepairPerson != ''">
+				AND is_repair_person = #{isRepairPerson}
+			</if>
+	       <if test="createUserId != null and createUserId != ''">
+				AND create_user_id = #{createUserId}
+			</if>
+		</where>
+	</sql>
+
+	<insert id="saveAdminUser" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity" useGeneratedKeys="true" keyProperty="userId">
+		insert into sys_user
+		(
+			`id`,
+			`username`,
+			`realname`,
+			`password`,
+			`mobile`,
+			`dept_id`,
+			`comp_id`,
+			`status`,
+			`create_user_id`,
+			`create_time`,
+			`type`,
+			`position`
+		)
+		values
+		(
+			#{userId},
+			#{username},
+			#{realname},
+			#{password},
+			#{mobile},
+			#{deptId},
+			#{compId},
+			#{status},
+			#{createUserId},
+			#{createTime},
+			#{type},
+			#{position}
+		)
+	</insert>
+
+	<update id="updateAdminUser" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		update sys_user
+		<set>
+			<if test="username != null and username != ''">`username` = #{username}, </if>
+			<if test="realname != null and realname != ''">`realname` = #{realname}, </if>
+			<if test="password != null and  password != ''">`password` = #{password}, </if>
+			<if test="compId != null ">`comp_id` = #{compId}, </if>
+			<if test="mobile != null  and mobile != ''">`mobile` = #{mobile}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="updateUserId != null ">`update_user_id` = #{updateUserId}, </if>
+			<if test="updateTime != null and  updateTime != ''">`update_time` = #{updateTime}, </if>
+			<if test="deptId != null ">`dept_id` = #{deptId}, </if>
+			<if test="position != null and  position != ''">`position` = #{position}, </if>
+		</set>
+		where id = #{userId}
+	</update>
+
+	<select id="findUserRoleCountByUserId" resultType="int">
+		select count(*) from `sys_user_role` where role_id = 1 and id = #{userId}
+	</select>
+
+	<select id="queryByUserName" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select a.*, d.name deptName, f.name compName from sys_user a
+		LEFT JOIN sys_dept d on d.dept_id = a.dept_id
+		LEFT JOIN sys_dept f on f.dept_id = a.comp_id
+		where a.username = #{username} and a.type = 0 limit 1
+	</select>
+
+	<select id="getAllUsers" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select
+			u.* ,
+			(select d.name from sys_dept d where d.dept_id = u.dept_id) deptName ,
+			(select uu.username from  sys_user uu  where uu.id = u.comp_id ) compName
+		from sys_user u  where u.type = 0
+	</select>
+
+	<select id="getUserAdminById" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select
+			u.* ,
+			(select d.name from sys_dept d where d.dept_id = u.dept_id) deptName ,
+			(select uu.username from  sys_user uu  where uu.id = u.comp_id) compName
+		from sys_user u where  u.id =#{value} and u.type = 0
+	</select>
+
+	<sql id="user_query_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="vo.username != null and vo.username != ''">
+				AND u.username like concat('%',#{vo.username},'%')
+			</if>
+			<if test="1==1">
+				AND u.type = 0
+			</if>
+			<if test="vo.mobile != null and vo.mobile != ''">
+				AND u.mobile  like concat('%',#{vo.mobile},'%')
+			</if>
+			<if test="vo.status != null">
+				AND u.status= #{vo.status,jdbcType=INTEGER}
+			</if>
+			<if test="vo.position != null and vo.position !=''">
+				AND u.position= #{vo.position,jdbcType=VARCHAR}
+			</if>
+			<if test="vo.realName != null and vo.realName !=''">
+				AND u.realname like concat('%',#{vo.realName},'%')
+			</if>
+			<if test="vo.deptId != null ">
+				AND u.dept_id= #{vo.deptId,jdbcType=INTEGER}
+			</if>
+			<if test="vo.compId != null">
+				AND u.comp_id= #{vo.compId,jdbcType=INTEGER}
+			</if>
+			<if test="vo.compId != null">
+				AND u.comp_id= #{vo.compId,jdbcType=INTEGER}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="findUserPage" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select * from sys_user u
+		<include refid="user_query_condition" />
+		order by create_time desc,update_time desc
+		limit #{vo.startIndex},#{vo.pageSize}
+	</select>
+
+	<select id="findUserPageCount" resultType="int">
+		SELECT count(*) FROM sys_user u
+		<include refid="user_query_condition" />
+	</select>
+
+	<select id="findUserPageByRoleName" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select distinct u.* from sys_user u ,  sys_user_role ur,sys_role r
+		where r.role_id = ur.role_id and u.id = ur.user_id and u.type = 0
+		<if test="vo.username != null and vo.username != ''">
+			AND u.username like concat('%',#{vo.username},'%')
+		</if>
+		<if test="vo.mobile != null and vo.mobile != ''">
+			AND u.mobile  like concat('%',#{vo.mobile},'%')
+		</if>
+		<if test="vo.status != null">
+			AND u.status= #{vo.status,jdbcType=INTEGER}
+		</if>
+		<if test="vo.position != null and vo.position !=''">
+			AND u.position= #{vo.position,jdbcType=VARCHAR}
+		</if>
+		<if test="vo.realName != null and vo.realName !=''">
+			AND u.realname like concat('%',#{vo.realName},'%')
+		</if>
+		<if test="vo.deptId != null ">
+			AND u.dept_id= #{vo.deptId,jdbcType=INTEGER}
+		</if>
+		<if test="vo.compId != null">
+			AND u.comp_id= #{vo.compId,jdbcType=INTEGER}
+		</if>
+		<if test="vo.rolename != null">
+			AND r.role_name like concat('%',#{vo.rolename},'%')
+		</if>
+		<if test="vo.orderBy != null and vo.orderBy != ''">
+			order by ${vo.sort} ${vo.order}
+		</if>
+		limit #{vo.startIndex},#{vo.pageSize}
+	</select>
+
+	<select id="findUserPageCountByRoleName" resultType="int">
+		select  count(distinct u.id) from sys_user u ,  sys_user_role ur,sys_role r
+		where r.role_id = ur.role_id and u.id = ur.user_id and u.type = 0
+		<if test="vo.username != null and vo.username != ''">
+			AND u.username like concat('%',#{vo.username},'%')
+		</if>
+		<if test="vo.mobile != null and vo.mobile != ''">
+			AND u.mobile  like concat('%',#{vo.mobile},'%')
+		</if>
+		<if test="vo.status != null">
+			AND u.status= #{vo.status,jdbcType=INTEGER}
+		</if>
+		<if test="vo.position != null and vo.position !=''">
+			AND u.position= #{vo.position,jdbcType=VARCHAR}
+		</if>
+		<if test="vo.realName != null and vo.realName !=''">
+			AND u.realname like concat('%',#{vo.realName},'%')
+		</if>
+		<if test="vo.deptId != null ">
+			AND u.dept_id= #{vo.deptId,jdbcType=INTEGER}
+		</if>
+		<if test="vo.compId != null">
+			AND u.comp_id= #{vo.compId,jdbcType=INTEGER}
+		</if>
+		<if test="vo.rolename != null">
+			AND r.role_name like concat('%',#{vo.rolename},'%')
+		</if>
+		<if test="vo.orderBy != null and vo.orderBy != ''">
+			order by ${vo.sort} ${vo.order}
+		</if>
+	</select>
+
+	<select id="queryRoles" resultType="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysRole">
+		select DISTINCT r.* from sys_role r,sys_user_role ur
+		where r.role_id=ur.role_id and r.`status`=1 and ur.user_id= #{userId}
+	</select>
+
+	<update id="updatePassword" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserPasswordChange">
+		update sys_user set `password` = #{newPassword}
+		where id = #{userId}
+	</update>
+
+	<select id="findUserByName" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		SELECT * FROM sys_user where username = #{userName} and type = 0
+	</select>
+
+	<select id="queryUserByRoleId" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select u.* from  sys_user u, sys_user_role r
+		WHERE  u.status = 1 and u.id = r.user_id  and r.role_id = #{roleId}	and u.type = 0
+	</select>
+
+	<select id="queryUserByDeptId" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysUserAdminEntity">
+		select * from sys_user where dept_id = #{deptId} and status = 1 and type = 0
+	</select>
+
+</mapper>
+

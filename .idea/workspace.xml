@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/model/RegisterUserEntity.java" line="13" mnemonic="2" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="64ebe212-5802-4c5c-9543-83750845e7b3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/PlatformSigningController.java" afterPath="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/PlatformSigningController.java" />
+    </list>
+    <ignored path="$PROJECT_DIR$/loan-manager-core/target/" />
+    <ignored path="$PROJECT_DIR$/loan-manager-pm-bff/target/" />
+    <ignored path="$PROJECT_DIR$/loan-manager-service/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/loan-manager-common/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ConfirmingStockInfoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/controller/ConfirmingStockInfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3325">
+              <caret line="153" column="9" lean-forward="false" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+              <folding>
+                <marker date="1536914705821" expanded="true" signature="8472:8477" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DebitAndCreditController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/DebitAndCreditController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2925">
+              <caret line="130" column="13" lean-forward="false" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoreEnterpriseController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/CoreEnterpriseController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2475">
+              <caret line="115" column="7" lean-forward="false" selection-start-line="115" selection-start-column="7" selection-end-line="115" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlatformSigningController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/PlatformSigningController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DebitAndCreditController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/DebitAndCreditController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2075">
+              <caret line="102" column="17" lean-forward="false" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BusinessFileDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/business/dao/BusinessFileDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BusinessFileMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/resources/mapper/business/BusinessFileMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2100">
+              <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+              <folding>
+                <marker date="1536914705916" expanded="true" signature="2829:3146" ph="insert into business_file... " />
+                <marker date="1536914705916" expanded="true" signature="3394:3465" ph="select from business_file" />
+                <marker date="1536914705916" expanded="true" signature="3656:3767" ph="select from business_file" />
+                <marker date="1536914705916" expanded="true" signature="3914:5034" ph="update busin... " />
+                <marker date="1536914705916" expanded="true" signature="5181:5296" ph="select from business_file" />
+                <marker date="1536914705916" expanded="true" signature="5442:5556" ph="select from business_file" />
+                <marker date="1536914705916" expanded="true" signature="5622:5730" ph="select count... business_file" />
+                <marker date="1536914705916" expanded="true" signature="5882:5995" ph="select from business_file" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FCBaseAreaCore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/base/feign/FCBaseAreaCore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="17" column="60" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseAreaController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/base/controller/BaseAreaController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BusinessFileController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/business/controller/BusinessFileController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="650">
+              <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindBugs-IDEA-Workspace">
+    <toolWindowEditorPreview>false</toolWindowEditorPreview>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>searchAllFileByOwnerId</find>
+      <find>电子合同</find>
+      <find>b</find>
+      <find>baoz</find>
+      <find>baozh</find>
+      <find>baozhe</find>
+      <find>baozheng</find>
+      <find>baozhengj</find>
+      <find>baozhengjin</find>
+      <find>保证金</find>
+      <find>searchMaiginAccount</find>
+      <find>stockInfo</find>
+      <find>queryOrderInfoByPid</find>
+      <find>return null;</find>
+      <find>H</find>
+      <find>HIDDE</find>
+      <find>u</find>
+      <find>up</find>
+      <find>upl</find>
+      <find>upload</find>
+      <find>submitDebitAndCredit</find>
+      <find>ip</find>
+      <find>dao</find>
+      <find>daoc</find>
+      <find>daoch</find>
+      <find>daochu</find>
+      <find>导出pdf</find>
+      <find>导出pd</find>
+      <find>导出p</find>
+      <find>导出</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-common</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-service\src\main\java\cn\fintecher\supply\finance\loan\manager\service\pledge\service\impl</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-service</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-pm-bff\src\main\java\cn\fintecher\supply\finance\loan\manager\pm\bff\company</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-core</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-service\src\main\java\cn\fintecher\supply\finance\loan\manager\service\business\service</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-pm-bff\src\main\java\cn\fintecher\supply\finance\loan\manager\pm\bff\business</dir>
+      <dir>F:\保兑仓项目\supply-finance</dir>
+      <dir>F:\保兑仓项目\supply-finance\loan-manager-pm-bff</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/contractManagement/controller/DebitAndCreditController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/contractManagement/service/DebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/contractManagement/feign/FcDebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/credit/service/EnterpriseCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/contractManagement/controller/DebitAndCreditController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/contractManagement/service/DebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/contractManagement/service/impl/DebitAndCreditServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/model/CompanyEnterpriseEntity.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/entity/ConfirmingStockInfoEntity.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/contractManagement/feign/FCDebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/contractManagement/service/impl/DebitAndCreditServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/model/ConfirmingStockInfoEntity.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/response/AuditAndDetailResponse.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/response/ConfirmingStockList.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/resources/application-dev.yml" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/base/feign/FCBaseBankInfoCore.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/base/controller/BaseBankInfoController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/service/ConfirmingStockInfoService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/base/service/BaseBankInfoService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/base/service/impl/BaseBankInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/register/dao/BaseBankInfoDao.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/controller/ConfirmingStockInfoController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/resources/mapper/register/BaseBankInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/CoreEnterpriseCore.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/request/SearchDebitAndCredit.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/resources/mapper/confirming/ConfirmingStockInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/CoreEnterpriseService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/CoreEnterpriseService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/impl/CoreEnterpriseServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/CoreEnterpriseController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/FCCoreEnterpriseCore.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/CoreEnterpriseController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/PlatformSigningService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/impl/PlatformSigningServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/impl/CoreEnterpriseServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/PlatformSigningService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/impl/PlatformSigningServiceImp.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/FCPlatformSigningCore.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/PlatformSigningController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/request/SubmitDebitAndCredit.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/dao/ConfirmingStockInfoDao.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/feign/FCDebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/DebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/impl/DebitAndCreditServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/DebitAndCreditController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/DebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/impl/DebitAndCreditServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/FcDebitAndCreditService.java" />
+        <option value="$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/service/impl/ConfirmingStockInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/DebitAndCreditController.java" />
+        <option value="$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/PlatformSigningController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\repositorys\repository" />
+        <option name="userSettingsFile" value="D:\Maven\apache-maven-jrl\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="supply-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="supply-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.fintecher.supply.finance.loan.manager.common.model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\保兑仓项目\supply-finance\loan-manager-core\src\main\resources\mapper" />
+      <recent name="F:\保兑仓项目\supply-finance\loan-manager-core\src\main\java\cn\fintecher\supply\finance\loan\manager\core\confirming" />
+      <recent name="F:\保兑仓项目\supply-finance\loan-manager-service\src\main\java\cn\fintecher\supply\finance\loan\manager\service\contractManagement" />
+      <recent name="F:\保兑仓项目\supply-finance\loan-manager-common\src\main\java\cn\fintecher\supply\finance\loan\manager\common\debitandcredit" />
+      <recent name="F:\保兑仓项目\supply-finance\loan-manager-pm-bff\src\main\java\cn\fintecher\supply\finance\loan\manager\pm\bff\contractManagement" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.LoanManagerCoreApplication">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="loan-manager-pm-bff" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="false" name="LoanManagerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.fintecher.supply.finance.loan.manager.service.LoanManagerServiceApplication" />
+      <module name="loan-manager-service" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="LoanManagerCoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.fintecher.supply.finance.loan.manager.core.LoanManagerCoreApplication" />
+      <module name="loan-manager-core" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="LoanManagerPmBffApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.fintecher.supply.finance.loan.manager.pm.bff.LoanManagerPmBffApplication" />
+      <module name="loan-manager-pm-bff" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Spring Boot.LoanManagerServiceApplication" />
+      <item index="1" class="java.lang.String" itemvalue="Spring Boot.LoanManagerCoreApplication" />
+      <item index="2" class="java.lang.String" itemvalue="Spring Boot.LoanManagerPmBffApplication" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="64ebe212-5802-4c5c-9543-83750845e7b3" name="Default" comment="" />
+      <created>1535012640447</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1535012640447</updated>
+      <workItem from="1535012643277" duration="2837000" />
+      <workItem from="1535017748025" duration="3359000" />
+      <workItem from="1535075249059" duration="8307000" />
+      <workItem from="1535279133606" duration="4908000" />
+      <workItem from="1535334923353" duration="10500000" />
+      <workItem from="1535418995752" duration="31358000" />
+      <workItem from="1535504954566" duration="37417000" />
+      <workItem from="1535548335172" duration="14047000" />
+      <workItem from="1535591525744" duration="32016000" />
+      <workItem from="1535636608363" duration="6402000" />
+      <workItem from="1535677900024" duration="1274000" />
+      <workItem from="1535680786521" duration="10225000" />
+      <workItem from="1535973039817" duration="18000" />
+      <workItem from="1536047377534" duration="521000" />
+      <workItem from="1536056616229" duration="35000" />
+      <workItem from="1536133696957" duration="116000" />
+      <workItem from="1536914508042" duration="217000" />
+      <workItem from="1537149347287" duration="98000" />
+      <workItem from="1537152389444" duration="24000" />
+    </task>
+    <task id="LOCAL-00001" summary="zyj 提交实体 以及core层">
+      <created>1535531328601</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535531328601</updated>
+    </task>
+    <task id="LOCAL-00002" summary="zyj 提交实体 2018/8/30">
+      <created>1535593088818</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535593088818</updated>
+    </task>
+    <task id="LOCAL-00003" summary="zyj 提交实体 2018/8/30">
+      <created>1535593736505</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1535593736505</updated>
+    </task>
+    <task id="LOCAL-00004" summary="zyj 提交xml 2018/8/30">
+      <created>1535611619097</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1535611619097</updated>
+    </task>
+    <task id="LOCAL-00005" summary="zyj 提交common层 2018/8/30">
+      <created>1535616406025</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1535616406025</updated>
+    </task>
+    <task id="LOCAL-00006" summary="zyj 提交core层 2018/8/30">
+      <created>1535616479999</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1535616479999</updated>
+    </task>
+    <task id="LOCAL-00007" summary="zyj 提交service层 2018/8/30">
+      <created>1535616527856</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1535616527856</updated>
+    </task>
+    <task id="LOCAL-00008" summary="zyj 提交pm-bff层 2018/8/30">
+      <created>1535616562248</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1535616562248</updated>
+    </task>
+    <task id="LOCAL-00009" summary="zyj 提交核心企业签约功能 2018/8/30">
+      <created>1535627085899</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1535627085900</updated>
+    </task>
+    <task id="LOCAL-00010" summary="zyj 提交资方签约功能 2018/8/31">
+      <created>1535686434798</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1535686434798</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="163679000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45537066" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.62193125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5319149" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.81178397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41452345" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64320785" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="zyj 提交实体 以及core层" />
+    <MESSAGE value="zyj 提交实体 2018/8/30" />
+    <MESSAGE value="zyj 提交xml 2018/8/30" />
+    <MESSAGE value="zyj 提交common层 2018/8/30" />
+    <MESSAGE value="zyj 提交core层 2018/8/30" />
+    <MESSAGE value="zyj 提交service层 2018/8/30" />
+    <MESSAGE value="zyj 提交pm-bff层 2018/8/30" />
+    <MESSAGE value="zyj 提交核心企业签约功能 2018/8/30" />
+    <MESSAGE value="zyj 提交资方签约功能 2018/8/31" />
+    <option name="LAST_COMMIT_MESSAGE" value="zyj 提交资方签约功能 2018/8/31" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/PlatformSigningController.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="javascript-exception">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="57" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_31/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="376" column="0" lean-forward="false" selection-start-line="376" selection-start-column="0" selection-end-line="376" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_31/src.zip!/java/net/SocketInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="93" column="23" lean-forward="false" selection-start-line="93" selection-start-column="23" selection-end-line="93" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/commodity/query/CommodityStockForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="71" column="4" lean-forward="false" selection-start-line="71" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/request/SearchDebitAndCredit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/resources/mapper/confirming/ConfirmingStockInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="214" column="12" lean-forward="false" selection-start-line="214" selection-start-column="12" selection-end-line="214" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/repositorys/repository/org/springframework/spring-web/4.3.9.RELEASE/spring-web-4.3.9.RELEASE-sources.jar!/org/springframework/http/MediaType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="91" column="31" lean-forward="false" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/credit/controller/BaseTemplateDictionaryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/business/entity/BusinessFileEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/pro/service/impl/ProContractServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="64" column="45" lean-forward="true" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/pro/feign/FCProContractService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="52" column="172" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="52" selection-end-column="172" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/CoreEnterpriseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/model/ConfirmingStockInfoEntity.java" />
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/CoreEnterpriseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/impl/CoreEnterpriseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="55" column="49" lean-forward="false" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/FCCoreEnterpriseCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/business/core/BusinessFileCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/resources/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/resources/application-pre.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/CoreEnterpriseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="56" column="49" lean-forward="false" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/PlatformSigningService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/PlatformSigningService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="29" column="36" lean-forward="false" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/impl/PlatformSigningServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="54" column="39" lean-forward="false" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/FCPlatformSigningCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1150">
+          <caret line="54" column="107" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="54" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/docker/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/docker/runboot.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/impl/CoreEnterpriseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="98" column="10" lean-forward="false" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/impl/PlatformSigningServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-327">
+          <caret line="87" column="57" lean-forward="true" selection-start-line="87" selection-start-column="57" selection-end-line="87" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-common/src/main/java/cn/fintecher/supply/finance/loan/manager/common/debitandcredit/request/SubmitDebitAndCredit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/dao/ConfirmingStockInfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/service/ConfirmingStockInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/PlatformSigningController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="62" column="41" lean-forward="false" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/DebitAndCreditService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/DebitAndCreditService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="34" column="10" lean-forward="false" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/service/impl/DebitAndCreditServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1225">
+          <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/feign/FcDebitAndCreditService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/feign/FCDebitAndCreditService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/service/impl/DebitAndCreditServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8750">
+          <caret line="381" column="0" lean-forward="false" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/service/impl/ConfirmingStockInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3575">
+          <caret line="160" column="36" lean-forward="false" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/confirming/controller/ConfirmingStockInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3325">
+          <caret line="153" column="9" lean-forward="false" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+          <folding>
+            <marker date="1536914705821" expanded="true" signature="8472:8477" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/confirming/controller/DebitAndCreditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2925">
+          <caret line="130" column="13" lean-forward="false" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/CoreEnterpriseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2475">
+          <caret line="115" column="7" lean-forward="false" selection-start-line="115" selection-start-column="7" selection-end-line="115" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/common/controller/BaseSysUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="112" column="7" lean-forward="true" selection-start-line="112" selection-start-column="7" selection-end-line="112" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/PlatformSigningController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-pm-bff/src/main/java/cn/fintecher/supply/finance/loan/manager/pm/bff/confirming/controller/DebitAndCreditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2075">
+          <caret line="102" column="17" lean-forward="false" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/business/controller/BusinessFileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/business/dao/BusinessFileDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-service/src/main/java/cn/fintecher/supply/finance/loan/manager/service/base/feign/FCBaseAreaCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="17" column="60" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/resources/mapper/business/BusinessFileMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2100">
+          <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <folding>
+            <marker date="1536914705916" expanded="true" signature="2829:3146" ph="insert into business_file... " />
+            <marker date="1536914705916" expanded="true" signature="3394:3465" ph="select from business_file" />
+            <marker date="1536914705916" expanded="true" signature="3656:3767" ph="select from business_file" />
+            <marker date="1536914705916" expanded="true" signature="3914:5034" ph="update busin... " />
+            <marker date="1536914705916" expanded="true" signature="5181:5296" ph="select from business_file" />
+            <marker date="1536914705916" expanded="true" signature="5442:5556" ph="select from business_file" />
+            <marker date="1536914705916" expanded="true" signature="5622:5730" ph="select count... business_file" />
+            <marker date="1536914705916" expanded="true" signature="5882:5995" ph="select from business_file" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-manager-core/src/main/java/cn/fintecher/supply/finance/loan/manager/core/base/controller/BaseAreaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>supply-finance</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditCompanyDao">
+
+	<resultMap id="RM_AuditCompany" type="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity">
+		<result property="pid" column="pid"/>
+		<result property="name" column="name"/>
+		<result property="submitTime" column="submit_time"/>
+		<result property="successTime" column="success_time"/>
+		<result property="enterpriseId" column="enterprise_id"/>
+		<result property="state" column="state"/>
+		<result property="financeStatus" column="finance_status"/>
+		<result property="materialStatus" column="material_status"/>
+		<result property="type" column="type"/>
+		<result property="audit" column="audit"/>
+		<result property="entryStatus" column="entry_status"/>
+		<result property="entryTime" column="entry_time"/>
+		<result property="auditStatus" column="audit_status"/>
+		<result property="auditTime" column="audit_time"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createAt" column="create_at"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateAt" column="update_at"/>
+		<result property="status" column="status"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		pid as pid,
+		name as name,
+		submit_time as submitTime,
+		success_time as successTime,
+		enterprise_id as enterpriseId,
+		state as state,
+		finance_status as financeStatus,
+		material_status as materialStatus,
+		type as type,
+		audit as audit,
+		entry_status as entryStatus,
+		entry_time as entryTime,
+		audit_status as auditStatus,
+		audit_time as auditTime,
+		create_by as createBy,
+		create_at as createAt,
+		update_by as updateBy,
+		update_at as updateAt,
+		status as status,
+		remark as remark
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="submitCredit" useGeneratedKeys="true" keyProperty="pid">
+        INSERT INTO audit_company (
+        	name ,
+        	submit_time ,
+        	success_time ,
+        	enterprise_id,
+        	state ,
+        	finance_status ,
+        	material_status ,
+			type,
+			audit,
+			entry_status,
+			entry_time,
+			audit_status,
+			audit_time,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark
+        ) VALUES (
+        	#{name} ,
+        	#{submitTime} ,
+        	#{successTime} ,
+        	#{enterpriseId},
+        	#{state} ,
+        	#{financeStatus} ,
+        	#{materialStatus} ,
+		    #{type},
+			#{audit},
+			#{entryStatus},
+			#{entryTime},
+			#{auditStatus},
+			#{auditTime},
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark}
+        )
+	</insert>
+
+    <select id="searchCompanyById" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity">
+		select <include refid="columns" />
+		from audit_company
+		where pid = #{pid} and status = 'NOL'
+	</select>
+
+
+
+	<select id="searchCreditList" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditCreditListForm">
+		select <include refid="columns" />
+		from audit_company
+		<include refid="search_credit_list"/> order by audit_status = '0' desc, create_at asc
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="searchCreditListCount" resultType="Integer">
+		SELECT
+		count(*)
+		FROM audit_company
+		<include refid="search_credit_list"/>
+	</select>
+
+	<sql id="search_credit_list">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+		<if test="name != null and name !=''">
+			AND name LIKE concat('%',#{name},'%')
+		</if>
+		<if test="submitStartTime != null and submitStartTime !=''">
+			AND submit_time >= #{submitStartTime}
+		</if>
+		<if test="submitEndTime != null and submitEndTime !=''">
+			AND submit_time &lt;= #{submitEndTime}
+		</if>
+		<if test="surveyStartTime != null and surveyStartTime !=''">
+			AND audit_time >= #{surveyStartTime}
+		</if>
+		<if test="surveyEndTime != null and surveyEndTime !=''">
+			AND audit_time &lt;= #{surveyEndTime}
+		</if>
+		<if test="state != null and state !=''">
+			AND audit_status = #{state}
+		</if>
+			AND audit = '2' And entry_status = '1'
+		</trim>
+	</sql>
+	<select id="searchAuditCompanySurvey" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditCompanyForm">
+		select <include refid="columns" />
+		from audit_company
+		<include refid="search_AuditCompany"/> order by state = '0' desc,create_at asc
+		limit #{startIndex},#{pageSize}
+	</select>
+
+
+	<select id="searchAuditCompanyListCount" resultType="Integer" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditCompanyForm">
+		SELECT
+		count(pid)
+		FROM audit_company
+		<include refid="search_AuditCompany"/>
+	</select>
+
+	<sql id="search_AuditCompany">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="name != null and name !=''">
+				AND name LIKE concat('%',#{name},'%')
+			</if>
+			<if test="submitStartTime != null and submitStartTime !=''">
+				AND submit_time >= #{submitStartTime}
+			</if>
+			<if test="submitEndTime != null and submitEndTime !=''">
+				AND submit_time &lt;= #{submitEndTime}
+			</if>
+			<if test="surveyStartTime != null and surveyStartTime !=''">
+				AND success_time >= #{surveyStartTime}
+			</if>
+			<if test="surveyEndTime != null and surveyEndTime !=''">
+				AND success_time &lt;= #{surveyEndTime}
+			</if>
+			<if test="state != null and state !=''">
+				AND state = #{state}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="searchAuditCompanyInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity">
+		select <include refid="columns" />
+		from audit_company where pid = #{id} and status = 'NOL'
+	</select>
+
+	<select id="searchSurveyStatus" resultType="String">
+		select type from audit_company where pid = #{id} and status = 'NOL'
+	</select>
+
+	<update id="submitExaminationStatus" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity">
+		update audit_company
+		<set>
+			<if test="name != null and name != ''">name = #{name} ,</if>
+			<if test="submitTime != null ">submit_time = #{submitTime} ,</if>
+			<if test="successTime != null ">success_time = #{successTime} ,</if>
+			<if test="enterpriseId != null and enterpriseId != ''">enterprise_id = #{enterpriseId} ,</if>
+			<if test="state != null and state != ''">state = #{state} ,</if>
+			<if test="financeStatus != null and financeStatus != ''">finance_status = #{financeStatus} ,</if>
+			<if test="materialStatus != null and materialStatus != ''">material_status = #{materialStatus} ,</if>
+			<if test="type != null and type != ''">type = #{type},</if>
+			<if test="audit != null and audit != ''">audit = #{audit},</if>
+			<if test="entryStatus != null and entryStatus != ''">entry_status = #{entryStatus},</if>
+			<if test="entryTime != null ">entry_time = #{entryTime},</if>
+			<if test="auditStatus != null and auditStatus != ''">audit_status = #{auditStatus},</if>
+			<if test="auditTime != null ">audit_time = #{auditTime},</if>
+			<if test="createBy != null and createBy != ''">create_by = #{createBy} ,</if>
+			<if test="createAt != null ">create_at = #{createAt} ,</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy} ,</if>
+			<if test="updateAt != null ">update_at = #{updateAt} ,</if>
+			<if test="status != null and status != ''">status = #{status} ,</if>
+			<if test="remark != null and remark != ''">remark = #{remark}</if>
+		</set>
+		where pid = #{pid}
+	</update >
+
+	<select id="searchCreditEntry" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditCompanyEntryForm" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity">
+		select <include refid="columns" />
+		from audit_company
+		<include refid="search_CreditEntry"/> order by entry_status = '0' desc,create_at asc
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="searchCreditEntryCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.AuditCompanyEntryForm" resultType="Integer">
+		select count(*)
+		from audit_company
+		<include refid="search_CreditEntry"/>
+	</select>
+
+	<sql id="search_CreditEntry">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test=" 1 != 0">
+				and audit = '2'
+			</if>
+			<if test="name != null and name !=''">
+				AND name LIKE concat('%',#{name},'%')
+			</if>
+			<if test="submitStartTime != null ">
+				AND submit_time >= #{submitStartTime}
+			</if>
+			<if test="submitEndTime != null">
+				AND submit_time &lt;= #{submitEndTime}
+			</if>
+			<if test="entryStartTime != null">
+				AND audit_time >= #{entryStartTime}
+			</if>
+			<if test="entryEndTime != null ">
+				AND audit_time &lt;= #{entryEndTime}
+			</if>
+			<if test="state != null and state !=''">
+				AND entry_status = #{state}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="searchAuditCompanyId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.AuditCompanyEntity">
+		select <include refid="columns" />
+		from audit_company
+		where enterprise_id = #{id} and status = 'NOL'
+	</select>
+
+	<select id ="searchAuditCreditCount" resultType="Integer">
+		select count(*)
+		from audit_company
+		where state = #{auditStatus} and status = 'NOL'
+	</select>
+</mapper>
+

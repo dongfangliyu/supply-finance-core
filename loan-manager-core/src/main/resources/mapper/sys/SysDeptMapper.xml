@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysDeptDao">
+
+	<resultMap id="RM_SysDept" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysDept">
+        <result property="deptId" column="dept_id"/>
+        <result property="parantId" column="parant_id"/>
+        <result property="name" column="name"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="status" column="status"/>
+        <result property="deptType" column="dept_type"/>
+        <result property="address" column="address"/>
+        <result property="tel" column="tel"/>
+        <result property="email" column="email"/>
+        <result property="custodianName" column="custodian_name"/>
+        <result property="number" column="number"/>
+        <result property="mobile" column="mobile"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="compId" column="comp_id"/>
+        <result property="createUserId" column="create_user_id"/>
+        <result property="updateUserId" column="update_user_id"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		dept_id,parant_id,name,order_num,status,dept_type,address,tel,email,custodian_name,number,mobile,create_time,update_time,comp_id,create_user_id,update_user_id
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="deptId">
+    <![CDATA[
+        INSERT INTO sys_dept (
+        	dept_id ,
+        	parant_id ,
+        	name ,
+        	order_num ,
+        	status ,
+        	dept_type ,
+        	address ,
+        	tel ,
+        	email ,
+        	custodian_name ,
+        	number ,
+        	mobile ,
+        	create_time ,
+        	update_time ,
+        	comp_id ,
+        	create_user_id ,
+        	update_user_id 
+        ) VALUES (
+        	#{deptId} ,
+        	#{parantId} ,
+        	#{name} ,
+        	#{orderNum} ,
+        	#{status} ,
+        	#{deptType} ,
+        	#{address} ,
+        	#{tel} ,
+        	#{email} ,
+        	#{custodianName} ,
+        	#{number} ,
+        	#{mobile} ,
+        	#{createTime} ,
+        	#{updateTime} ,
+        	#{compId} ,
+        	#{createUserId} ,
+        	#{updateUserId} 
+        )
+    ]]>
+
+	</insert>
+
+    <select id="getById" resultMap="RM_SysDept">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM sys_dept 
+	        WHERE 
+		        dept_id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="deptId != null and deptId != ''">
+				AND dept_id = #{deptId}
+			</if>
+	       <if test="parantId != null and parantId != ''">
+				AND parant_id = #{parantId}
+			</if>
+	       <if test="name != null and name != ''">
+				AND name = #{name}
+			</if>
+	       <if test="orderNum != null and orderNum != ''">
+				AND order_num = #{orderNum}
+			</if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="deptType != null and deptType != ''">
+				AND dept_type = #{deptType}
+			</if>
+	       <if test="address != null and address != ''">
+				AND address = #{address}
+			</if>
+	       <if test="tel != null and tel != ''">
+				AND tel = #{tel}
+			</if>
+	       <if test="email != null and email != ''">
+				AND email = #{email}
+			</if>
+	       <if test="custodianName != null and custodianName != ''">
+				AND custodian_name = #{custodianName}
+			</if>
+	       <if test="number != null and number != ''">
+				AND number = #{number}
+			</if>
+	       <if test="mobile != null and mobile != ''">
+				AND mobile = #{mobile}
+			</if>
+	       <if test="createTime != null and createTime != ''">
+				AND create_time = #{createTime}
+			</if>
+	       <if test="updateTime != null and updateTime != ''">
+				AND update_time = #{updateTime}
+			</if>
+	       <if test="compId != null and compId != ''">
+				AND comp_id = #{compId}
+			</if>
+	       <if test="createUserId != null and createUserId != ''">
+				AND create_user_id = #{createUserId}
+			</if>
+	       <if test="updateUserId != null and updateUserId != ''">
+				AND update_user_id = #{updateUserId}
+			</if>
+		</where>
+	</sql>
+
+	<select id="queryDeptById" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select * from sys_dept where dept_id = #{deptId}
+	</select>
+
+	<select id="getAllDepts" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.DeptSearchForm">
+		select *
+		from sys_dept
+		<where>
+			<if test="vo.deptName != null and vo.deptName != ''">
+				and name like concat('%',#{vo.deptName},'%')
+			</if>
+			<if test="vo.status != null">
+				and status = #{vo.status}
+			</if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity"
+			useGeneratedKeys="true" keyProperty="deptId">
+		insert into sys_dept (
+			dept_id, parant_id, name,
+			order_num, status, dept_type,
+			address, tel, email,number,
+			custodian_name, mobile, create_time,
+			update_time, comp_id, create_user_id,
+			update_user_id
+		)
+		values (#{deptId,jdbcType=INTEGER}, #{parantId,jdbcType=INTEGER},
+			#{name,jdbcType=VARCHAR},
+			#{orderNum,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{deptType,jdbcType=VARCHAR},
+			#{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR},
+			#{email,jdbcType=VARCHAR},#{number,jdbcType=VARCHAR},
+			#{custodianName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
+			#{updateTime,jdbcType=VARCHAR}, #{compId,jdbcType=INTEGER},
+			#{createUserId,jdbcType=INTEGER},
+			#{updateUserId,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<select id="queryDetpIdList" resultType="int">
+		select dept_id from sys_dept where parant_id = #{value}  and status = 1
+	</select>
+
+	<update id="delete" parameterType="java.util.Map">
+		update sys_dept
+		<set>
+			<if test="status != null">`status` = #{status},</if>
+			<if test="updateTime != null">`update_time` = #{updateTime},</if>
+			<if test="updateUserId != null">`update_user_id` = #{updateUserId},</if>
+		</set>
+		where dept_id in
+		<foreach item="deptId" collection="DeptIdList" open="(" separator="," close=")">
+			#{deptId}
+		</foreach>
+	</update>
+
+	<update id="update" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		update sys_dept
+		<set>
+			<if test="parantId != null">`parant_id` = #{parantId}, </if>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="orderNum != null">`order_num` = #{orderNum},</if>
+			<if test="status != null">`status` = #{status},</if>
+			<if test="deptType != null">`dept_type` = #{deptType},</if>
+			<if test="address != null">`address` = #{address},</if>
+			<if test="tel != null">`tel` = #{tel},</if>
+			<if test="email != null">`email` = #{email},</if>
+			<if test="number != null">`number` = #{number},</if>
+			<if test="custodianName != null">`custodian_name` = #{custodianName},</if>
+			<if test="mobile != null">`mobile` = #{mobile},</if>
+			<if test="createTime != null">`create_time` = #{createTime},</if>
+			<if test="updateTime != null">`update_time` = #{updateTime},</if>
+			<if test="compId != null">`comp_id` = #{compId},</if>
+			<if test="updateUserId != null">`update_user_id` = #{updateUserId},</if>
+			<if test="createUserId != null">`create_user_id` = #{createUserId}</if>
+		</set>
+		where dept_id = #{deptId}
+	</update>
+
+	<sql id="Query_parameters">
+	  d.dept_id, d.parant_id, d.name, d.order_num, d.status, d.dept_type, d.address, d.tel, d.email, d.number, d.custodian_name, d.mobile, d.create_time, d.update_time
+	</sql>
+
+	<select id="queryList" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select
+		<include refid="Query_parameters" />
+		from sys_dept d where d.comp_id = #{compId}  and d.status = 1
+	</select>
+
+	<select id="querySubList" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select
+		<include refid="Query_parameters" />
+		from sys_dept d where d.parant_id = #{parantId}  and d.status = 1
+	</select>
+
+	<select id="getDeptById" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select
+		<include refid="Query_parameters" />
+		from sys_dept d where d.dept_id = #{deptId}
+	</select>
+
+	<select id="getOneAndTwoDepts" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select * from sys_dept where status = 1
+		and (parant_id = 0 or parant_id in (select b.dept_id from sys_dept b where b.parant_id = 0))
+	</select>
+
+	<select id="queryListDept" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select d.*,(select p.name from sys_dept p where p.dept_id = d.parant_id) as parantName
+		from sys_dept d where d.status = 1
+	</select>
+
+	<select id="queryListByCompId" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysDeptEntity">
+		select
+			*
+		from sys_dept d where d.comp_id = #{compId}  and d.status = 1
+	</select>
+
+</mapper>
+

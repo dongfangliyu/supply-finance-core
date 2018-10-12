@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.credit.dao.EnterpriseDictionaryDao">
+
+    <resultMap id="RM_CompanyEnterprise" type="cn.fintecher.supply.finance.loan.manager.common.model.BaseDictionaryEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="value" column="value"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+        pid,name,code,value,create_by,create_at,update_at,update_by,status,remark
+    </sql>
+
+    <select id="searchAllDictionary" resultType="cn.fintecher.supply.finance.loan.manager.common.model.BaseDictionaryEntity">
+        select * from base_dictionary where code=#{code}
+    </select>
+
+    <select id="searchAccountingStatementTime" resultType="java.lang.String">
+        select value from base_dictionary where code=#{year}
+    </select>
+</mapper>
+

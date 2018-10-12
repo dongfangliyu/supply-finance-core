@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.audit.dao.AuditOrderInfoDao">
+ 	<resultMap type="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity" id="orderInfoMap">
+        <result property="pid" column="pid"/>
+        <result property="enterpriseId" column="enterprise_id"/>
+        <result property="supplierId" column="supplier_id"/>
+        <result property="enterpriseName" column="enterprise_name"/>
+        <result property="supplierName" column="supplier_name"/>
+        <result property="accountno" column="accountNo"/>
+        <result property="certificateAmount" column="certificate_amount"/>
+        <result property="applicationAmount" column="application_amount"/>
+        <result property="applicationTerm" column="application_term"/>
+        <result property="approvalAmount" column="approval_amount"/>
+        <result property="platformSigningTime" column="platform_signing_time"/>
+        <result property="entertSigningTime" column="entert_signing_time"/>
+        <result property="approvalTerm" column="approval_term"/>
+        <result property="financialReviewTime" column="financial_review_time"/>
+        <result property="firstTrialTime" column="first_trial_time"/>
+        <result property="secondTrialTime" column="second_trial_time"/>
+        <result property="thirdTrialTime" column="third_trial_time"/>
+        <result property="state" column="state"/>
+        <result property="loanTime" column="loan_time"/>
+        <result property="orderId" column="order_id"/>
+        <result property="guarantee" column="guarantee"/>
+        <result property="guaranteeTime" column="guarantee_time"/>
+        <result property="financeFirstTime" column="finance_first_time"/>
+        <result property="signingTime" column="signing_time"/>
+        <result property="signingStatus" column="signing_status"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="accountStartTime" column="account_start_time"/>
+        <result property="accountEndTime" column="account_end_time"/>
+        <result property="enterCategory" column="enter_category"/>
+        <result property="enterCategoryValue" column="enter_category_value"/>
+        <result property="suppCategory" column="supp_category"/>
+        <result property="suppCategoryValue" column="supp_category_value"/>
+        <result property="suppCode" column="supp_code"/>
+        <result property="serviceFee" column="service_fee"/>
+        <result property="interestRate" column="interest_rate"/>
+        <result property="rebateRatio" column="rebate_ratio"/>
+        <result property="passingTime" column="passing_time"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="inviteTime" column="invite_time"/>
+        <result property="accountConfirmTime" column="account_confirm_time"/>
+        <result property="financingStatus" column="financing_status"/>
+        <result property="orderCode" column="order_code"/>
+        <result property="remind" column="remind"/>
+        <result property="shouldTime" column="should_time"/>
+        <result property="settleTime" column="settle_time"/>
+        <result property="setReminderTime" column="set_reminder_time"/>
+        <result property="reviewAgreeTime" column="review_agree_time"/>
+        <result property="repaymentReview" column="repayment_review"/>
+        <result property="repaymentTime" column="repayment_time"/>
+        <result property="overdueType" column="overdue_type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="interest" column="interest"/>
+    </resultMap>
+    
+	<sql id="orderInfo_find_List">
+		pid as pid,		enterprise_id as enterpriseId,		supplier_id as supplierId,		enterprise_name as enterpriseName,		supplier_name as supplierName,		accountNo as accountno,		certificate_amount as certificateAmount,		application_amount as applicationAmount,		application_term as applicationTerm,		approval_amount as approvalAmount,		platform_signing_time as platformSigningTime,		entert_signing_time as entertSigningTime,		approval_term as approvalTerm,		financial_review_time as financialReviewTime,		first_trial_time as firstTrialTime,		second_trial_time as secondTrialTime,		third_trial_time as thirdTrialTime,		state as state,		loan_time as loanTime,		order_id as orderId,		guarantee as guarantee,		guarantee_time as guaranteeTime,		finance_first_time as financeFirstTime,		signing_time as signingTime,		signing_status as signingStatus,		contract_no as contractNo,		account_start_time as accountStartTime,		account_end_time as accountEndTime,		enter_category as enterCategory,		enter_category_value as enterCategoryValue,		supp_category as suppCategory,		supp_category_value as suppCategoryValue,		supp_code as suppCode,		service_fee as serviceFee,		interest_rate as interestRate,		rebate_ratio as rebateRatio,		passing_time as passingTime,		submit_time as submitTime,		invite_time as inviteTime,		account_confirm_time as accountConfirmTime,		financing_status as financingStatus,		order_code as orderCode,		remind as remind,		should_time as shouldTime,		settle_time as settleTime,		set_reminder_time as setReminderTime,		review_agree_time as reviewAgreeTime,		repayment_review as repaymentReview,		repayment_time as repaymentTime,		overdue_type as overdueType,		create_by as createBy,		create_at as createAt,		update_at as updateAt,		update_by as updateBy,		status as status,		remark as remark,		interest as interest	</sql>
+
+	<sql id="orderInfo_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="enterpriseId != null" >
+		      	AND enterprise_id = #{enterpriseId}
+		    </if>
+			<if test="supplierId != null" >
+		      	AND supplier_id = #{supplierId}
+		    </if>
+			<if test="enterpriseName != null" >
+		      	AND enterprise_name = #{enterpriseName}
+		    </if>
+			<if test="supplierName != null" >
+		      	AND supplier_name = #{supplierName}
+		    </if>
+			<if test="accountno != null" >
+		      	AND accountNo = #{accountno}
+		    </if>
+			<if test="certificateAmount != null" >
+		      	AND certificate_amount = #{certificateAmount}
+		    </if>
+			<if test="applicationAmount != null" >
+		      	AND application_amount = #{applicationAmount}
+		    </if>
+			<if test="applicationTerm != null" >
+		      	AND application_term = #{applicationTerm}
+		    </if>
+			<if test="approvalAmount != null" >
+		      	AND approval_amount = #{approvalAmount}
+		    </if>
+			<if test="platformSigningTime != null" >
+		      	AND platform_signing_time = #{platformSigningTime}
+		    </if>
+			<if test="entertSigningTime != null" >
+		      	AND entert_signing_time = #{entertSigningTime}
+		    </if>
+			<if test="approvalTerm != null" >
+		      	AND approval_term = #{approvalTerm}
+		    </if>
+			<if test="financialReviewTime != null" >
+		      	AND financial_review_time = #{financialReviewTime}
+		    </if>
+			<if test="firstTrialTime != null" >
+		      	AND first_trial_time = #{firstTrialTime}
+		    </if>
+			<if test="secondTrialTime != null" >
+		      	AND second_trial_time = #{secondTrialTime}
+		    </if>
+			<if test="thirdTrialTime != null" >
+		      	AND third_trial_time = #{thirdTrialTime}
+		    </if>
+			<if test="state != null" >
+		      	AND state = #{state}
+		    </if>
+			<if test="loanTime != null" >
+		      	AND loan_time = #{loanTime}
+		    </if>
+			<if test="orderId != null" >
+		      	AND order_id = #{orderId}
+		    </if>
+			<if test="guarantee != null" >
+		      	AND guarantee = #{guarantee}
+		    </if>
+			<if test="guaranteeTime != null" >
+		      	AND guarantee_time = #{guaranteeTime}
+		    </if>
+			<if test="financeFirstTime != null" >
+		      	AND finance_first_time = #{financeFirstTime}
+		    </if>
+			<if test="signingTime != null" >
+		      	AND signing_time = #{signingTime}
+		    </if>
+			<if test="signingStatus != null" >
+		      	AND signing_status = #{signingStatus}
+		    </if>
+			<if test="contractNo != null" >
+		      	AND contract_no = #{contractNo}
+		    </if>
+			<if test="accountStartTime != null" >
+		      	AND account_start_time = #{accountStartTime}
+		    </if>
+			<if test="accountEndTime != null" >
+		      	AND account_end_time = #{accountEndTime}
+		    </if>
+			<if test="enterCategory != null" >
+		      	AND enter_category = #{enterCategory}
+		    </if>
+			<if test="enterCategoryValue != null" >
+		      	AND enter_category_value = #{enterCategoryValue}
+		    </if>
+			<if test="suppCategory != null" >
+		      	AND supp_category = #{suppCategory}
+		    </if>
+			<if test="suppCategoryValue != null" >
+		      	AND supp_category_value = #{suppCategoryValue}
+		    </if>
+			<if test="suppCode != null" >
+		      	AND supp_code = #{suppCode}
+		    </if>
+			<if test="serviceFee != null" >
+		      	AND service_fee = #{serviceFee}
+		    </if>
+			<if test="interestRate != null" >
+		      	AND interest_rate = #{interestRate}
+		    </if>
+			<if test="rebateRatio != null" >
+		      	AND rebate_ratio = #{rebateRatio}
+		    </if>
+			<if test="passingTime != null" >
+		      	AND passing_time = #{passingTime}
+		    </if>
+			<if test="submitTime != null" >
+		      	AND submit_time = #{submitTime}
+		    </if>
+			<if test="inviteTime != null" >
+		      	AND invite_time = #{inviteTime}
+		    </if>
+			<if test="accountConfirmTime != null" >
+		      	AND account_confirm_time = #{accountConfirmTime}
+		    </if>
+			<if test="financingStatus != null" >
+		      	AND financing_status = #{financingStatus}
+		    </if>
+			<if test="orderCode != null" >
+		      	AND order_code = #{orderCode}
+		    </if>
+			<if test="remind != null" >
+		      	AND remind = #{remind}
+		    </if>
+			<if test="shouldTime != null" >
+		      	AND should_time = #{shouldTime}
+		    </if>
+			<if test="settleTime != null" >
+		      	AND settle_time = #{settleTime}
+		    </if>
+			<if test="setReminderTime != null" >
+		      	AND set_reminder_time = #{setReminderTime}
+		    </if>
+			<if test="reviewAgreeTime != null" >
+		      	AND review_agree_time = #{reviewAgreeTime}
+		    </if>
+			<if test="repaymentReview != null" >
+		      	AND repayment_review = #{repaymentReview}
+		    </if>
+			<if test="repaymentTime != null" >
+		      	AND repayment_time = #{repaymentTime}
+		    </if>
+			<if test="overdueType != null" >
+		      	AND overdue_type = #{overdueType}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+			<if test="interest != null" >
+		      	AND interest = #{interest}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertOrderInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into audit_order_info (pid,enterprise_id,supplier_id,enterprise_name,supplier_name,accountNo,certificate_amount,application_amount,application_term,approval_amount,platform_signing_time,entert_signing_time,approval_term,financial_review_time,first_trial_time,second_trial_time,third_trial_time,state,loan_time,order_id,guarantee,guarantee_time,finance_first_time,signing_time,signing_status,contract_no,account_start_time,account_end_time,enter_category,enter_category_value,supp_category,supp_category_value,supp_code,service_fee,interest_rate,rebate_ratio,passing_time,submit_time,invite_time,account_confirm_time,financing_status,order_code,remind,should_time,settle_time,set_reminder_time,review_agree_time,repayment_review,repayment_time,overdue_type,create_by,create_at,update_at,update_by,status,remark,interest)
+	    values (#{pid},#{enterpriseId},#{supplierId},#{enterpriseName},#{supplierName},#{accountno},#{certificateAmount},#{applicationAmount},#{applicationTerm},#{approvalAmount},#{platformSigningTime},#{entertSigningTime},#{approvalTerm},#{financialReviewTime},#{firstTrialTime},#{secondTrialTime},#{thirdTrialTime},#{state},#{loanTime},#{orderId},#{guarantee},#{guaranteeTime},#{financeFirstTime},#{signingTime},#{signingStatus},#{contractNo},#{accountStartTime},#{accountEndTime},#{enterCategory},#{enterCategoryValue},#{suppCategory},#{suppCategoryValue},#{suppCode},#{serviceFee},#{interestRate},#{rebateRatio},#{passingTime},#{submitTime},#{inviteTime},#{accountConfirmTime},#{financingStatus},#{orderCode},#{remind},#{shouldTime},#{settleTime},#{setReminderTime},#{reviewAgreeTime},#{repaymentReview},#{repaymentTime},#{overdueType},#{createBy},#{createAt},#{updateAt},#{updateBy},#{status},#{remark},#{interest})
+	</insert>
+	
+	<select id="selectByOrderInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+	  	select
+	    	<include refid="orderInfo_find_List" />
+	    from audit_order_info
+	    	<include refid="orderInfo_find_where" />
+	 </select>
+	 
+	 <select id="queryOrderInfoByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+	  	select
+	    	<include refid="orderInfo_find_List" />
+	    from audit_order_info where pid = #{pid}
+	 </select>
+	 
+	<update id="updateOrderInfo" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity" >
+    	update audit_order_info
+	    	<set >
+				<if test="enterpriseId != null" >
+			      	 enterprise_id = #{enterpriseId},
+			    </if>
+				<if test="supplierId != null" >
+			      	 supplier_id = #{supplierId},
+			    </if>
+				<if test="enterpriseName != null" >
+			      	 enterprise_name = #{enterpriseName},
+			    </if>
+				<if test="supplierName != null" >
+			      	 supplier_name = #{supplierName},
+			    </if>
+				<if test="accountno != null" >
+			      	 accountNo = #{accountno},
+			    </if>
+				<if test="certificateAmount != null" >
+			      	 certificate_amount = #{certificateAmount},
+			    </if>
+				<if test="applicationAmount != null" >
+			      	 application_amount = #{applicationAmount},
+			    </if>
+				<if test="applicationTerm != null" >
+			      	 application_term = #{applicationTerm},
+			    </if>
+				<if test="approvalAmount != null" >
+			      	 approval_amount = #{approvalAmount},
+			    </if>
+				<if test="platformSigningTime != null" >
+			      	 platform_signing_time = #{platformSigningTime},
+			    </if>
+				<if test="entertSigningTime != null" >
+			      	 entert_signing_time = #{entertSigningTime},
+			    </if>
+				<if test="approvalTerm != null" >
+			      	 approval_term = #{approvalTerm},
+			    </if>
+				<if test="financialReviewTime != null" >
+			      	 financial_review_time = #{financialReviewTime},
+			    </if>
+				<if test="firstTrialTime != null" >
+			      	 first_trial_time = #{firstTrialTime},
+			    </if>
+				<if test="secondTrialTime != null" >
+			      	 second_trial_time = #{secondTrialTime},
+			    </if>
+				<if test="thirdTrialTime != null" >
+			      	 third_trial_time = #{thirdTrialTime},
+			    </if>
+				<if test="state != null" >
+			      	 state = #{state},
+			    </if>
+				<if test="loanTime != null" >
+			      	 loan_time = #{loanTime},
+			    </if>
+				<if test="orderId != null" >
+			      	 order_id = #{orderId},
+			    </if>
+				<if test="guarantee != null" >
+			      	 guarantee = #{guarantee},
+			    </if>
+				<if test="guaranteeTime != null" >
+			      	 guarantee_time = #{guaranteeTime},
+			    </if>
+				<if test="financeFirstTime != null" >
+			      	 finance_first_time = #{financeFirstTime},
+			    </if>
+				<if test="signingTime != null" >
+			      	 signing_time = #{signingTime},
+			    </if>
+				<if test="signingStatus != null" >
+			      	 signing_status = #{signingStatus},
+			    </if>
+				<if test="contractNo != null" >
+			      	 contract_no = #{contractNo},
+			    </if>
+				<if test="accountStartTime != null" >
+			      	 account_start_time = #{accountStartTime},
+			    </if>
+				<if test="accountEndTime != null" >
+			      	 account_end_time = #{accountEndTime},
+			    </if>
+				<if test="enterCategory != null" >
+			      	 enter_category = #{enterCategory},
+			    </if>
+				<if test="enterCategoryValue != null" >
+			      	 enter_category_value = #{enterCategoryValue},
+			    </if>
+				<if test="suppCategory != null" >
+			      	 supp_category = #{suppCategory},
+			    </if>
+				<if test="suppCategoryValue != null" >
+			      	 supp_category_value = #{suppCategoryValue},
+			    </if>
+				<if test="suppCode != null" >
+			      	 supp_code = #{suppCode},
+			    </if>
+				<if test="serviceFee != null" >
+			      	 service_fee = #{serviceFee},
+			    </if>
+				<if test="interestRate != null" >
+			      	 interest_rate = #{interestRate},
+			    </if>
+				<if test="rebateRatio != null" >
+			      	 rebate_ratio = #{rebateRatio},
+			    </if>
+				<if test="passingTime != null" >
+			      	 passing_time = #{passingTime},
+			    </if>
+				<if test="submitTime != null" >
+			      	 submit_time = #{submitTime},
+			    </if>
+				<if test="inviteTime != null" >
+			      	 invite_time = #{inviteTime},
+			    </if>
+				<if test="accountConfirmTime != null" >
+			      	 account_confirm_time = #{accountConfirmTime},
+			    </if>
+				<if test="financingStatus != null" >
+			      	 financing_status = #{financingStatus},
+			    </if>
+				<if test="orderCode != null" >
+			      	 order_code = #{orderCode},
+			    </if>
+				<if test="remind != null" >
+			      	 remind = #{remind},
+			    </if>
+				<if test="shouldTime != null" >
+			      	 should_time = #{shouldTime},
+			    </if>
+				<if test="settleTime != null" >
+			      	 settle_time = #{settleTime},
+			    </if>
+				<if test="setReminderTime != null" >
+			      	 set_reminder_time = #{setReminderTime},
+			    </if>
+				<if test="reviewAgreeTime != null" >
+			      	 review_agree_time = #{reviewAgreeTime},
+			    </if>
+				<if test="repaymentReview != null" >
+			      	 repayment_review = #{repaymentReview},
+			    </if>
+				<if test="repaymentTime != null" >
+			      	 repayment_time = #{repaymentTime},
+			    </if>
+				<if test="overdueType != null" >
+			      	 overdue_type = #{overdueType},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+				<if test="interest != null" >
+			      	 interest = #{interest},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+
+    <sql id="shenhe_find_where">
+        <where>
+            <if test="1 == 1">
+                AND t.order_info_id = i.pid
+            </if>
+            <if test="1 == 1">
+                AND t.status != 'DEL'
+            </if>
+            <if test="1 == 1">
+                AND t.type = '1'
+            </if>
+            <if test="taskStatus != null and taskStatus !=''">
+                AND t.status != #{taskStatus}
+            </if>
+            <if test="status != null and status !=''">
+                AND i.status = #{status}
+            </if>
+            <if test="userId != null and userId !=''">
+                AND t.ower_id = #{userId}
+            </if>
+            <if test="node != null and node !=''">
+                AND t.node = #{node}
+            </if>
+            <if test="endTime != null and endTime !=''">
+                AND i.first_trial_time &lt;= #{endTime}
+            </if>
+            <if test="startTime != null and startTime !=''">
+                AND i.first_trial_time >= #{startTime}
+            </if>
+            <if test="accountNo != null and accountNo !=''">
+                AND i.accountNo like CONCAT("%",#{accountNo},"%")
+            </if>
+            <if test="enterpriseName != null and enterpriseName !=''">
+                AND i.enterprise_name like CONCAT("%",#{enterpriseName},"%")
+            </if>
+            <if test="supplierName != null and supplierName !=''">
+                AND i.supplier_name like CONCAT("%",#{supplierName},"%")
+            </if>
+            <if test="state != null and state !=''">
+                <if test="state == '10' ">
+                    AND i.state >= 10
+                </if>
+                <if test="state == '20' ">
+                    AND i.state >= 20
+                </if>
+                <if test="state == '30' ">
+                    AND i.state >= 30
+                </if>
+                <if test="state != '10' and state != '20' and state != '30' ">
+                    AND i.state = #{state}
+                </if>
+            </if>
+        </where>
+    </sql>
+
+	<select id="selectFristCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditOrderInfoFrom" resultType = "int">
+	  	SELECT count(*) from audit_task t, audit_order_info i
+	    	<include refid="shenhe_find_where" />
+	 </select>
+
+	 <select id="selectFristList" parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditOrderInfoFrom" resultType = "cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+	  	SELECT i.* from audit_task t, audit_order_info i
+	    	<include refid="shenhe_find_where" />
+	    	ORDER BY i.state = '1' DESC,i.first_trial_time DESC,i.account_confirm_time ASC
+	    	limit #{startIndex},#{pageSize}
+	 </select>
+
+
+    <select id="selectSecondCount"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditOrderInfoFrom"
+            resultType="int">
+        SELECT count(*) from audit_task t, audit_order_info i
+        <include refid="shenhe_find_where"/>
+    </select>
+
+    <select id="selectSecondList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditOrderInfoFrom"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        SELECT i.* from audit_task t, audit_order_info i
+        <include refid="shenhe_find_where"/>
+        ORDER BY i.state = '11' DESC,i.second_trial_time DESC,i.account_confirm_time ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+
+    <select id="selectThirdCount"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditOrderInfoFrom"
+            resultType="int">
+        SELECT count(*) from audit_task t, audit_order_info i
+        <include refid="shenhe_find_where"/>
+    </select>
+
+    <select id="selectThirdList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditOrderInfoFrom"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        SELECT i.* from audit_task t, audit_order_info i
+        <include refid="shenhe_find_where"/>
+        ORDER BY i.state = '21' DESC ,i.third_trial_time DESC,i.account_confirm_time ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="searchGuaranteeList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.guarantee.AuditGuaranteeListForm"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        select
+        <include refid="orderInfo_find_List"/>
+        from audit_order_info
+        <include refid="guarantee_find_where"/> order by state = '30' DESC,create_at ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="searchGuaranteeListCount"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.guarantee.AuditGuaranteeListForm"
+            resultType="Integer">
+        select count(pid)
+        from audit_order_info
+        <include refid="guarantee_find_where"/>
+    </select>
+    <sql id="guarantee_find_where">
+        where guarantee = '1' AND state >='30'
+		<if test="enterpriseName != null and enterpriseName !=''">
+			AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+		</if>
+		<if test="supplierName != null and supplierName !=''">
+			AND supplier_name LIKE concat('%',#{supplierName},'%')
+		</if>
+		<if test="state == '30'.toString()">
+			AND state = '30'
+		</if>
+		<if test="state == '31'.toString()">
+			AND state = '31'
+		</if>
+        <if test="state == '32'.toString()">
+            AND state >= '32'
+        </if>
+        <if test="accountno != null">
+            AND accountNo = #{accountno}
+        </if>
+        <if test="startTime != null and startTime !=''">
+            AND guarantee_time >= #{startTime}
+        </if>
+        <if test="endTime != null and endTime !=''">
+            AND guarantee_time &lt;= #{endTime}
+        </if>
+    </sql>
+
+
+    <sql id="search_AuditFinanceFirst">
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test=" 1 != 0">
+                and status = 'NOL'
+            </if>
+            <if test="enterpriseName != null and enterpriseName !=''">
+                AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+            </if>
+            <if test="supplierName != null and supplierName !=''">
+                AND supplier_name LIKE concat('%',#{supplierName},'%')
+            </if>
+            <if test="accountNo != null and accountNo !=''">
+                AND account_no = #{accountNo}
+            </if>
+            <if test="startTime != null">
+                AND finance_first_time >= #{startTime}
+            </if>
+            <if test="endTime != null">
+                AND finance_first_time &lt;= #{endTime}
+            </if>
+            <if test="state == '1'.toString()">
+                AND state = '50'
+            </if>
+            <if test="state == '2'.toString()">
+                AND state = '51'
+            </if>
+			<if test="state == '3'.toString()">
+				AND state >= '60'
+			</if>
+            AND state >= '50'
+        </trim>
+    </sql>
+
+    <select id="searchFinanceListCount"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditFinanceForm"
+            resultType="int">
+        SELECT count(*) from audit_order_info
+        <include refid="search_AuditFinanceFirst"/>
+    </select>
+
+    <select id="searchFinanceList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditFinanceForm"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        SELECT * from audit_order_info
+        <include refid="search_AuditFinanceFirst"/> order by state = '50' DESC,create_at ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+
+    <select id="searchSigningList"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        SELECT * from audit_order_info
+        <include refid="signing_find_where"/>
+		order by state ASC , signing_time ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="searchSigningListCount" resultType="int">
+        select count(pid)
+        from audit_order_info
+        <include refid="signing_find_where"/>
+    </select>
+
+    <sql id="signing_find_where">
+        <where>
+            state >= '40' AND supplier_id = #{currentCompanyId} and status = 'NOL'
+            <if test="enterpriseName != null and enterpriseName!=''">
+                AND enterprise_name like CONCAT("%",#{enterpriseName},"%")
+            </if>
+            <if test="supplierName != null and supplierName!=''">
+                AND supplier_name like CONCAT("%",#{supplierName},"%")
+            </if>
+            <if test="accountNo != null and accountNo!=''">
+                AND accountNo = #{accountNo}
+            </if>
+            <if test="startTime != null and startTime!=''">
+                AND signing_time >= #{startTime}
+            </if>
+            <if test="endTime != null and endTime!=''">
+                AND signing_time &lt;= #{endTime}
+            </if>
+            <if test="state == '0'.toString()">
+                AND state = '40'
+            </if>
+            <if test="state == '1'.toString()">
+                AND state > '40'
+            </if>
+            <if test="guarantee != null and guarantee!=''">
+                AND guarantee = #{guarantee}
+            </if>
+        </where>
+    </sql>
+
+
+    <sql id="search_AuditLoan">
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test=" 1 != 0">
+                and status = 'NOL'
+            </if>
+            <if test="enterpriseName != null and enterpriseName !=''">
+                AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+            </if>
+            <if test="supplierName != null and supplierName !=''">
+                AND supplier_name LIKE concat('%',#{supplierName},'%')
+            </if>
+            <if test="accountNo != null and accountNo !=''">
+                AND account_no = #{accountNo}
+            </if>
+            <if test="startTime != null">
+                AND financial_review_time >= #{startTime}
+            </if>
+            <if test="endTime != null">
+                AND financial_review_time &lt;= #{endTime}
+            </if>
+			<if test="state == '1'.toString()">
+				AND state = '60'
+			</if>
+			<if test="state == '2'.toString()">
+				AND state = '61'
+			</if>
+			<if test="state == '3'.toString()">
+				AND state >= '70'
+			</if>
+            AND state >= '60'
+        </trim>
+    </sql>
+
+    <select id="searchLoanListCount"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditFinanceForm"
+            resultType="int">
+        SELECT count(*) from audit_order_info
+        <include refid="search_AuditLoan"/>
+    </select>
+
+    <select id="searchLoanList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditFinanceForm"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        SELECT * from audit_order_info
+        <include refid="search_AuditLoan"/> order by state = '60' DESC,create_at ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="searchFrontGuaranteeList"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.guarantee.AuditFrontGuaranteeListForm"
+            resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        select
+        <include refid="orderInfo_find_List"/>
+        from audit_order_info
+        <include refid="frontGuarantee_find_where"/> order by state = '32' DESC,create_at ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="searchFrontGuaranteeListCount"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.form.guarantee.AuditFrontGuaranteeListForm"
+            resultType="Integer">
+        select count(pid)
+        from audit_order_info
+        <include refid="frontGuarantee_find_where"/>
+    </select>
+
+    <sql id="frontGuarantee_find_where">
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="enterpriseName != null and enterpriseName !=''">
+                AND enterprise_name like CONCAT("%",#{enterpriseName},"%")
+            </if>
+            <if test="state != null and state !=''">
+                AND state = #{state}
+            </if>
+            AND state >='32' AND guarantee = '1' AND supplier_id =#{currentCompanyId}
+        </trim>
+    </sql>
+
+
+    <select id="getOverdueOrderInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+    	SELECT a.* FROM audit_order_info  a
+		WHERE loan_time &lt; (SELECT DATE_FORMAT(DATE_ADD(SYSDATE(),INTERVAL -approval_term DAY), '%Y-%m-%d 23:59:59')
+		FROM audit_order_info b WHERE a.pid = b.pid ) AND overdue_type = '0' AND `status` = 'NOL' AND a.state >= '70' AND a.state &lt; '90'
+    </select>
+
+
+    <select id="searchEnterSigningList" resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+        SELECT * from audit_order_info
+        <include refid="enterSigning_find_where"/>
+		order by state ASC , signing_time ASC
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="searchEnterSigningListCount" resultType="int">
+        select count(pid)
+        from audit_order_info
+        <include refid="enterSigning_find_where"/>
+    </select>
+
+    <sql id="enterSigning_find_where">
+        <where>
+            state >= '41' AND enterprise_id = #{currentCompanyId} AND status = 'NOL'
+            <if test="supplierName != null and supplierName!=''">
+                AND supplier_name like CONCAT("%",#{supplierName},"%")
+            </if>
+            <if test="startTime != null and startTime!=''">
+                AND signing_time >= #{startTime}
+            </if>
+            <if test="endTime != null and endTime!=''">
+                AND signing_time &lt;= #{endTime}
+            </if>
+            <if test="state == '0'.toString()">
+                AND state = '41'
+            </if>
+            <if test="state == '1'.toString()">
+                AND state > '41'
+            </if>
+            <if test="guarantee != null and guarantee!=''">
+                AND guarantee = #{guarantee}
+            </if>
+        </where>
+    </sql>
+
+	<select id="searchPlatformSigningList" resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+		SELECT * from audit_order_info
+		<include refid="platformSigning_find_where"/>
+		order by state ASC , signing_time ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="searchPlatformSigningListCount" resultType="int">
+		select count(pid)
+		from audit_order_info
+		<include refid="platformSigning_find_where"/>
+	</select>
+
+	<sql id="platformSigning_find_where">
+		<where>
+			state >= '42' AND status = 'NOL'
+			<if test="enterpriseName != null and enterpriseName !=''">
+				AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+			</if>
+			<if test="supplierName != null and supplierName !=''">
+				AND supplier_name LIKE concat('%',#{supplierName},'%')
+			</if>
+			<if test="state == '0'.toString()">
+				AND state = '42'
+			</if>
+			<if test="state == '1'.toString()">
+				AND state > '42'
+			</if>
+		</where>
+	</sql>
+
+
+
+
+	<sql id="search_AuditRemind">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test=" 1 != 0">
+				and status = 'NOL' and overdue_type != '1'
+			</if>
+			<if test="enterpriseName != null and enterpriseName !=''">
+				AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+			</if>
+			<if test="enterpriseId != null and enterpriseId !=''">
+				AND enterprise_id = #{enterpriseId}
+			</if>
+			<if test="supplierName != null and supplierName !=''">
+				AND supplier_name LIKE concat('%',#{supplierName},'%')
+			</if>
+			<if test="startTime != null">
+				AND loan_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND loan_time &lt;= #{endTime}
+			</if>
+			<if test="shouldStartTime != null">
+				AND should_time >= #{shouldStartTime}
+			</if>
+			<if test="shouldEndTime != null">
+				AND should_time &lt;= #{shouldEndTime}
+			</if>
+			<if test="state != null and state !=''">
+				AND remind = #{state}
+			</if>
+			AND state >= '70'
+		</trim>
+	</sql>
+
+
+	<sql id="search_Audit_entry">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test=" 1 != 0">
+				and status = 'NOL' and overdue_type != '1'
+			</if>
+			<if test="enterpriseName != null and enterpriseName !=''">
+				AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+			</if>
+			<if test="enterpriseId != null and enterpriseId !=''">
+				AND enterprise_id = #{enterpriseId}
+			</if>
+			<if test="supplierName != null and supplierName !=''">
+				AND supplier_name LIKE concat('%',#{supplierName},'%')
+			</if>
+			<if test="startTime != null">
+				AND loan_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND loan_time &lt;= #{endTime}
+			</if>
+			<if test="shouldStartTime != null">
+				AND should_time >= #{shouldStartTime}
+			</if>
+			<if test="shouldEndTime != null">
+				AND should_time &lt;= #{shouldEndTime}
+			</if>
+			<if test="state == '1'.toString()">
+				AND state = '70'
+			</if>
+			<if test="state == '2'.toString()">
+				AND state in ('71','81')
+			</if>
+			<if test="state == '3'.toString()">
+				AND state = '80'
+			</if>
+			<if test="state == '4'.toString()">
+				AND state = '90'
+			</if>
+			AND state >= '70'
+		</trim>
+	</sql>
+
+
+	<sql id="search_Audit_Review">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test=" 1 != 0">
+				and status = 'NOL' and overdue_type != '1'
+			</if>
+			<if test="enterpriseName != null and enterpriseName !=''">
+				AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+			</if>
+			<if test="supplierName != null and supplierName !=''">
+				AND supplier_name LIKE concat('%',#{supplierName},'%')
+			</if>
+			<if test="startTime != null">
+				AND loan_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND loan_time &lt;= #{endTime}
+			</if>
+			<if test="shouldStartTime != null">
+				AND should_time >= #{shouldStartTime}
+			</if>
+			<if test="shouldEndTime != null">
+				AND should_time &lt;= #{shouldEndTime}
+			</if>
+			<if test="state != null and state !=''">
+				AND repayment_review = #{state}
+			</if>
+			AND state >= '70' and remark = '1'
+		</trim>
+	</sql>
+
+
+	<select id="searchRemindListCount"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditRemindForm"
+			resultType="int">
+		SELECT count(*) from audit_order_info
+		<include refid="search_AuditRemind"/>
+	</select>
+
+	<select id="searchRemindList"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditRemindForm"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+		SELECT * from audit_order_info
+		<include refid="search_AuditRemind"/> order by state = '70' DESC,create_at ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="searchEntryListCount"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditRemindForm"
+			resultType="int">
+		SELECT count(*) from audit_order_info
+		<include refid="search_Audit_entry"/>
+	</select>
+
+	<select id="searchEntryList"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditRemindForm"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+		SELECT * from audit_order_info
+		<include refid="search_Audit_entry"/> order by state = '70' DESC,create_at ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+
+	<select id="searchReviewListCount"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditRemindForm"
+			resultType="int">
+		SELECT count(*) from audit_order_info
+		<include refid="search_Audit_Review"/>
+	</select>
+
+	<select id="searchReviewList"
+			parameterType="cn.fintecher.supply.finance.loan.manager.common.audit.request.AuditRemindForm"
+			resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+		SELECT * from audit_order_info
+		<include refid="search_Audit_Review"/> order by state = '71' DESC,create_at ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="searchSuppReviewList" resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+		SELECT * from audit_order_info
+		<include refid="search_AuditSuppReview"/> order by create_at ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="searchSuppReviewListCount" resultType="int">
+		SELECT count(*) from audit_order_info
+		<include refid="search_AuditSuppReview"/>
+	</select>
+
+	<sql id="search_AuditSuppReview">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			state >= '70' AND status = 'NOL'
+			<if test="enterpriseName != null and enterpriseName !=''">
+				AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+			</if>
+			<if test="supplierName != null and supplierName !=''">
+				AND supplier_name LIKE concat('%',#{supplierName},'%')
+			</if>
+			<if test="supplierId != null and supplierId !=''">
+				AND supplier_id = #{supplierId}
+			</if>
+			<if test="enterpriseId != null and enterpriseId !=''">
+				AND enterprise_id = #{enterpriseId}
+			</if>
+			<if test="startTime != null">
+				AND loan_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND loan_time &lt;= #{endTime}
+			</if>
+			<if test="shouldStartTime != null">
+				AND should_time >= #{shouldStartTime}
+			</if>
+			<if test="shouldEndTime != null">
+				AND should_time &lt;= #{shouldEndTime}
+			</if>
+			<if test="state == '1'.toString()">
+				AND state in ('70','80','71') AND overdue_type = '0'
+			</if>
+			<if test="state == '2'.toString()">
+				AND state = '81' AND overdue_type = '0'
+			</if>
+			<if test="state == '3'.toString()">
+				AND state = '90' AND overdue_type = '0'
+			</if>
+			<if test="state == '4'.toString()">
+				AND state in ('70','80','71') AND overdue_type = '1'
+			</if>
+			<if test="state == '5'.toString()">
+				AND state = '81' AND overdue_type = '1'
+			</if>
+		</trim>
+	</sql>
+
+	<select id="searchSignList" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditSigningListForm" resultType="cn.fintecher.supply.finance.loan.manager.common.audit.entity.AuditOrderInfoEntity">
+		SELECT * from audit_order_info
+		<include refid="signList_find_where"/> order by create_at ASC
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="searchSignListCount" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.audit.AuditSigningListForm" resultType="Integer">
+		SELECT count(pid) from audit_order_info
+		<include refid="signList_find_where"/>
+	</select>
+	<sql id="signList_find_where">
+		<where>
+			<if test="enterpriseName != null and enterpriseName !=''">
+				AND enterprise_name LIKE concat('%',#{enterpriseName},'%')
+			</if>
+			<if test="startTime != null">
+				AND loan_time >= #{startTime}
+			</if>
+			<if test="endTime != null">
+				AND loan_time &lt;= #{endTime}
+			</if>
+			AND supplier_id = #{currentCompanyId} AND state >= '70'
+		</where>
+	</sql>
+
+
+</mapper>

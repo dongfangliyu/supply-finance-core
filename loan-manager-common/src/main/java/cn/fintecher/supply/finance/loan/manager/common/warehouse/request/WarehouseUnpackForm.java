@@ -1,0 +1,61 @@
+package cn.fintecher.supply.finance.loan.manager.common.warehouse.request;
+
+import cn.fintecher.supply.finance.loan.manager.common.util.PageInfo;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * @Author WuTianJuan
+ * @Date Created in 10:16 2018/8/23
+ */
+@Data
+public class WarehouseUnpackForm extends PageInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     *仓单解押编号
+     */
+    @ApiModelProperty(value="仓单解押编号")
+    private String WarehouseUnpackNumber;
+
+    /**
+     *供货商名称
+     */
+    @ApiModelProperty(value="供货商名称")
+    private String supplierName;
+
+    /**
+     *仓单解押开始时间
+     */
+    @ApiModelProperty(value="仓单解押开始时间")
+    private String WarehouseUnpackTimeStart;
+
+    /**
+     *仓单解押结束时间
+     */
+    @ApiModelProperty(value="仓单解押结束时间")
+    private String WarehouseUnpackTimeEnd;
+
+    /**
+     *状态 1:已解压  0：未解押  2：申请中
+     */
+    @ApiModelProperty(value="状态 1:已解压  0：未解押 2：申请中")
+    private String state;
+
+    /**
+     * 当前登录人
+     */
+    @ApiModelProperty(value="当前登录人",hidden = true)
+    private String userName;
+
+    /**
+     *企业id  来源 (企业信息表)
+     */
+    @ApiModelProperty(value="企业id",hidden = true)
+    private Long companyId;
+
+
+}

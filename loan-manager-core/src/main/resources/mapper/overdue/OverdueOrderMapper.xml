@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.overdue.dao.OverdueOrderDao">
+
+    <resultMap type="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueOrderEntity" id="orderMap">
+        <result property="pid" column="pid"/>
+        <result property="enterpriseId" column="enterprise_id"/>
+        <result property="enterpriseName" column="enterprise_name"/>
+        <result property="enterpriseMan" column="enterprise_man"/>
+        <result property="enterpriseMobile" column="enterprise_mobile"/>
+        <result property="supplierId" column="supplier_id"/>
+        <result property="supplierName" column="supplier_name"/>
+        <result property="supplierMan" column="supplier_man"/>
+        <result property="supplierMobile" column="supplier_mobile"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="accountNo" column="account_no"/>
+        <result property="certificateAmount" column="certificate_amount"/>
+        <result property="approvalAmount" column="approval_amount"/>
+        <result property="approvalTerm" column="approval_term"/>
+        <result property="loanTime" column="loan_time"/>
+        <result property="loanCycle" column="loan_cycle"/>
+        <result property="interestRate" column="interest_rate"/>
+        <result property="interestPrice" column="interest_price"/>
+        <result property="serviceFee" column="service_fee"/>
+        <result property="servicePrice" column="service_price"/>
+        <result property="penaltyFee" column="penalty_fee"/>
+        <result property="returnedPrincipal" column="returned_principal"/>
+        <result property="returnedInterest" column="returned_interest"/>
+        <result property="returnedPenalty" column="returned_penalty"/>
+        <result property="unpaidPrincipal" column="unpaid_principal"/>
+        <result property="unpaidInterest" column="unpaid_interest"/>
+        <result property="unpaidService" column="unpaid_service"/>
+        <result property="returnedService" column="returned_service"/>
+        <result property="settle" column="settle"/>
+        <result property="settleTime" column="settle_time"/>
+        <result property="orderInfoId" column="order_info_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+	<sql id="order_find_List">
+		pid as pid,		enterprise_id as enterpriseId,		enterprise_name as enterpriseName,		enterprise_man as enterpriseMan,		enterprise_mobile as enterpriseMobile,		supplier_id as supplierId,		supplier_name as supplierName,		supplier_man as supplierMan,		supplier_mobile as supplierMobile,		contract_no as contractNo,		account_no as accountNo,		certificate_amount as certificateAmount,		approval_amount as approvalAmount,		approval_term as approvalTerm,		loan_time as loanTime,		loan_cycle as loanCycle,		interest_rate as interestRate,		interest_price as interestPrice,		service_fee as serviceFee,		service_price as servicePrice,		penalty_fee as penaltyFee,		returned_principal as returnedPrincipal,		returned_interest as returnedInterest,		returned_penalty as returnedPenalty,		unpaid_principal as unpaidPrincipal,		unpaid_interest as unpaidInterest,		unpaid_service as unpaidService,		returned_service as returnedService,		settle as settle,		settle_time as settleTime,		order_info_id as orderInfoId,		create_by as createBy,		create_at as createAt,		update_by as updateBy,		update_at as updateAt,		status as status,		remark as remark	</sql>
+	
+	<sql id="order_find_where">
+		<where>
+			<if test="pid != null" >
+		      	AND pid = #{pid}
+		    </if>
+			<if test="enterpriseId != null" >
+		      	AND enterprise_id = #{enterpriseId}
+		    </if>
+			<if test="enterpriseName != null" >
+		      	AND enterprise_name = #{enterpriseName}
+		    </if>
+			<if test="enterpriseMan != null" >
+		      	AND enterprise_man = #{enterpriseMan}
+		    </if>
+			<if test="enterpriseMobile != null" >
+		      	AND enterprise_mobile = #{enterpriseMobile}
+		    </if>
+			<if test="supplierId != null" >
+		      	AND supplier_id = #{supplierId}
+		    </if>
+			<if test="supplierName != null" >
+		      	AND supplier_name = #{supplierName}
+		    </if>
+			<if test="supplierMan != null" >
+		      	AND supplier_man = #{supplierMan}
+		    </if>
+			<if test="supplierMobile != null" >
+		      	AND supplier_mobile = #{supplierMobile}
+		    </if>
+			<if test="contractNo != null" >
+		      	AND contract_no = #{contractNo}
+		    </if>
+			<if test="accountNo != null" >
+		      	AND account_no = #{accountNo}
+		    </if>
+			<if test="certificateAmount != null" >
+		      	AND certificate_amount = #{certificateAmount}
+		    </if>
+			<if test="approvalAmount != null" >
+		      	AND approval_amount = #{approvalAmount}
+		    </if>
+			<if test="approvalTerm != null" >
+		      	AND approval_term = #{approvalTerm}
+		    </if>
+			<if test="loanTime != null" >
+		      	AND loan_time = #{loanTime}
+		    </if>
+			<if test="loanCycle != null" >
+		      	AND loan_cycle = #{loanCycle}
+		    </if>
+			<if test="interestRate != null" >
+		      	AND interest_rate = #{interestRate}
+		    </if>
+			<if test="interestPrice != null" >
+		      	AND interest_price = #{interestPrice}
+		    </if>
+			<if test="serviceFee != null" >
+		      	AND service_fee = #{serviceFee}
+		    </if>
+			<if test="servicePrice != null" >
+		      	AND service_price = #{servicePrice}
+		    </if>
+			<if test="penaltyFee != null" >
+		      	AND penalty_fee = #{penaltyFee}
+		    </if>
+			<if test="returnedPrincipal != null" >
+		      	AND returned_principal = #{returnedPrincipal}
+		    </if>
+			<if test="returnedInterest != null" >
+		      	AND returned_interest = #{returnedInterest}
+		    </if>
+			<if test="returnedPenalty != null" >
+		      	AND returned_penalty = #{returnedPenalty}
+		    </if>
+			<if test="unpaidPrincipal != null" >
+		      	AND unpaid_principal = #{unpaidPrincipal}
+		    </if>
+			<if test="unpaidInterest != null" >
+		      	AND unpaid_interest = #{unpaidInterest}
+		    </if>
+			<if test="unpaidService != null" >
+		      	AND unpaid_service = #{unpaidService}
+		    </if>
+			<if test="returnedService != null" >
+		      	AND returned_service = #{returnedService}
+		    </if>
+			<if test="settle != null" >
+		      	AND settle = #{settle}
+		    </if>
+			<if test="settleTime != null" >
+		      	AND settle_time = #{settleTime}
+		    </if>
+			<if test="orderInfoId != null" >
+		      	AND order_info_id = #{orderInfoId}
+		    </if>
+			<if test="createBy != null" >
+		      	AND create_by = #{createBy}
+		    </if>
+			<if test="createAt != null" >
+		      	AND create_at = #{createAt}
+		    </if>
+			<if test="updateBy != null" >
+		      	AND update_by = #{updateBy}
+		    </if>
+			<if test="updateAt != null" >
+		      	AND update_at = #{updateAt}
+		    </if>
+			<if test="status != null" >
+		      	AND status = #{status}
+		    </if>
+			<if test="remark != null" >
+		      	AND remark = #{remark}
+		    </if>
+	    </where>
+	 </sql>
+	 
+	<insert id="insertOrder" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueOrderEntity"  useGeneratedKeys="true" keyProperty="pid">
+	    insert into overdue_order (pid,enterprise_id,enterprise_name,enterprise_man,enterprise_mobile,supplier_id,supplier_name,supplier_man,supplier_mobile,contract_no,account_no,certificate_amount,approval_amount,approval_term,loan_time,loan_cycle,interest_rate,interest_price,service_fee,service_price,penalty_fee,returned_principal,returned_interest,returned_penalty,unpaid_principal,unpaid_interest,unpaid_service,returned_service,settle,settle_time,order_info_id,create_by,create_at,update_by,update_at,status,remark)
+	    values (#{pid},#{enterpriseId},#{enterpriseName},#{enterpriseMan},#{enterpriseMobile},#{supplierId},#{supplierName},#{supplierMan},#{supplierMobile},#{contractNo},#{accountNo},#{certificateAmount},#{approvalAmount},#{approvalTerm},#{loanTime},#{loanCycle},#{interestRate},#{interestPrice},#{serviceFee},#{servicePrice},#{penaltyFee},#{returnedPrincipal},#{returnedInterest},#{returnedPenalty},#{unpaidPrincipal},#{unpaidInterest},#{unpaidService},#{returnedService},#{settle},#{settleTime},#{orderInfoId},#{createBy},#{createAt},#{updateBy},#{updateAt},#{status},#{remark})
+	</insert>
+	
+	<select id="selectByOrder" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueOrderEntity" 
+	  	resultType = "cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueOrderEntity">
+	  	select
+	    	<include refid="order_find_List" />
+	    from overdue_order
+	    	<include refid="order_find_where" />
+	 </select>
+	 
+	 <select id="queryOrderByPid" resultType = "cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueOrderEntity">
+	  	select
+	    	<include refid="order_find_List" />
+	    from overdue_order where pid = #{pid}
+	 </select>
+	 
+	<update id="updateOrder" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.entity.OverdueOrderEntity" >
+    	update overdue_order
+	    	<set >
+				<if test="enterpriseId != null" >
+			      	 enterprise_id = #{enterpriseId},
+			    </if>
+				<if test="enterpriseName != null" >
+			      	 enterprise_name = #{enterpriseName},
+			    </if>
+				<if test="enterpriseMan != null" >
+			      	 enterprise_man = #{enterpriseMan},
+			    </if>
+				<if test="enterpriseMobile != null" >
+			      	 enterprise_mobile = #{enterpriseMobile},
+			    </if>
+				<if test="supplierId != null" >
+			      	 supplier_id = #{supplierId},
+			    </if>
+				<if test="supplierName != null" >
+			      	 supplier_name = #{supplierName},
+			    </if>
+				<if test="supplierMan != null" >
+			      	 supplier_man = #{supplierMan},
+			    </if>
+				<if test="supplierMobile != null" >
+			      	 supplier_mobile = #{supplierMobile},
+			    </if>
+				<if test="contractNo != null" >
+			      	 contract_no = #{contractNo},
+			    </if>
+				<if test="accountNo != null" >
+			      	 account_no = #{accountNo},
+			    </if>
+				<if test="certificateAmount != null" >
+			      	 certificate_amount = #{certificateAmount},
+			    </if>
+				<if test="approvalAmount != null" >
+			      	 approval_amount = #{approvalAmount},
+			    </if>
+				<if test="approvalTerm != null" >
+			      	 approval_term = #{approvalTerm},
+			    </if>
+				<if test="loanTime != null" >
+			      	 loan_time = #{loanTime},
+			    </if>
+				<if test="loanCycle != null" >
+			      	 loan_cycle = #{loanCycle},
+			    </if>
+				<if test="interestRate != null" >
+			      	 interest_rate = #{interestRate},
+			    </if>
+				<if test="interestPrice != null" >
+			      	 interest_price = #{interestPrice},
+			    </if>
+				<if test="serviceFee != null" >
+			      	 service_fee = #{serviceFee},
+			    </if>
+				<if test="servicePrice != null" >
+			      	 service_price = #{servicePrice},
+			    </if>
+				<if test="penaltyFee != null" >
+			      	 penalty_fee = #{penaltyFee},
+			    </if>
+				<if test="returnedPrincipal != null" >
+			      	 returned_principal = #{returnedPrincipal},
+			    </if>
+				<if test="returnedInterest != null" >
+			      	 returned_interest = #{returnedInterest},
+			    </if>
+				<if test="returnedPenalty != null" >
+			      	 returned_penalty = #{returnedPenalty},
+			    </if>
+				<if test="unpaidPrincipal != null" >
+			      	 unpaid_principal = #{unpaidPrincipal},
+			    </if>
+				<if test="unpaidInterest != null" >
+			      	 unpaid_interest = #{unpaidInterest},
+			    </if>
+				<if test="unpaidService != null" >
+			      	 unpaid_service = #{unpaidService},
+			    </if>
+				<if test="returnedService != null" >
+			      	 returned_service = #{returnedService},
+			    </if>
+				<if test="settle != null" >
+			      	 settle = #{settle},
+			    </if>
+				<if test="settleTime != null" >
+			      	 settle_time = #{settleTime},
+			    </if>
+				<if test="orderInfoId != null" >
+			      	 order_info_id = #{orderInfoId},
+			    </if>
+				<if test="createBy != null" >
+			      	 create_by = #{createBy},
+			    </if>
+				<if test="createAt != null" >
+			      	 create_at = #{createAt},
+			    </if>
+				<if test="updateBy != null" >
+			      	 update_by = #{updateBy},
+			    </if>
+				<if test="updateAt != null" >
+			      	 update_at = #{updateAt},
+			    </if>
+				<if test="status != null" >
+			      	 status = #{status},
+			    </if>
+				<if test="remark != null" >
+			      	 remark = #{remark},
+			    </if>
+		    </set>
+		    where pid = #{pid}
+	</update>
+	<sql id="page_find_where">
+		<where>
+			<if test="1==1">
+				AND status = 'NOL'
+			</if>
+			<if test="supplierName != null and supplierName !='' " >
+				AND supplier_name like CONCAT("%",#{supplierName},"%")
+			</if>
+			<if test="overdueStartDay != null " >
+				AND  DATEDIFF(SYSDATE(),loan_time)-approval_term >=#{overdueStartDay}
+			</if>
+			<if test="overdueEndDay != null " >
+				AND  DATEDIFF(SYSDATE(),loan_time)-approval_term &lt;=#{overdueEndDay}
+			</if>
+			<if test="state != null and state != '' " >
+				AND  settle = #{state}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="queryListByOrderForm" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.request.OverdueOrderForm"
+		resultType="cn.fintecher.supply.finance.loan.manager.common.overdue.response.OverdueOrderResponse">
+			 select  *
+		     from overdue_order
+		     <include refid="page_find_where"/>
+		     limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="queryCountByOrderForm" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.request.OverdueOrderForm"
+		resultType="int">
+			 select count(pid)
+		     from overdue_order
+		     <include refid="page_find_where"/>
+	</select>
+	
+	<select id="queryDownListByOrderForm" parameterType="cn.fintecher.supply.finance.loan.manager.common.overdue.request.OverdueOrderForm"
+		resultType="cn.fintecher.supply.finance.loan.manager.common.overdue.response.OverdueOrderResponse">
+			 select  *
+		     from overdue_order
+		     <include refid="page_find_where"/>
+	</select>
+</mapper>

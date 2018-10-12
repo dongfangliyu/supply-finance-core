@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.sys.dao.SysMenuDao">
+
+    <resultMap id="RM_SysMenu" type="cn.fintecher.supply.finance.loan.manager.core.sys.entity.SysMenu">
+        <result property="menuId" column="menu_id"/>
+        <result property="parantId" column="parant_id"/>
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="perms" column="perms"/>
+        <result property="type" column="type"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="status" column="status"/>
+        <result property="createUserId" column="create_user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateUserId" column="update_user_id"/>
+        <result property="icon" column="icon"/>
+        <result property="code" column="code"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+	    <![CDATA[
+
+
+
+
+
+
+
+		menu_id,parant_id,name,url,perms,type,order_num,status,create_user_id,create_time,update_time,update_user_id,icon,code
+
+
+
+
+
+
+
+        ]]>
+	</sql>
+
+    <insert id="save" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+		insert into sys_menu (
+		menu_id,
+		parant_id,
+		name,
+		url,
+		perms,
+		type,
+		order_num,
+		status,
+		create_user_id,
+		create_time,
+		update_time,
+		update_user_id,
+		icon,
+		code
+		)
+		values (
+		#{menuId,jdbcType=INTEGER},
+		#{parantId,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR},
+		#{url,jdbcType=VARCHAR},
+		#{perms,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{orderNum,jdbcType=INTEGER},
+		#{status,jdbcType=VARCHAR},
+		#{createUserId,jdbcType=INTEGER},
+		#{createTime,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=VARCHAR},
+		#{updateUserId,jdbcType=INTEGER},
+		#{icon,jdbcType=VARCHAR},
+		#{code,jdbcType=VARCHAR}
+		)
+	</insert>
+
+    <update id="update" parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+        update sys_menu
+        <set>
+            <if test="parantId != null">`parant_id` = #{parantId},</if>
+            <if test="name != null">`name` = #{name},</if>
+            <if test="url != null ">`url` = #{url},</if>
+            <if test="perms != null">`perms` = #{perms},</if>
+            <if test="type != null">`type` = #{type},</if>
+            <if test="orderNum != null">`order_num` = #{orderNum},</if>
+            <if test="status != null">`status` = #{status},</if>
+            <if test="createUserId != null">`create_user_id` = #{createUserId},</if>
+            <if test="createTime != null">`create_time` = #{createTime},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime},</if>
+            <if test="updateUserId != null">`update_user_id` = #{updateUserId},</if>
+            <if test="icon != null">`icon` = #{icon}</if>
+            <if test="code != null">`code` = #{code}</if>
+        </set>
+        where menu_id = #{menuId}
+    </update>
+
+    <update id="delete">
+        update sys_menu
+        <set>
+            <if test="status != null">`status` = #{status},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime},</if>
+            <if test="updateUserId != null">`update_user_id` = #{updateUserId}</if>
+        </set>
+        where menu_id in
+        <foreach item="menuId" collection="subMenuList" open="(" separator="," close=")">
+            #{menuId}
+        </foreach>
+    </update>
+
+    <select id="getById" resultMap="RM_SysMenu">
+        SELECT
+        <include refid="columns"/>
+        <![CDATA[
+		    FROM sys_menu 
+	        WHERE 
+		        menu_id = #{id} 
+	    ]]>
+    </select>
+
+    <sql id="findPage_where">
+        <where>
+            <if test="menuId != null and menuId != ''">
+                AND menu_id = #{menuId}
+            </if>
+            <if test="parantId != null and parantId != ''">
+                AND parant_id = #{parantId}
+            </if>
+            <if test="name != null and name != ''">
+                AND name = #{name}
+            </if>
+            <if test="url != null and url != ''">
+                AND url = #{url}
+            </if>
+            <if test="perms != null and perms != ''">
+                AND perms = #{perms}
+            </if>
+            <if test="type != null and type != ''">
+                AND type = #{type}
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                AND order_num = #{orderNum}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="createUserId != null and createUserId != ''">
+                AND create_user_id = #{createUserId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND create_time = #{createTime}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="updateUserId != null and updateUserId != ''">
+                AND update_user_id = #{updateUserId}
+            </if>
+            <if test="icon != null and icon != ''">
+                AND icon = #{icon}
+            </if>
+            <if test="code != null and code != ''">
+                AND code = #{code}
+            </if>
+        </where>
+    </sql>
+
+    <select id="queryMenuIdList" resultType="int">
+		select menu_id from sys_menu where parant_id = #{menuId} and status = 1 AND `type` != '-1'
+	</select>
+
+    <select id="findMenuPage" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+        select * from sys_menu m
+        <include refid="menu_query_condition"/>
+
+        limit #{vo.startIndex},#{vo.pageSize}
+    </select>
+
+    <select id="findMenuPageCount" resultType="int">
+        SELECT count(*) FROM sys_menu m
+        <include refid="menu_query_condition"/>
+    </select>
+
+    <sql id="menu_query_condition">
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="vo.menuName != null and vo.menuName != ''">
+                and m.name like concat('%',#{vo.menuName},'%')
+            </if>
+            <if test="vo.status != null">
+                AND m.status= #{vo.status,jdbcType=INTEGER}
+            </if>
+            <if test="1 == 1">AND m.`type` != '-1'</if>
+            <if test="vo.orderBy != null and vo.orderBy != ''">
+                order by ${vo.sort} ${vo.order}
+            </if>
+        </trim>
+    </sql>
+
+    <select id="getAllMenus" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity"
+            parameterType="cn.fintecher.supply.finance.loan.manager.common.sys.MenuSearchForm">
+        select * from sys_menu
+        <where>
+            <if test="vo.status != null">and `status` = #{vo.status}</if>
+            <if test="1 == 1">AND `type` != '-1'</if>
+            <if test="vo.menuName !=null and vo.menuName !=''">and name like concat('%',#{vo.menuName},'%')</if>
+        </where>
+
+        order by order_num asc
+    </select>
+
+    <select id="queryObject" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+		SELECT *
+		FROM sys_menu where menu_id = #{menuId}
+	</select>
+
+    <select id="getAllMenuListBySuper" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+		select  m.* from sys_menu m where m.`status` = 1 AND m.`type` != '-1' ORDER BY m.order_num
+	</select>
+
+    <select id="getAllMenuList" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+		select  m.* from sys_menu m where m.`status` = 1 and m.menu_id in(
+			select distinct rm.menu_id from sys_role_menu rm where rm.role_id in(
+					select  r.role_id from sys_role r where r.status = 1 and r.role_id in(
+						select ur.role_id from sys_user u,sys_user_role ur where u.status=1
+						and u.id = ur.user_id and u.id = #{userId}
+				)
+			)
+		) AND m.`type` != '-1' ORDER BY m.order_num
+	</select>
+
+    <select id="getAuthMenus" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+       SELECT sm.* FROM sys_menu sm where sm.parant_id in (
+            select  m.menu_id from sys_menu m where m.`status` = 1 and m.menu_id in(
+                select distinct rm.menu_id from sys_role_menu rm where rm.role_id in(
+                        select  r.role_id from sys_role r where r.status = 1 and r.role_id in(
+                            select ur.role_id from sys_user u,sys_user_role ur where u.status=1
+                            and u.id = ur.user_id and u.id = #{userId}
+                    )
+				)
+			)
+		) AND sm.`type` = '-1'
+	</select>
+
+    <select id="queryNotButtonList" resultType="cn.fintecher.supply.finance.loan.manager.common.sys.SysMenuEntity">
+		select * from sys_menu where type != 2 and status=1 AND `type` != '-1' order by order_num asc
+	</select>
+</mapper>
+

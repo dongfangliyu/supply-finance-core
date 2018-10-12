@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.credit.dao.EnterpriseCreditDao">
+
+    <resultMap id="RM_CompanyEnterprise" type="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+        <result property="pid" column="pid"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="enpsLicense" column="enps_license"/>
+        <result property="enpsCredit" column="enps_credit"/>
+        <result property="legalAddress" column="legal_address"/>
+        <result property="controller" column="controller"/>
+        <result property="fillPersion" column="fill_persion"/>
+        <result property="establishTime" column="establish_time"/>
+        <result property="registeredPrincipal" column="registered_principal"/>
+        <result property="realRegisteredPrincipal" column="real_registered_principal"/>
+        <result property="registeredAddressDetail" column="registered_address_detail"/>
+        <result property="operatingAddressDetail" column="operating_address_detail"/>
+        <result property="loanNum" column="loan_num"/>
+        <result property="state" column="state"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="creditNumber" column="credit_number"/>
+        <result property="creditStatus" column="credit_status"/>
+        <result property="creditPrice" column="credit_price"/>
+        <result property="urlTime" column="url_time"/>
+        <result property="successTime" column="success_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <association property="companyUser" javaType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyUserEntity">
+            <result property="pid" column="pid" />
+            <result property="name" column="name" />
+            <result property="userName" column="user_name" />
+            <result property="password" column="password" />
+            <result property="enterpriseId" column="enterprise_id" />
+            <result property="type" column="type" />
+            <result property="salt" column="salt" />
+            <result property="createBy" column="create_by"/>
+            <result property="createAt" column="create_at"/>
+            <result property="updateBy" column="update_by"/>
+            <result property="updateAt" column="update_at"/>
+            <result property="status" column="status"/>
+            <result property="remark" column="remark"/>
+        </association>
+    </resultMap>
+
+   <select id="searchCountOfCredit" resultType="long">
+       SELECT
+       count(pid)
+       FROM company_enterprise
+   </select>
+
+    <select id="searchCompanyInfo" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+        select * from company_enterprise where pid = #{pid} and status = 'NOL'
+    </select>
+
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="company_common_columns">
+        <![CDATA[
+		pid,name,type,enps_license,enps_credit,legal_address,controller,fill_persion,establish_time,registered_principal,real_registered_principal,registered_address_detail,operating_address_detail,loan_num,state,submit_time,credit_number,credit_status,credit_price,url_time,success_time,create_by,create_at,update_by,update_at,status,remark
+	    ]]>
+    </sql>
+
+    <select id="searchCompanyCreditStatus" parameterType="cn.fintecher.supply.finance.loan.manager.common.form.SearchCompanyCreditForm" resultType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+        select cm.*
+		    FROM company_enterprise cm inner join  company_user cu on cm.pid = cu.enterprise_id
+	        WHERE
+		        cm.pid = #{pid} and cu.user_name = #{name}
+    </select>
+
+    <select id="searchCompanyCreditResult" resultType="cn.fintecher.supply.finance.loan.manager.common.response.CompanyCreditResultResponse">
+        select ce.submit_time submitTime,
+               ce.credit_number creditNumber,
+               ce.credit_status creditStatus,
+               ce.credit_price creditPrice
+        from  company_enterprise ce
+        where ce.pid=#{pid}
+    </select>
+
+    <update id="updateCompanyCreditStep" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.CompanyEnterpriseEntity">
+        update  company_enterprise
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="enpsLicense!= null">
+                enps_license = #{enpsLicense,jdbcType=VARCHAR},
+            </if>
+            <if test="enpsCredit!= null">
+                enps_credit= #{enpsCredit,jdbcType=VARCHAR},
+            </if>
+            <if test="legalAddress!= null">
+                legal_address = #{legalAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="controller!= null">
+                controller = #{controller,jdbcType=VARCHAR},
+            </if>
+            <if test="fillPersion!= null">
+                fill_persion = #{fillPersion,jdbcType=VARCHAR},
+            </if>
+            <if test="establishTime != null">
+                establish_time= #{establishTime,jdbcType=VARCHAR},
+            </if>
+            <if test="registeredPrincipal!= null">
+                registered_principal= #{registeredPrincipal,jdbcType=VARCHAR},
+            </if>
+            <if test="realRegisteredPrincipal!= null">
+                real_registered_principal= #{realRegisteredPrincipal,jdbcType=VARCHAR},
+            </if>
+            <if test="registeredAddressDetail!= null">
+                registered_address_detail = #{registeredAddressDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="operatingAddressDetail!= null">
+                operating_address_detail = #{operatingAddressDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="loanNum!= null">
+                loan_num = #{loanNum,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                state= #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="submitTime!= null">
+                submit_time = #{submitTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creditNumber!= null">
+                credit_number= #{creditNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="creditStatus!= null">
+                credit_status= #{creditStatus,jdbcType=INTEGER},
+            </if>
+            <if test="creditPrice!= null">
+                credit_price= #{creditPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="urlTime!= null">
+                url_time = #{urlTime,jdbcType=VARCHAR},
+            </if>
+            <if test="successTime!= null">
+                success_time= #{successTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy!= null">
+                create_by= #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt!= null">
+                create_at= #{creditPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="updateAt!= null">
+                update_at= #{updateAt,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy!= null">
+                update_by= #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="status!= null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark!= null">
+                remark= #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE
+        pid = #{pid}
+    </update>
+</mapper>
+

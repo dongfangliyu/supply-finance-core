@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/loan-manager-common/loan-manager-common.iml" filepath="$PROJECT_DIR$/loan-manager-common/loan-manager-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan-manager-core/loan-manager-core.iml" filepath="$PROJECT_DIR$/loan-manager-core/loan-manager-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan-manager-pm-bff/loan-manager-pm-bff.iml" filepath="$PROJECT_DIR$/loan-manager-pm-bff/loan-manager-pm-bff.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan-manager-service/loan-manager-service.iml" filepath="$PROJECT_DIR$/loan-manager-service/loan-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supply-finance.iml" filepath="$PROJECT_DIR$/supply-finance.iml" />
+    </modules>
+  </component>
+</project>

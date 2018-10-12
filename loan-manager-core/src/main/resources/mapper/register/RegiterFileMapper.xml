@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="cn.fintecher.supply.finance.loan.manager.core.register.dao.RegisterFileDao">
+
+	<resultMap id="RegisterFile" type="cn.fintecher.supply.finance.loan.manager.common.model.RegisterFileEntity">
+        <result property="pid" column="pid"/>
+        <result property="fileName" column="file_name"/>
+        <result property="category" column="category"/>
+        <result property="fullPath" column="full_path"/>
+        <result property="path" column="path"/>
+        <result property="fileGroup" column="file_group"/>
+        <result property="ownerId" column="owner_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="fileSuffix" column="file_suffix"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		pid as pid,
+		file_name as fileName,
+		category as category,
+		full_path as fullPath,
+		path as path,
+		file_group as fileGroup,
+		owner_id as ownerId,
+		create_by as createBy,
+		create_at as createAt,
+		update_by as updateBy,
+		update_at as updateAt,
+		status as status,
+		remark as remark,
+		file_suffix as fileSuffix
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="saveRegisterFile" useGeneratedKeys="true" keyProperty="pid" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterFileEntity">
+        INSERT INTO register_file (
+        	file_name ,
+        	category ,
+        	full_path ,
+        	path ,
+        	file_group ,
+        	owner_id ,
+        	create_by ,
+        	create_at ,
+        	update_by ,
+        	update_at ,
+        	status ,
+        	remark ,
+        	file_suffix
+        ) VALUES (
+        	#{fileName} ,
+        	#{category} ,
+        	#{fullPath} ,
+        	#{path} ,
+        	#{fileGroup} ,
+        	#{ownerId} ,
+        	#{createBy} ,
+        	#{createAt} ,
+        	#{updateBy} ,
+        	#{updateAt} ,
+        	#{status} ,
+        	#{remark} ,
+        	#{fileSuffix}
+        )
+	</insert>
+    
+	<update id="updateRegisterFile" parameterType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterFileEntity">
+   
+	UPDATE register_file
+		<set>
+				<if test="fileName != null and fileName != ''">
+					file_name = #{fileName} ,
+				</if>
+				<if test="category != null and category != ''">
+					category = #{category} ,
+				</if>
+				<if test="fullPath != null and fullPath != ''">
+					full_path = #{fullPath} ,
+				</if>
+				<if test="path != null and path != ''">
+					path = #{path} ,
+				</if>
+				<if test="fileGroup != null and fileGroup != ''">
+					file_group = #{fileGroup} ,
+				</if>
+				<if test="ownerId != null and ownerId != ''">
+					owner_id = #{ownerId} ,
+				</if>
+				<if test="createBy != null and createBy != ''">
+					create_by = #{createBy} ,
+				</if>
+				<if test="createAt != null">
+					create_at = #{createAt} ,
+				</if>
+				<if test="updateBy != null and updateBy != ''">
+					update_by = #{updateBy} ,
+				</if>
+				<if test="updateAt != null">
+					update_at = #{updateAt} ,
+				</if>
+				<if test="status != null and status != ''">
+					status = #{status} ,
+				</if>
+				<if test="remark != null and remark != ''">
+					remark = #{remark}
+				</if>
+
+				<if test="fileSuffix != null and fileSuffix != ''">
+					file_suffix = #{fileSuffix}
+				</if>
+		</set>
+	WHERE 
+		pid = #{pid} 
+    
+	</update>
+
+    <select id="searchRegisterFile" resultType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterFileEntity">
+		SELECT <include refid="columns" />
+		    FROM register_file
+	        WHERE
+		        category = #{category} and owner_id = #{ownerId} and status = 'NOL'
+	</select>
+
+    <select id="searchRegisterFileByOwnerId" resultType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterFileEntity">
+		SELECT * FROM register_file
+	        WHERE owner_id = #{ownerId} and status = 'NOL'
+
+	</select>
+
+    <select id="searchRegisterFileByPid" resultType="cn.fintecher.supply.finance.loan.manager.common.model.RegisterFileEntity">
+		SELECT * FROM register_file
+	        WHERE pid = #{pid} and status = 'NOL'
+
+	</select>
+
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="pid != null and pid != ''">
+				AND pid = #{pid}
+			</if>
+	       <if test="fileName != null and fileName != ''">
+				AND file_name = #{fileName}
+			</if>
+	       <if test="category != null and category != ''">
+				AND category = #{category}
+			</if>
+	       <if test="fullPath != null and fullPath != ''">
+				AND full_path = #{fullPath}
+			</if>
+	       <if test="path != null and path != ''">
+				AND path = #{path}
+			</if>
+	       <if test="fileGroup != null and fileGroup != ''">
+				AND file_group = #{fileGroup}
+			</if>
+	       <if test="ownerId != null and ownerId != ''">
+				AND owner_id = #{ownerId}
+			</if>
+	       <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
+			</if>
+	       <if test="createAtBegin != null">
+				AND create_at &gt;= #{createAtBegin}
+		   </if>
+		   <if test="createAtEnd  != null">
+				AND create_at &lt;= #{createAtEnd}
+		   </if>
+	       <if test="updateBy != null and updateBy != ''">
+				AND update_by = #{updateBy}
+			</if>
+	       <if test="updateAtBegin != null">
+				AND update_at &gt;= #{updateAtBegin}
+		   </if>
+		   <if test="updateAtEnd  != null">
+				AND update_at &lt;= #{updateAtEnd}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+			</if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="find" resultMap="RegisterFile">
+    SELECT <include refid="columns"/> FROM register_file
+	<include refid="findPage_where"/>
+    </select>
+
+</mapper>
+
